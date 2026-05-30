@@ -1,0 +1,65 @@
+---
+const { title = "Dream Meaning Guide", description = "Explore dream meanings, symbols, and interpretations." } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Basic styling -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background: #fafafa;
+        color: #222;
+        line-height: 1.6;
+      }
+      header {
+        background: #ffffff;
+        padding: 1.2rem 2rem;
+        border-bottom: 1px solid #eee;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+      main {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      footer {
+        margin-top: 4rem;
+        padding: 2rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Dream Meaning Guide</h1>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      © {new Date().getFullYear()} DreamMeaningGuide.site — All Rights Reserved
+    </footer>
+  </body>
+</html>

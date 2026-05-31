@@ -1,38 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from "astro:content";
-
-const posts = await getCollection("posts");
-const sorted = posts.sort((a, b) => a.data.title.localeCompare(b.data.title));
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="A–Z Dream Dictionary" description="Browse all dream meanings alphabetically.">
-  <h1>A–Z Dream Dictionary</h1>
-  <p>Browse clear, calm interpretations for every dream topic.</p>
+<BaseLayout title="Dream Meaning Guide" description="Explore dream meanings, symbols, and interpretations.">
+  <h1>Dream Meaning Guide</h1>
+  <p>Welcome! Explore dream interpretations, symbols, and meanings.</p>
 
-  <ul>
-    {sorted.map(post => (
-      <li>
-        <a href={`/dreams/${post.data.slug}`}>{post.data.title}</a>
-      </li>
-    ))}
-  </ul>
-
-  <style>
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin: 0.4rem 0;
-    }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <p><a href="/dreams/">Browse the A–Z Dream Dictionary →</a></p>
 </BaseLayout>
+

@@ -1,12 +1,54 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Layout from "../../layouts/BaseLayout.astro";
+
+// Later, when you add dream posts to src/content/dreams,
+// Astro will automatically make them available here.
+import { getCollection } from "astro:content";
+const dreams = await getCollection("dreams");
 ---
 
-<BaseLayout title="Dream Meaning Guide" description="Explore dream meanings, symbols, and interpretations.">
-  <h1>Dream Meaning Guide</h1>
-  <p>Welcome! Explore dream interpretations, symbols, and meanings.</p>
+<Layout title="A–Z Dream Dictionary" description="Browse clear, calm interpretations for every dream topic.">
+  <section class="dictionary">
+    <h1>A–Z Dream Dictionary</h1>
+    <p>Browse clear, calm interpretations for every dream topic.</p>
 
-  <p><a href="/dreams/">Browse the A–Z Dream Dictionary →</a></p>
-</BaseLayout>
+    <ul class="dream-list">
+      {dreams
+        .sort((a, b) => a.data.title.localeCompare(b.data.title))
+        .map((dream) => (
+          <li>
+            <a href={`/dreams/${dream.slug}/`}>{dream.data.title}</a>
+          </li>
+        ))}
+    </ul>
+  </section>
+
+  <style>
+    .dictionary {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .dream-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .dream-list li {
+      margin: 0.5rem 0;
+    }
+
+    .dream-list a {
+      color: var(--purple);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</Layout>
+
 
 

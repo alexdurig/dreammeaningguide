@@ -1,12 +1,30 @@
 ---
 import Layout from '../layouts/BaseLayout.astro';
+import { glob } from 'astro/loaders';
+
+// Load all Markdown files inside /src/pages/dreams/
+const posts = await glob('../dreams/*.md');
+
+// Sort alphabetically by file name
+posts.sort((a, b) => a.url.localeCompare(b.url));
 ---
 
-<Layout title="Dream Meaning Guide">
-  <h1>Dream Meaning Guide</h1>
-  <p>Explore the meaning of your dreams.</p>
+<Layout title="Dream Interpretations">
+  <h1>All Dream Interpretations</h1>
+  <p>Browse the full list of dream meanings available on Dream Meaning Guide.</p>
 
   <ul>
-    <li><a href="/dreams/">Browse all dream interpretations</a></li>
+    {posts.map((post) => (
+      <li>
+        <a href={post.url}>
+          {post.url
+            .split('/')
+            .pop()
+            .replace('.md', '')
+            .replace(/-/g, ' ')
+            .replace(/\b\w/g, (c) => c.toUpperCase())}
+        </a>
+      </li>
+    ))}
   </ul>
 </Layout>

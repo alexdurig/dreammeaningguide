@@ -7,4 +7,70 @@ import Layout from '../layouts/BaseLayout.astro';
   <p>Explore the meaning of your dreams.</p>
 
   <p><a href="/dreams">Browse all dream interpretations</a></p>
+  <section class="categories">
+    <h2>Featured Categories</h2>
+
+    <div class="grid">
+      <a class="tile" href="/categories/animals">
+        <h3>Animals</h3>
+        <p>Dreams about cats, dogs, snakes, lions, and more.</p>
+      </a>
+
+      <a class="tile" href="/categories/water">
+        <h3>Water & Nature</h3>
+        <p>Floods, waves, storms, forests, and natural forces.</p>
+      </a>
+
+      <a class="tile" href="/categories/emotions">
+        <h3>Emotions</h3>
+        <p>Dreams involving fear, loss, anxiety, or transformation.</p>
+      </a>
+
+      <a class="tile" href="/categories/nightmares">
+        <h3>Nightmares</h3>
+        <p>Chasing, being trapped, haunted houses, and more.</p>
+      </a>
+    </div>
+  </section>
+
+  <style>
+    .categories {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tile {
+      display: block;
+      padding: 1.5rem;
+      background: #f7f2ff;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #333;
+      border: 1px solid #e2d9f7;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      margin-bottom: 0.3rem;
+      color: #5a2ca0;
+    }
+  </style>
+
 </Layout>

@@ -1,54 +1,117 @@
 ---
-import Layout from "../../layouts/BaseLayout.astro";
+import Layout from '../../layouts/BaseLayout.astro';
 
-// Later, when you add dream posts to src/content/dreams,
-// Astro will automatically make them available here.
-import { getCollection } from "astro:content";
-const dreams = await getCollection("dreams");
+// Import all dream markdown files
+const dreamPosts = import.meta.glob('./*.md', { eager: true });
+
+// Convert to array of { slug, title }
+const dreams = Object.entries(dreamPosts).map(([path, mod]) => {
+  const slug = path.replace('./', '').replace('.md', '');
+  return {
+    slug,
+    title: mod.frontmatter.title || slug.replace(/-/g, ' '),
+  };
+});
+
+// Group dreams by first letter
+const grouped = dreams.reduce((acc, dream) => {
+  const letter = dream.title[0].toUpperCase();
+  acc[letter] = acc[letter] || [];
+  acc[letter].push(dream);
+  return acc;
+}, {});
 ---
 
-<Layout title="A–Z Dream Dictionary" description="Browse clear, calm interpretations for every dream topic.">
+<Layout title="A–Z Dream Dictionary">
+
   <section class="dictionary">
     <h1>A–Z Dream Dictionary</h1>
-    <p>Browse clear, calm interpretations for every dream topic.</p>
+    <p>Browse dream meanings alphabetically.</p>
 
-    <ul class="dream-list">
-      {dreams
-        .sort((a, b) => a.data.title.localeCompare(b.data.title))
-        .map((dream) => (
-          <li>
-            <a href={`/dreams/${dream.slug}/`}>{dream.data.title}</a>
-          </li>
-        ))}
-    </ul>
+    <!-- Alphabet Navigation -->
+    <nav class="alphabet">
+      {Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ").map((letter) => (
+        <a href={`#${letter}`}>{letter}</a>
+      ))}
+    </nav>
+
+    <!-- Dream Groups -->
+    {Object.keys(grouped)
+      .sort()
+      .map((letter) => (
+        <section id={letter} class="letter-group">
+          <h2>{letter}</h2>
+          <ul>
+            {grouped[letter]
+              .sort((a, b) => a.title.localeCompare(b.title))
+              .map((dream) => (
+                <li>
+                  <a href={`/dreams/${dream.slug}/`}>{dream.title}</a>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ))}
   </section>
 
   <style>
     .dictionary {
-      text-align: center;
       padding: 2rem 1rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .dream-list {
+    .alphabet {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .alphabet a {
+      padding: 0.4rem 0.6rem;
+      background: #f3eaff;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #5a2ca0;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .alphabet a:hover {
+      background: #e5d4ff;
+    }
+
+    .letter-group {
+      margin-top: 2.5rem;
+    }
+
+    .letter-group h2 {
+      font-size: 1.6rem;
+      color: #5a2ca0;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
       list-style: none;
       padding: 0;
-      margin-top: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    .dream-list li {
-      margin: 0.5rem 0;
+    li {
+      margin: 0.3rem 0;
     }
 
-    .dream-list a {
-      color: var(--purple);
+    a {
+      color: #6a4df5;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
+
 </Layout>
-
-
 

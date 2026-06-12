@@ -3,10 +3,45 @@ import Layout from '../layouts/BaseLayout.astro';
 ---
 
 <Layout title="Dream Meaning Guide">
-  <h1>Dream Meaning Guide</h1>
-  <p>Explore the meaning of your dreams.</p>
 
-  <p><a href="/dreams">Browse all dream interpretations</a></p>
+  <!-- HERO SECTION -->
+  <section
+    style="
+      padding: 6rem 1rem;
+      text-align: center;
+      background: linear-gradient(135deg, #6a4df5 0%, #8d6bff 100%);
+      color: white;
+      border-radius: 0 0 1rem 1rem;
+    "
+  >
+    <h1 style="font-size: 3rem; margin-bottom: 1rem; font-weight: 700;">
+      Dream Meaning Guide
+    </h1>
+
+    <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.95;">
+      Explore clear, calm interpretations for every dream.
+    </p>
+
+    <a
+      href="/dreams"
+      style="
+        display: inline-block;
+        background: white;
+        color: #6a4df5;
+        padding: 0.9rem 1.8rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      "
+    >
+      Browse All Dream Interpretations
+    </a>
+  </section>
+
+
+  <!-- FEATURED CATEGORIES -->
   <section class="categories">
     <h2>Featured Categories</h2>
 
@@ -74,3 +109,4 @@ import Layout from '../layouts/BaseLayout.astro';
   </style>
 
 </Layout>
+

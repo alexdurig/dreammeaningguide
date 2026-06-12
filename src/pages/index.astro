@@ -69,6 +69,13 @@ import Layout from '../layouts/BaseLayout.astro';
   </section>
 
   <style>
+/* Make the Nightmares tile centered under the second tile */
+.tile.nightmares {
+  grid-column: 1 / -1;      /* span full width */
+  max-width: 300px;         /* optional: keeps it from stretching too wide */
+  margin: 0 auto;           /* centers it */
+}
+
     .categories {
       margin-top: 3rem;
       text-align: center;

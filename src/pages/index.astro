@@ -2,10 +2,10 @@
 import Layout from '../layouts/BaseLayout.astro';
 import { glob } from 'astro/loaders';
 
-// Load all Markdown files inside /src/pages/dreams/
-const posts = await glob('../dreams/*.md');
+// Load all Markdown files in THIS folder
+const posts = await glob('./*.md');
 
-// Sort alphabetically by file name
+// Sort alphabetically by URL
 posts.sort((a, b) => a.url.localeCompare(b.url));
 ---
 

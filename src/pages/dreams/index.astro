@@ -27,6 +27,47 @@ const grouped = dreams.reduce((acc, dream) => {
   <section class="dictionary">
     <h1>A–Z Dream Dictionary</h1>
     <p>Browse dream meanings alphabetically.</p>
+<!-- A–Z Navigation Bar -->
+<nav class="az-nav">
+  <ul>
+    {Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)).map(letter => (
+      <li><a href={`#${letter}`}>{letter}</a></li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .az-nav {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .az-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .az-nav a {
+    display: inline-block;
+    padding: 0.4rem 0.7rem;
+    border-radius: 6px;
+    background: #f2ebff;
+    color: #5a2ca0;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .az-nav a:hover {
+    background: #6a4df5;
+    color: white;
+  }
+</style>
 
     <!-- Alphabet Navigation -->
     <nav class="alphabet">

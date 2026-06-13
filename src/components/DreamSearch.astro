@@ -1,0 +1,52 @@
+---
+let results = [];
+let query = '';
+---
+
+<script client:load>
+  let results = [];
+  let query = '';
+
+  async function handleSearch(e) {
+    query = e.target.value.toLowerCase();
+
+    if (!query) {
+      results = [];
+      return;
+    }
+
+    const res = await fetch('/dreams/search-index.json');
+    const data = await res.json();
+
+    results = data.filter((item) =>
+      item.title.toLowerCase().includes(query)
+    );
+  }
+</script>
+
+<div style="max-width: 600px; margin: 2rem auto;">
+  <input
+    type="text"
+    placeholder="Search dream meanings..."
+    on:input={handleSearch}
+    style="
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 1.1rem;
+    "
+  />
+
+  {results.length > 0 && (
+    <ul style="margin-top: 1rem; list-style: none; padding: 0;">
+      {results.map((r) => (
+        <li style="padding: 0.6rem 0;">
+          <a href={`/dreams/${r.slug}/`} style="color: #6a4df5; font-weight: 600;">
+            {r.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>

@@ -69,12 +69,6 @@ const grouped = dreams.reduce((acc, dream) => {
   }
 </style>
 
-    <!-- Alphabet Navigation -->
-    <nav class="alphabet">
-      {Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ").map((letter) => (
-        <a href={`#${letter}`}>{letter}</a>
-      ))}
-    </nav>
 
     <!-- Dream Groups -->
     {Object.keys(grouped)

@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/BaseLayout.astro';
-import DreamSearch from '../../components/SearchBox.astro';
 
 // Import all dream markdown files
 const dreamPosts = import.meta.glob('./*.md', { eager: true });
@@ -148,7 +147,7 @@ const grouped = dreams.reduce((acc, dream) => {
     }
 
     a:hover {
-      text-decoration: underline;
+      text-decoration: underline; 
     }
   </style>
 

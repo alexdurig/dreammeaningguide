@@ -28,7 +28,24 @@ const grouped = dreams.reduce((acc, dream) => {
     <h1>A–Z Dream Dictionary</h1>
     <p>Browse dream meanings alphabetically.</p>
 
-<DreamSearch />
+<div style="max-width: 600px; margin: 2rem auto;">
+  <input
+    type="text"
+    id="search-input"
+    placeholder="Search dream meanings..."
+    style="
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 1.1rem;
+    "
+  />
+
+  <ul id="search-results" style="margin-top: 1rem; list-style: none; padding: 0; display: none;">
+  </ul>
+</div>
+
 
 <!-- A–Z Navigation Bar -->
 <nav class="az-nav">

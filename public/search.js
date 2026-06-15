@@ -32,3 +32,4 @@ async function handleSearch(e) {
 
 document.getElementById('search-input').addEventListener('input', handleSearch);
 
+

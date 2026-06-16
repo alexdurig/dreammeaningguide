@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Haunted House"
-description: "Learn what it means when you dream about a haunted house — unresolved memories, fear, or emotional echoes."
-slug: "dream-about-a-haunted-house"
-category: "Situations"
-date: "2024-02-06"
 ---
 
 Dreaming about a haunted house symbolizes unresolved memories, emotional echoes from the past, or fears you have not yet confronted. Houses represent the self — your mind, your history, and your emotional foundation. When the house is haunted, your subconscious is showing you that something from your past still lingers.

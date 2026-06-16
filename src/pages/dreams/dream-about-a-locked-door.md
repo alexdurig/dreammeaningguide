@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Locked Door"
-description: "Learn what it means when you dream about a locked door — obstacles, protection, or hidden opportunities."
-slug: "dream-about-a-locked-door"
-category: "Objects"
-date: "2024-01-25"
 ---
 
 Dreaming about a locked door symbolizes obstacles, limitations, or emotional barriers in your waking life. Doors represent opportunities, transitions, and access to new experiences. When the door is locked, it reflects a sense of being blocked or restricted.

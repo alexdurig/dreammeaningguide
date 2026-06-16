@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About Water"
-description: "Learn what it means when you dream about water — emotions, cleansing, intuition, or life transitions."
-slug: "dream-about-water"
-category: "Nature"
-date: "2024-01-05"
 ---
 
 Water is one of the most symbolic dream elements, representing emotions, intuition, healing, and the flow of life. The meaning of a water dream depends heavily on the condition of the water and your interaction with it.
@@ -17,4 +14,3 @@ Deep water can symbolize the **subconscious mind**. If you are swimming or divin
 Floods or rising water often symbolize **situations that feel out of control**, especially emotionally. This dream encourages you to find grounding and regain stability.
 
 Overall, water dreams reveal how you are processing your emotions and where you are in your personal flow of life.
-

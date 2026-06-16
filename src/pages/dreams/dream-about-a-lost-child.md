@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Lost Child"
-description: "Discover what it means when you dream about a lost child — vulnerability, responsibility, or reconnecting with your inner self."
-slug: "dream-about-a-lost-child"
-category: "People"
-date: "2024-02-02"
 ---
 
 Dreaming about a lost child symbolizes vulnerability, responsibility, or a part of yourself that feels neglected or forgotten. Children in dreams represent innocence, potential, and emotional truth. When a child goes missing, your subconscious is highlighting something important that needs your attention.

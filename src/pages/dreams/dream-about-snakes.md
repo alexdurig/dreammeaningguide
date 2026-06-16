@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About Snakes"
-description: "Discover what it means when snakes appear in your dreams — fear, transformation, intuition, or hidden threats."
-slug: "dream-about-snakes"
-category: "Animals"
-date: "2024-01-01"
 ---
 
 Dreaming about snakes is one of the most common and symbolically rich dream experiences. Snakes can represent fear, transformation, healing, temptation, or hidden threats depending on the context of the dream and your emotional reaction to it. Because snakes appear in mythology, religion, and psychology across cultures, their meaning is layered and powerful.

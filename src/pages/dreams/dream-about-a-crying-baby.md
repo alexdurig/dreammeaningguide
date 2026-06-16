@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Crying Baby"
-description: "Discover what it means when you dream about a crying baby — unmet needs, emotional stress, or inner calling."
-slug: "dream-about-a-crying-baby"
-category: "People"
-date: "2024-01-09"
 ---
 
 Dreaming about a crying baby is a strong emotional signal from your subconscious. Babies cry to express needs, discomfort, or a desire for attention — and in dreams, the crying baby often represents a part of yourself that is asking to be heard.

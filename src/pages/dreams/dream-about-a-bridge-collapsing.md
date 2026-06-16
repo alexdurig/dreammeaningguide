@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Bridge Collapsing"
-description: "Learn what it means when you dream about a bridge collapsing — instability, fear of transition, or emotional uncertainty."
-slug: "dream-about-a-bridge-collapsing"
-category: "Situations"
-date: "2024-01-19"
 ---
 
 Dreaming about a bridge collapsing symbolizes instability, fear of transition, or uncertainty about the path ahead. Bridges in dreams represent connections — between people, ideas, life stages, or emotional states. When a bridge collapses, your subconscious is signaling that something you rely on feels shaky or unreliable.

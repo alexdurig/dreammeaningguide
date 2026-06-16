@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Missing Person"
-description: "Discover what it means when you dream about a missing person — worry, emotional distance, or searching for meaning."
-slug: "dream-about-a-missing-person"
-category: "People"
-date: "2024-02-05"
 ---
 
 Dreaming about a missing person symbolizes worry, emotional distance, or the search for something important in your life. The missing person often represents a part of yourself, a relationship, or a responsibility that feels out of reach.

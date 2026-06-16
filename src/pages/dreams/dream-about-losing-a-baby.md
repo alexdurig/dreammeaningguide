@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About Losing a Baby"
-description: "Understand what it means when you dream about losing a baby — fear, responsibility, change, or emotional vulnerability."
-slug: "dream-about-losing-a-baby"
-category: "Emotions"
-date: "2024-01-07"
 ---
 
 Dreaming about losing a baby is emotionally intense and often reflects deep fears, vulnerabilities, or anxieties about responsibility. This dream rarely predicts anything literal. Instead, the “baby” symbolizes something precious, fragile, or newly developing in your life — such as a relationship, project, identity, or hope.

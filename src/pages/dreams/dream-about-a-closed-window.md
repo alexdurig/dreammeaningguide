@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Closed Window"
-description: "Discover what it means when you dream about a closed window — missed opportunities, boundaries, or emotional protection."
-slug: "dream-about-a-closed-window"
-category: "Objects"
-date: "2024-02-17"
 ---
 
 Dreaming about a closed window symbolizes missed opportunities, emotional boundaries, or a desire for protection. Windows represent perspective, possibility, and the ability to see beyond your current situation. When the window is closed, your subconscious is highlighting a barrier between you and something you want or need.

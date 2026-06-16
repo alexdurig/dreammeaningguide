@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Tornado"
-description: "Understand what it means when you dream about a tornado — chaos, emotional upheaval, or sudden change."
-slug: "dream-about-a-tornado"
-category: "Nature"
-date: "2024-01-29"
 ---
 
 Dreaming about a tornado symbolizes chaos, emotional upheaval, or a situation in your waking life that feels unpredictable or out of control. Tornadoes represent sudden, powerful forces that disrupt stability and demand immediate attention.

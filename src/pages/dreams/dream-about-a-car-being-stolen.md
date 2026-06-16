@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Car Being Stolen"
-description: "Discover what it means when you dream about your car being stolen — loss of control, identity, or direction."
-slug: "dream-about-a-car-being-stolen"
-category: "Objects"
-date: "2024-01-21"
 ---
 
 Dreaming about your car being stolen symbolizes loss of control, identity concerns, or fear that someone is taking away your power or direction in life. Cars in dreams represent autonomy, choices, and your personal journey. When the car disappears, your subconscious is highlighting a disruption in your sense of agency.

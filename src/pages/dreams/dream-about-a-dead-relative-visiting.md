@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Dead Relative Visiting"
-description: "Understand what it means when a deceased loved one appears in your dream — comfort, guidance, or emotional healing."
-slug: "dream-about-a-dead-relative-visiting"
-category: "People"
-date: "2024-01-20"
 ---
 
 Dreaming about a deceased relative visiting you is often a deeply emotional and meaningful experience. These dreams rarely symbolize fear; instead, they reflect comfort, guidance, memory, or emotional healing. Your subconscious uses familiar faces to help you process grief, love, or unresolved feelings.

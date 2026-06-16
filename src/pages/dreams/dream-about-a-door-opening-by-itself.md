@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Door Opening by Itself"
-description: "Discover what it means when you dream about a door opening by itself — opportunity, intuition, or unexpected change."
-slug: "dream-about-a-door-opening-by-itself"
-category: "Situations"
-date: "2024-02-19"
 ---
 
 Dreaming about a door opening by itself symbolizes unexpected opportunities, intuitive insight, or a shift happening in your life without your direct effort. Doors represent transitions, choices, and access to new experiences. When a door opens on its own, your subconscious is signaling that something is unfolding naturally.

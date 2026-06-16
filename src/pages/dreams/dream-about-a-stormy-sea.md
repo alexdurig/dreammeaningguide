@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Stormy Sea"
-description: "Understand what it means when you dream about a stormy sea — emotional turmoil, uncertainty, or inner conflict."
-slug: "dream-about-a-stormy-sea"
-category: "Nature"
-date: "2024-02-16"
 ---
 
 Dreaming about a stormy sea symbolizes emotional turmoil, uncertainty, or inner conflict. Water represents emotions, and when the sea becomes violent, your subconscious is showing you that your feelings are turbulent or difficult to manage.

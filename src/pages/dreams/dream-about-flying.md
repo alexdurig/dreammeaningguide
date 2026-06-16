@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About Flying"
-description: "Understand what it means when you dream about flying — freedom, confidence, escape, or spiritual growth."
-slug: "dream-about-flying"
-category: "Situations"
-date: "2024-01-06"
 ---
 
 Dreams about flying are often exhilarating and uplifting. They symbolize freedom, confidence, and the ability to rise above challenges. Flying dreams typically appear when you are stepping into your power or gaining a new perspective on life.

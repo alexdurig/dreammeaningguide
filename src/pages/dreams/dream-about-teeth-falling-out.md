@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About Teeth Falling Out"
-description: "Discover why you dream about teeth falling out — anxiety, change, insecurity, or communication issues."
-slug: "dream-about-teeth-falling-out"
-category: "Emotions"
-date: "2024-01-04"
 ---
 
 Dreaming about teeth falling out is one of the most universal and emotionally intense dream themes. These dreams often appear during times of stress, transition, or self‑evaluation. Teeth represent confidence, appearance, communication, and personal power — so losing them in a dream can feel deeply unsettling.

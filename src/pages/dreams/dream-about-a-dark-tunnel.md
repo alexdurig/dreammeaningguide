@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Dark Tunnel"
-description: "Understand what it means when you dream about a dark tunnel — transition, uncertainty, or inner transformation."
-slug: "dream-about-a-dark-tunnel"
-category: "Situations"
-date: "2024-02-10"
 ---
 
 Dreaming about a dark tunnel symbolizes transition, uncertainty, or a journey through your subconscious. Tunnels represent movement from one phase of life to another, often through a period of darkness or introspection.

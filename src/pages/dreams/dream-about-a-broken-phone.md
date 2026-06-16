@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Broken Phone"
-description: "Discover what it means when you dream about a broken phone — disconnection, communication issues, or emotional distance."
-slug: "dream-about-a-broken-phone"
-category: "Objects"
-date: "2024-01-15"
 ---
 
 Dreaming about a broken phone symbolizes communication problems, emotional distance, or difficulty reaching someone important in your life. Phones represent connection, expression, and the ability to stay in touch. When the phone breaks, your subconscious is highlighting a disruption in communication.

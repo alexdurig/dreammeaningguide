@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Broken Tooth"
-description: "Learn what it means when you dream about a broken tooth — insecurity, stress, or fear of losing control."
-slug: "dream-about-a-broken-tooth"
-category: "Emotions"
-date: "2024-01-31"
 ---
 
 Dreaming about a broken tooth symbolizes insecurity, stress, or fear of losing control. Teeth represent confidence, communication, and personal power. When a tooth breaks in a dream, your subconscious is highlighting a situation where you feel vulnerable or unprepared.

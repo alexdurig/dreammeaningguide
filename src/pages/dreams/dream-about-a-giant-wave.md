@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Giant Wave"
-description: "Discover what it means when you dream about a giant wave — overwhelming emotions, transformation, or sudden change."
-slug: "dream-about-a-giant-wave"
-category: "Nature"
-date: "2024-01-24"
 ---
 
 Dreaming about a giant wave symbolizes overwhelming emotions, sudden change, or a powerful force rising within you. Waves represent emotional energy, and a massive wave reflects feelings that are building up and demanding attention.

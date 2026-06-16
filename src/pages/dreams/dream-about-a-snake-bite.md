@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Snake Bite"
-description: "Learn what it means when you dream about a snake bite — warning, awakening, or emotional shock."
-slug: "dream-about-a-snake-bite"
-category: "Animals"
-date: "2024-02-03"
 ---
 
 Dreaming about a snake bite symbolizes a sudden emotional shock, a wake‑up call, or a situation in your waking life that demands immediate attention. Snakes represent intuition, fear, transformation, and hidden threats. When a snake bites you in a dream, it often signals that something needs your urgent attention.

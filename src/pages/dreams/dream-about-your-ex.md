@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About Your Ex"
-description: "Understand what it means when you dream about your ex — closure, emotional processing, longing, or personal growth."
-slug: "dream-about-your-ex"
-category: "People"
-date: "2024-01-11"
 ---
 
 Dreaming about an ex is incredibly common and rarely means you want to get back together. Instead, these dreams reflect emotional processing, unresolved feelings, or personal growth. Your ex represents a past version of yourself, a past emotional pattern, or a lesson you are still integrating.

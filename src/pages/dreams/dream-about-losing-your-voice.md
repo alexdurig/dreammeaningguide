@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About Losing Your Voice"
-description: "Understand what it means when you dream about losing your voice — communication blocks, fear, or emotional suppression."
-slug: "dream-about-losing-your-voice"
-category: "Emotions"
-date: "2024-01-14"
 ---
 
 Dreaming about losing your voice is a clear symbol of communication struggles, emotional suppression, or fear of speaking your truth. Your voice represents your identity, your boundaries, and your ability to express yourself. When it disappears in a dream, your subconscious is highlighting a situation where you feel unheard or unable to speak up.

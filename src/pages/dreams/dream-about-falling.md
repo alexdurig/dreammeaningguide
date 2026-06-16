@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About Falling"
-description: "Learn what it means when you dream about falling — loss of control, fear, or emotional release."
-slug: "dream-about-falling"
-category: "Situations"
-date: "2024-01-02"
 ---
 
 Dreams about falling are incredibly common and often occur during moments of stress, uncertainty, or emotional overwhelm. Falling symbolizes a **loss of control**, whether in your personal life, relationships, career, or inner emotional world. These dreams often appear when you feel unsupported or unsure about the direction you’re heading.

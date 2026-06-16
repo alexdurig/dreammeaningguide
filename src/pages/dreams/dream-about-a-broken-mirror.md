@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Broken Mirror"
-description: "Learn what it means when you dream about a broken mirror — identity, self-image, or emotional fragmentation."
-slug: "dream-about-a-broken-mirror"
-category: "Objects"
-date: "2024-01-28"
 ---
 
 Dreaming about a broken mirror symbolizes identity concerns, self-image issues, or emotional fragmentation. Mirrors represent reflection — how you see yourself, how you believe others see you, and the truth you hold about your inner world. When the mirror breaks, your subconscious is highlighting a disruption in your sense of self.

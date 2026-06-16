@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Broken Bridge"
-description: "Understand what it means when you dream about a broken bridge — disconnection, obstacles, or emotional distance."
-slug: "dream-about-a-broken-bridge"
-category: "Situations"
-date: "2024-02-07"
 ---
 
 Dreaming about a broken bridge symbolizes disconnection, obstacles, or emotional distance between you and a goal, person, or part of yourself. Bridges represent connection and transition. When the bridge is broken, your subconscious is highlighting a gap that feels difficult to cross.

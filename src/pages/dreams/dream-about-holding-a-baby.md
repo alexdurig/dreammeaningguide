@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About Holding a Baby"
-description: "Learn what it means when you dream about holding a baby — new beginnings, nurturing energy, or emotional healing."
-slug: "dream-about-holding-a-baby"
-category: "People"
-date: "2024-01-08"
 ---
 
 Dreaming about holding a baby is a powerful symbol of new beginnings, emotional warmth, and nurturing energy. Babies in dreams often represent innocence, potential, and the birth of something new in your life — whether emotional, spiritual, or practical.

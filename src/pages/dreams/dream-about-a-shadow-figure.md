@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Shadow Figure"
-description: "Discover what it means when you dream about a shadow figure — fear, intuition, or hidden aspects of yourself."
-slug: "dream-about-a-shadow-figure"
-category: "Nightmares"
-date: "2024-02-08"
 ---
 
 Dreaming about a shadow figure symbolizes fear, intuition, or hidden aspects of yourself that you have not yet acknowledged. Shadow figures represent the unknown — emotions, memories, or traits that live beneath the surface of your awareness.

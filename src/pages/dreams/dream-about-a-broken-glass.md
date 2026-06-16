@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Broken Glass"
-description: "Understand what it means when you dream about broken glass — fragility, boundaries, or emotional clarity."
-slug: "dream-about-a-broken-glass"
-category: "Objects"
-date: "2024-02-04"
 ---
 
 Dreaming about broken glass symbolizes fragility, emotional vulnerability, and the breaking of boundaries or illusions. Glass represents clarity, transparency, and protection. When it shatters, your subconscious is revealing something delicate that has been damaged or exposed.

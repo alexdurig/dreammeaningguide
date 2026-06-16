@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Stranger in Your House"
-description: "Learn what it means when you dream about a stranger in your house — boundaries, vulnerability, or hidden emotions."
-slug: "dream-about-a-stranger-in-your-house"
-category: "People"
-date: "2024-01-16"
 ---
 
 Dreaming about a stranger in your house is a powerful symbol of boundaries, vulnerability, and emotional intrusion. In dreams, your house represents your inner world — your mind, your identity, and your personal space. When an unknown person enters it, your subconscious is signaling that something unfamiliar or unexpected is influencing your emotional life.

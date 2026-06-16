@@ -1,9 +1,6 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Lost Phone"
-description: "Learn what it means when you dream about losing your phone — disconnection, anxiety, or fear of missing out."
-slug: "dream-about-a-lost-phone"
-category: "Objects"
-date: "2024-02-09"
 ---
 
 Dreaming about a lost phone symbolizes disconnection, anxiety, or fear of losing touch with something important in your waking life. Phones represent communication, identity, and access to information. When the phone goes missing, your subconscious is highlighting a sense of emotional or social separation.

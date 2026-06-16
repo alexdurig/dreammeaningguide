@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-slug: "${fileBasenameNoExtension}"
+slug: "dream-about-a-door-opening-by-itself"
 title: "Dream About a Door Opening by Itself"
 ---
 

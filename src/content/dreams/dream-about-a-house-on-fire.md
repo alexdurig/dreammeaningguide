@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-slug: "${fileBasenameNoExtension}"
+slug: "dream-about-a-house-on-fire"
 title: "Dream About a House on Fire"
 ---
 

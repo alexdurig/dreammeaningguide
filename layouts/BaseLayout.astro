@@ -16,37 +16,71 @@ const { title = "Dream Meaning Guide", description = "Explore dream meanings, sy
 
     <!-- Basic styling -->
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Inter', sans-serif;
-        background: #fafafa;
-        color: #222;
-        line-height: 1.6;
-      }
-      header {
-        background: #ffffff;
-        padding: 1.2rem 2rem;
-        border-bottom: 1px solid #eee;
-      }
-      header h1 {
-        margin: 0;
-        font-size: 1.6rem;
-        font-weight: 600;
-      }
-      main {
-        max-width: 800px;
-        margin: 2rem auto; 
-        padding: 0 1rem;
-      }
-      footer {
-        margin-top: 4rem;
-        padding: 2rem;
-        text-align: center;
-        font-size: 0.9rem;
-        color: #666;
-      }
-    </style>
+
+  /* Meaning Atlas Footer Styles */
+.meaning-footer {
+  margin-top: 4rem;
+  padding: 3rem 1rem;
+  background: #f8f8f8;
+  color: #333;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.footer-brand {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.footer-logo {
+  font-size: 1.2rem;
+}
+
+.footer-nav {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.footer-nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+.footer-seer {
+  margin-top: 1.5rem;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  color: #444;
+}
+
+.footer-seer-icon {
+  font-size: 1.1rem;
+}
+
+.footer-copy {
+  margin-top: 1.5rem;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+   
+</style>
   </head>
 
   <body>
@@ -58,8 +92,67 @@ const { title = "Dream Meaning Guide", description = "Explore dream meanings, sy
       <slot />
     </main>
 
-    <footer>
-      © {new Date().getFullYear()} DreamMeaningGuide.site — All Rights Reserved
-    </footer>
+  /* Meaning Atlas Footer Styles */
+  .meaning-footer {
+    margin-top: 4rem;
+    padding: 3rem 1rem;
+    background: #f8f8f8;
+    color: #333;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+  }
+
+  .footer-brand {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-size: 1.2rem;
+  }
+
+  .footer-nav {
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+
+  .footer-nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-seer {
+    margin-top: 1.5rem;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    color: #444;
+  }
+
+  .footer-seer-icon {
+    font-size: 1.1rem;
+  }
+
+  .footer-copy {
+    margin-top: 1.5rem;
+    color: #666;
+    font-size: 0.85rem;
+  }
+
   </body>
 </html>

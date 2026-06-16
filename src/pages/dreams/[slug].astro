@@ -15,7 +15,7 @@ const entry = await getEntryBySlug('dreams', slug);
 if (!entry) {
   throw new Error(`Dream entry not found for slug: ${slug}`);
 }
-
+ 
 const { Content } = await entry.render();
 const { data } = entry;
 ---

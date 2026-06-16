@@ -46,6 +46,7 @@ files.forEach((file) => {
   // Build new frontmatter
   const newFrontmatter = `---
 layout: ../../layouts/BaseLayout.astro
+slug: "${fileBasenameNoExtension}"
 title: ${title}
 ---`;
 

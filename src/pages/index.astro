@@ -1,12 +1,11 @@
 ---
-import Layout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AtlasSeer from "../components/AtlasSeer.astro";
 ---
 
-<Layout title="Dream Meaning Guide">
+<BaseLayout title="Dream Meaning Guide">
 
-<!-- HERO SECTION -->
-
-
+  <!-- HERO SECTION -->
   <section
     style="
       padding: 6rem 1rem;
@@ -42,29 +41,29 @@ import Layout from '../layouts/BaseLayout.astro';
     </a>
   </section>
 
+  <!-- SEER COMPONENT -->
+  <AtlasSeer title="Ask the Meaning Atlas Seer" />
+
   <!-- SEARCH SECTION -->
-<div style="max-width: 600px; margin: 2rem auto;">
-  <input
-    type="text"
-    id="search-input"
-    placeholder="Search dream meanings..."
-    style="
-      width: 100%;
-      padding: 0.9rem 1rem;
-      border-radius: 0.5rem;
-      border: 1px solid #ccc;
-      font-size: 1.1rem;
-    "
-  />
+  <div style="max-width: 600px; margin: 2rem auto;">
+    <input
+      type="text"
+      id="search-input"
+      placeholder="Search dream meanings..."
+      style="
+        width: 100%;
+        padding: 0.9rem 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid #ccc;
+        font-size: 1.1rem;
+      "
+    />
 
-  <ul id="search-results" style="margin-top: 1rem; list-style: none; padding: 0; display: none;">
-  </ul>
-</div>
+    <ul id="search-results" style="margin-top: 1rem; list-style: none; padding: 0; display: none;">
+    </ul>
+  </div>
 
-
- <!-- FEATURED CATEGORIES -->
-
-
+  <!-- FEATURED CATEGORIES -->
   <section class="categories">
     <h2>Featured Categories</h2>
 
@@ -137,4 +136,4 @@ import Layout from '../layouts/BaseLayout.astro';
     }
   </style>
 
-</Layout>
+</BaseLayout>

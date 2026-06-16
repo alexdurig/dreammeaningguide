@@ -1,33 +1,24 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/BaseLayout.astro';
 
-// Import all dream markdown files
-const dreamPosts = import.meta.glob('../../content/dreams/*.md', { eager: true });
+// Load all dream entries from the content collection
+const entries = await getCollection('dreams');
 
 // Normalize titles for alphabetization
 function normalizeTitle(title) {
   let t = title.toLowerCase();
-
-  if (t.startsWith("dream about a ")) {
-    return t.replace("dream about a ", "");
-  }
-  if (t.startsWith("dream about ")) {
-    return t.replace("dream about ", "");
-  }
-
+  if (t.startsWith("dream about a ")) return t.replace("dream about a ", "");
+  if (t.startsWith("dream about ")) return t.replace("dream about ", "");
   return t;
 }
 
 // Convert to array of { slug, title, normalized }
-const dreams = Object.entries(dreamPosts).map(([path, mod]) => {
-  const slug = path.replace('./', '').replace('.md', '');
-  const title = mod.frontmatter.title || slug.replace(/-/g, ' ');
-  return {
-    slug,
-    title,
-    normalized: normalizeTitle(title)
-  };
-});
+const dreams = entries.map(entry => ({
+  slug: entry.slug,
+  title: entry.data.title,
+  normalized: normalizeTitle(entry.data.title)
+}));
 
 // Group dreams by first letter of normalized title
 const grouped = dreams.reduce((acc, dream) => {
@@ -159,6 +150,7 @@ const grouped = dreams.reduce((acc, dream) => {
       text-decoration: underline;
     }
   </style>
+
 <script>
   const dreams = JSON.parse(`{
     "items": ${JSON.stringify(dreams)}
@@ -204,6 +196,7 @@ const grouped = dreams.reduce((acc, dream) => {
 </script>
 
 </Layout>
+
 
 
 

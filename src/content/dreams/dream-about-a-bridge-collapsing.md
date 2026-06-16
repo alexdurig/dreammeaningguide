@@ -1,6 +1,5 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-slug: "${fileBasenameNoExtension}"
 title: "Dream About a Bridge Collapsing"
 ---
 

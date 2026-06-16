@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-title: "Dream About a White Horse"
+title: "Dream About a White Horse" 
 ---
 
 Dreaming about a white horse symbolizes purity, strength, spiritual guidance, and new beginnings. Horses represent power, freedom, and movement, while the color white adds layers of clarity, innocence, and higher purpose.

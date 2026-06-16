@@ -1,291 +1,143 @@
 ---
-const { title = "Ask the Meaning Atlas Seer" } = Astro.props;
+let clarificationCount = 0;
 ---
 
-<section class="seer-section">
-  <div class="seer-box">
-    <div class="seer-header">
-      <span class="seer-icon">🔮</span>
-      <div>
-        <h2>{title}</h2>
-        <p class="seer-subtitle">
-          Speak of your dream, and the Seer will reflect its symbols back to you.
-        </p>
-      </div>
-    </div>
+<div style="max-width:700px; margin:2rem auto; padding:1.5rem;">
+  <label for="seer-input" style="font-size:1rem; color:#444;">
+    Describe your dream:
+  </label>
 
-    <div class="seer-input-area">
-      <label for="seer-input" class="seer-label">
-        Describe your dream in a sentence or two:
-      </label>
-      <textarea
-        id="seer-input"
-        class="seer-input"
-        rows="3"
-        placeholder="I dreamed of a white owl flying over dark water..."
-      ></textarea>
-      <button id="seer-button" class="seer-button">
-        Ask the Seer
-      </button>
-    </div>
+  <textarea
+    id="seer-input"
+    rows="3"
+    style="
+      width:100%;
+      margin-top:0.5rem;
+      padding:0.75rem;
+      border-radius:8px;
+      border:1px solid #ccc;
+      font-size:1rem;
+      resize:vertical;
+    "
+    placeholder="I dreamed of a white owl flying over water..."
+  ></textarea>
 
-    <div id="seer-output" class="seer-output seer-output--empty">
-      <p class="seer-placeholder">
-        The Seer waits in stillness, listening for your dream...
-      </p>
-    </div>
-  </div>
-</section>
+  <button
+    id="seer-button"
+    style="
+      margin-top:0.75rem;
+      padding:0.6rem 1.2rem;
+      border-radius:6px;
+      background:#6a4df5;
+      color:white;
+      border:none;
+      cursor:pointer;
+      font-size:1rem;
+    "
+  >
+    Ask the Seer
+  </button>
 
-<style>
-  .seer-section {
-    margin: 3rem 0;
-  }
-
-  .seer-box {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-    border-radius: 16px;
-    background: radial-gradient(circle at top, #2b2b4a 0%, #111322 55%, #05060b 100%);
-    color: #f7f7ff;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .seer-header {
-    display: flex;
-    gap: 0.9rem;
-    align-items: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .seer-icon {
-    font-size: 1.6rem;
-  }
-
-  .seer-header h2 {
-    margin: 0;
-    font-size: 1.25rem;
-    letter-spacing: 0.02em;
-  }
-
-  .seer-subtitle {
-    margin: 0.25rem 0 0;
-    font-size: 0.9rem;
-    color: #c5c6f5;
-  }
-
-  .seer-input-area {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .seer-label {
-    font-size: 0.9rem;
-    color: #d4d5ff;
-  }
-
-  .seer-input {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(5, 6, 15, 0.7);
-    color: #f7f7ff;
-    padding: 0.75rem 0.9rem;
-    font-family: inherit;
-    font-size: 0.95rem;
-    resize: vertical;
-  }
-
-  .seer-input::placeholder {
-    color: #8f90c2;
-  }
-
-  .seer-input:focus {
-    outline: none;
-    border-color: #a9aafc;
-    box-shadow: 0 0 0 1px rgba(169, 170, 252, 0.4);
-  }
-
-  .seer-button {
-    align-self: flex-start;
-    margin-top: 0.25rem;
-    padding: 0.55rem 1.2rem;
-    border-radius: 999px;
-    border: none;
-    background: linear-gradient(135deg, #a78bfa, #6366f1);
-    color: #fdfdff;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.45);
-    transition: transform 0.08s ease, box-shadow 0.08s ease, opacity 0.08s ease;
-  }
-
-  .seer-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 14px 30px rgba(79, 70, 229, 0.55);
-    opacity: 0.96;
-  }
-
-  .seer-button:active {
-    transform: translateY(0);
-    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.4);
-  }
-
-  .seer-output {
-    margin-top: 1.5rem;
-    padding-top: 1.1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    min-height: 2.2rem;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #e5e6ff;
-  }
-
-  .seer-output--empty {
-    color: #9a9bd0;
-  }
-
-  .seer-placeholder {
-    margin: 0;
-  }
-
-  .seer-line {
-    margin: 0.1rem 0;
-  }
-
-  @media (min-width: 768px) {
-    .seer-box {
-      padding: 2.25rem 2rem;
-    }
-
-    .seer-header h2 {
-      font-size: 1.35rem;
-    }
-  }
-</style>
+  <div id="seer-output" style="margin-top:1.5rem; min-height:2rem; color:#333; line-height:1.6;"></div>
+</div>
 
 <script>
-  const dreamKeywords = [
-    "dream",
-    "dreamed",
-    "dreamt",
-    "dreaming",
-    "nightmare",
-    "vision",
-    "asleep",
-    "in my sleep"
+  const dreamTriggers = [
+    "dream", "dreamed", "dreamt", "nightmare", "vision",
+    "i saw", "i was", "there was", "last night", "in the night", "i remember"
   ];
 
   const symbolMap = {
     owl: [
-      "The Seer observes the owl as a keeper of hidden truths, watching from the threshold between worlds.",
-      "The Seer senses the owl as a guide of intuition, moving quietly through the unseen."
+      "The Seer observes the owl as a keeper of hidden truths.",
+      "The Seer senses the owl guiding you toward quiet intuition."
     ],
     water: [
-      "The Seer feels water reflecting the tides of emotion and the shifting landscape of your inner life.",
-      "The Seer notes water as a mirror of feeling, intuition, and what flows beneath the surface."
-    ],
-    white: [
-      "The Seer sees white as a sign of clarity, purification, and the soft arrival of insight.",
-      "The Seer senses white as a quiet light of renewal, clearing space for a new understanding."
-    ],
-    dark: [
-      "The Seer senses the dark as the unknown, where unspoken truths wait to be noticed.",
-      "The Seer observes darkness as a veil, inviting you to look more gently at what you cannot yet see."
-    ],
-    flying: [
-      "The Seer reads flying as a symbol of release, perspective, and rising above what once felt heavy.",
-      "The Seer senses flight as a movement toward freedom, seeing your life from a higher vantage."
-    ],
-    falling: [
-      "The Seer feels falling as a sign of uncertainty, a moment when control seems to slip away.",
-      "The Seer notes falling as a reflection of doubt, asking where you no longer feel supported."
-    ],
-    teeth: [
-      "The Seer observes teeth as symbols of power, confidence, and how you present yourself to the world.",
-      "The Seer senses teeth as a sign of vulnerability around image, strength, or what you are trying to hold onto."
+      "The Seer feels water reflecting the tides of emotion.",
+      "The Seer notes water as a mirror of your inner landscape."
     ],
     snake: [
-      "The Seer reads the snake as a symbol of transformation, instinct, and energy moving just beneath awareness.",
-      "The Seer senses the snake as a sign of change, shedding what no longer fits who you are becoming."
+      "The Seer reads the snake as a symbol of transformation.",
+      "The Seer senses the snake shedding what no longer serves you."
+    ],
+    white: [
+      "The Seer sees white as a sign of clarity and renewal.",
+      "The Seer senses white as a quiet arrival of insight."
+    ],
+    dark: [
+      "The Seer senses darkness as a veil over unspoken truths.",
+      "The Seer observes the dark inviting gentle attention."
+    ],
+    flying: [
+      "The Seer reads flying as a rise above what once felt heavy.",
+      "The Seer senses flight as a movement toward freedom."
     ]
   };
 
   const closingLines = [
-    "The Seer senses this dream inviting you to notice what is quietly changing within you.",
-    "The Seer feels this dream as a gentle nudge toward a deeper truth you are ready to see.",
-    "The Seer reads your symbols as a reminder that your inner world is speaking softly, not by accident."
+    "The Seer feels this dream nudging you toward a deeper truth.",
+    "The Seer senses quiet change moving within you.",
+    "The Seer reads your symbols as a soft call toward clarity."
   ];
 
+  let clarificationCount = 0;
+
   function containsDreamContext(text) {
-    const lower = text.toLowerCase();
-    return dreamKeywords.some((word) => lower.includes(word));
+    const t = text.toLowerCase();
+    return dreamTriggers.some(trigger => t.includes(trigger));
   }
 
   function extractSymbols(text) {
-    const lower = text.toLowerCase();
-    const found = [];
-
-    for (const key of Object.keys(symbolMap)) {
-      if (lower.includes(key)) {
-        found.push(key);
-      }
-    }
-
-    return found;
+    const t = text.toLowerCase();
+    return Object.keys(symbolMap).filter(symbol => t.includes(symbol));
   }
 
-  function pickRandom(arr) {
+  function pick(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
-  function interpretDream(text) {
-    if (!containsDreamContext(text)) {
-      return [
-        "The Seer listens… but senses that your question lies beyond the realm of dreams.",
-        "Speak to the Seer of symbols, visions, and the landscapes of sleep — and the Seer will answer."
-      ];
-    }
+  function interpret(text) {
+    const output = [];
 
     const symbols = extractSymbols(text);
 
-    if (symbols.length === 0) {
+    if (!containsDreamContext(text) && symbols.length === 0) {
       return [
-        "The Seer hears your dream, but its symbols remain soft at the edges.",
-        "Try naming one or two key images — a place, a creature, a color — and the Seer will look again."
+        "The Seer listens… but senses your question lies beyond the realm of dreams.",
+        "Speak of symbols, visions, or the landscapes of sleep — and the Seer will answer."
       ];
     }
 
-    const lines = [];
-    const firstSymbol = symbols[0];
-    lines.push("The Seer senses a quiet pattern moving through your dream…");
-    lines.push(pickRandom(symbolMap[firstSymbol]));
+    if (symbols.length === 0) {
+      clarificationCount++;
 
-    if (symbols.length > 1) {
-      const secondSymbol = symbols[1];
-      lines.push(pickRandom(symbolMap[secondSymbol]));
+      if (clarificationCount === 1) {
+        return [
+          "The Seer hears your dream, but its symbols remain soft at the edges.",
+          "Name one or two key images — a creature, a color, a place — and the Seer will look again."
+        ];
+      }
+
+      if (clarificationCount >= 2) {
+        return [
+          "The Seer cannot see further into this dream.",
+          "No answer rises at this time."
+        ];
+      }
     }
 
-    lines.push(pickRandom(closingLines));
+    clarificationCount = 0;
 
-    // Keep it crisp: 2–3 sentences max → we’ll merge lines into 2–3 compact sentences
-    const compact = [];
-    if (lines.length >= 2) {
-      compact.push(lines[0] + " " + lines[1]);
-    }
-    if (lines.length >= 3) {
-      compact.push(lines[2]);
-    }
-    if (lines.length >= 4) {
-      compact.push(lines[3]);
+    output.push("The Seer senses a quiet pattern moving through your dream…");
+    output.push(pick(symbolMap[symbols[0]]));
+
+    if (symbols[1]) {
+      output.push(pick(symbolMap[symbols[1]]));
     }
 
-    return compact.slice(0, 3);
+    output.push(pick(closingLines));
+
+    return output.slice(0, 3);
   }
 
   if (typeof window !== "undefined") {
@@ -294,31 +146,18 @@ const { title = "Ask the Meaning Atlas Seer" } = Astro.props;
       const button = document.getElementById("seer-button");
       const output = document.getElementById("seer-output");
 
-      if (!input || !button || !output) return;
+      button.addEventListener("click", () => {
+        const text = input.value.trim();
+        const lines = interpret(text);
 
-      function renderLines(lines) {
-        output.classList.remove("seer-output--empty");
         output.innerHTML = "";
-        lines.forEach((line) => {
+        lines.forEach(line => {
           const p = document.createElement("p");
-          p.className = "seer-line";
           p.textContent = line;
           output.appendChild(p);
         });
-      }
-
-      button.addEventListener("click", () => {
-        const text = input.value.trim();
-        if (!text) {
-          renderLines([
-            "The Seer waits… offer a fragment of your dream, and the symbols will begin to speak."
-          ]);
-          return;
-        }
-
-        const lines = interpretDream(text);
-        renderLines(lines);
       });
     });
   }
 </script>
+

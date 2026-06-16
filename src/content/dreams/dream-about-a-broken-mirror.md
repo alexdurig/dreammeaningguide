@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-slug: "${fileBasenameNoExtension}"
+slug: "dream-about-a-broken-mirror"
 title: "Dream About a Broken Mirror"
 ---
 

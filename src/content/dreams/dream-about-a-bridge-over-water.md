@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-title: "Dream About a Bridge Over Water"
 slug: "dream-about-a-bridge-over-water"
+title: "Dream About a Bridge Over Water"
 ---
 
 Dreaming about a bridge over water symbolizes transition, emotional balance, and the movement from one phase of life to another. Bridges represent connection and progress, while water represents emotions and intuition. Together, they create a powerful image of navigating emotional change.

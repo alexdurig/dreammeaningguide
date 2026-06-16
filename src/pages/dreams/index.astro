@@ -159,6 +159,49 @@ const grouped = dreams.reduce((acc, dream) => {
       text-decoration: underline;
     }
   </style>
+<script>
+  const dreams = JSON.parse(`{
+    "items": ${JSON.stringify(dreams)}
+  }`).items;
+
+  const input = document.getElementById("search-input");
+  const results = document.getElementById("search-results");
+  const letterGroups = document.querySelectorAll(".letter-group");
+  const azNav = document.querySelector(".az-nav");
+
+  function normalize(text) {
+    let t = text.toLowerCase();
+    if (t.startsWith("dream about a ")) return t.replace("dream about a ", "");
+    if (t.startsWith("dream about ")) return t.replace("dream about ", "");
+    return t;
+  }
+
+  input.addEventListener("input", () => {
+    const query = input.value.trim().toLowerCase();
+
+    if (query === "") {
+      results.style.display = "none";
+      results.innerHTML = "";
+      letterGroups.forEach(g => g.style.display = "");
+      azNav.style.display = "";
+      return;
+    }
+
+    // Hide A–Z sections while searching
+    letterGroups.forEach(g => g.style.display = "none");
+    azNav.style.display = "none";
+
+    const matches = dreams.filter(d =>
+      normalize(d.title).includes(query)
+    );
+
+    results.innerHTML = matches
+      .map(d => `<li><a href="/dreams/${d.slug}/">${d.title}</a></li>`)
+      .join("");
+
+    results.style.display = matches.length ? "block" : "none";
+  });
+</script>
 
 </Layout>
 

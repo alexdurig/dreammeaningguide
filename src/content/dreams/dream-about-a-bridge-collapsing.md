@@ -1,3 +1,5 @@
+Remove slug field from bridge collapsing dream
+
 ---
 layout: ../../layouts/BaseLayout.astro
 title: "Dream About a Bridge Collapsing"

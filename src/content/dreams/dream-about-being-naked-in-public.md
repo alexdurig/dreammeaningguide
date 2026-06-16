@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-slug: "${fileBasenameNoExtension}"
+slug: "dream-about-being-naked-in-public"
 title: "Dream About Being Naked in Public"
 ---
 

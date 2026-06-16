@@ -2,7 +2,7 @@
 import Layout from '../../layouts/BaseLayout.astro';
 
 // Import all dream markdown files
-const dreamPosts = import.meta.glob('./*.md', { eager: true });
+const dreamPosts = import.meta.glob('../../content/dreams/*.md', { eager: true });
 
 // Normalize titles for alphabetization
 function normalizeTitle(title) {

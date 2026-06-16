@@ -4,18 +4,34 @@ import Layout from '../../layouts/BaseLayout.astro';
 // Import all dream markdown files
 const dreamPosts = import.meta.glob('./*.md', { eager: true });
 
-// Convert to array of { slug, title }
+// Normalize titles for alphabetization
+function normalizeTitle(title) {
+  let t = title.toLowerCase();
+
+  if (t.startsWith("dream about a ")) {
+    return t.replace("dream about a ", "");
+  }
+  if (t.startsWith("dream about ")) {
+    return t.replace("dream about ", "");
+  }
+
+  return t;
+}
+
+// Convert to array of { slug, title, normalized }
 const dreams = Object.entries(dreamPosts).map(([path, mod]) => {
   const slug = path.replace('./', '').replace('.md', '');
+  const title = mod.frontmatter.title || slug.replace(/-/g, ' ');
   return {
     slug,
-    title: mod.frontmatter.title || slug.replace(/-/g, ' '),
+    title,
+    normalized: normalizeTitle(title)
   };
 });
 
-// Group dreams by first letter
+// Group dreams by first letter of normalized title
 const grouped = dreams.reduce((acc, dream) => {
-  const letter = dream.title[0].toUpperCase();
+  const letter = dream.normalized[0].toUpperCase();
   acc[letter] = acc[letter] || [];
   acc[letter].push(dream);
   return acc;
@@ -28,67 +44,65 @@ const grouped = dreams.reduce((acc, dream) => {
     <h1>A–Z Dream Dictionary</h1>
     <p>Browse dream meanings alphabetically.</p>
 
-<div style="max-width: 600px; margin: 2rem auto;">
-  <input
-    type="text"
-    id="search-input"
-    placeholder="Search dream meanings..."
-    style="
-      width: 100%;
-      padding: 0.9rem 1rem;
-      border-radius: 0.5rem;
-      border: 1px solid #ccc;
-      font-size: 1.1rem;
-    "
-  />
+    <div style="max-width: 600px; margin: 2rem auto;">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search dream meanings..."
+        style="
+          width: 100%;
+          padding: 0.9rem 1rem;
+          border-radius: 0.5rem;
+          border: 1px solid #ccc;
+          font-size: 1.1rem;
+        "
+      />
 
-  <ul id="search-results" style="margin-top: 1rem; list-style: none; padding: 0; display: none;">
-  </ul>
-</div>
+      <ul id="search-results" style="margin-top: 1rem; list-style: none; padding: 0; display: none;">
+      </ul>
+    </div>
 
+    <!-- A–Z Navigation Bar -->
+    <nav class="az-nav">
+      <ul>
+        {Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)).map(letter => (
+          <li><a href={`#${letter}`}>{letter}</a></li>
+        ))}
+      </ul>
+    </nav>
 
-<!-- A–Z Navigation Bar -->
-<nav class="az-nav">
-  <ul>
-    {Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)).map(letter => (
-      <li><a href={`#${letter}`}>{letter}</a></li>
-    ))}
-  </ul>
-</nav>
+    <style>
+      .az-nav {
+        margin: 2rem 0;
+        text-align: center;
+      }
 
-<style>
-  .az-nav {
-    margin: 2rem 0;
-    text-align: center;
-  }
+      .az-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+      }
 
-  .az-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-  }
+      .az-nav a {
+        display: inline-block;
+        padding: 0.4rem 0.7rem;
+        border-radius: 6px;
+        background: #f2ebff;
+        color: #5a2ca0;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
 
-  .az-nav a {
-    display: inline-block;
-    padding: 0.4rem 0.7rem;
-    border-radius: 6px;
-    background: #f2ebff;
-    color: #5a2ca0;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.15s ease, color 0.15s ease;
-  }
-
-  .az-nav a:hover {
-    background: #6a4df5;
-    color: white;
-  }
-</style>
-
+      .az-nav a:hover {
+        background: #6a4df5;
+        color: white;
+      }
+    </style>
 
     <!-- Dream Groups -->
     {Object.keys(grouped)
@@ -98,7 +112,7 @@ const grouped = dreams.reduce((acc, dream) => {
           <h2>{letter}</h2>
           <ul>
             {grouped[letter]
-              .sort((a, b) => a.title.localeCompare(b.title))
+              .sort((a, b) => a.normalized.localeCompare(b.normalized))
               .map((dream) => (
                 <li>
                   <a href={`/dreams/${dream.slug}/`}>{dream.title}</a>
@@ -114,28 +128,6 @@ const grouped = dreams.reduce((acc, dream) => {
       padding: 2rem 1rem;
       max-width: 800px;
       margin: 0 auto;
-    }
-
-    .alphabet {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
-      margin: 2rem 0;
-    }
-
-    .alphabet a {
-      padding: 0.4rem 0.6rem;
-      background: #f3eaff;
-      border-radius: 6px;
-      text-decoration: none;
-      color: #5a2ca0;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .alphabet a:hover {
-      background: #e5d4ff;
     }
 
     .letter-group {
@@ -164,9 +156,11 @@ const grouped = dreams.reduce((acc, dream) => {
     }
 
     a:hover {
-      text-decoration: underline; 
+      text-decoration: underline;
     }
   </style>
 
-</Layout> 
+</Layout>
+
+
 

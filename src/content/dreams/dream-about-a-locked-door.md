@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-locked-door"
 title: "Dream About a Locked Door"
 ---

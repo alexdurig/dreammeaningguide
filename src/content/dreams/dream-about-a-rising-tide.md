@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-rising-tide"
 title: "Dream About a Rising Tide"
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-car-being-stolen"
 title: "Dream About a Car Being Stolen"
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-black-dog"
 title: "Dream About a Black Dog"
 ---

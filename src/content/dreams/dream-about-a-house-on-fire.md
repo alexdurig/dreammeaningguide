@@ -1,6 +1,6 @@
 ---
 slug: "dream-about-a-house-on-fire"
-title: "Dream About a House on Fire"
+title: "Dream About a House on Fire" 
 ---
 
 Dreaming about a house on fire is a powerful symbol of transformation, emotional intensity, and the burning away of old patterns. A house in dreams represents your inner world — your identity, memories, beliefs, and emotional foundation. When it catches fire, your subconscious is signaling that something major is shifting.

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-holding-a-baby"
 title: "Dream About Holding a Baby"
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-dark-forest"
 title: "Dream About a Dark Forest"
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-bridge-collapsing"
 title: "Dream About a Bridge Collapsing"
 ---

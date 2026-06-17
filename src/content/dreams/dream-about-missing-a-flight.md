@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-missing-a-flight"
 title: "Dream About Missing a Flight"
 ---

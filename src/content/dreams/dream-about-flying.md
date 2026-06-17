@@ -1,5 +1,5 @@
 ---
-slug: "dream-about-flying
+slug: "dream-about-flying"
 title: "Dream About Flying"
 ---
 

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-stranger-in-your-house"
 title: "Dream About a Stranger in Your House"
 ---

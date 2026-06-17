@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-broken-tooth"
 title: "Dream About a Broken Tooth"
 ---

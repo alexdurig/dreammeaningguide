@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-losing-a-baby"
 title: "Dream About Losing a Baby"
 ---

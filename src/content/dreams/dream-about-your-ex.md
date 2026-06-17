@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-your-ex"
 title: "Dream About Your Ex"
 ---

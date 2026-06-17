@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-dead-relative-visiting"
 title: "Dream About a Dead Relative Visiting"
 ---

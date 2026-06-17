@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-giant-wave"
 title: "Dream About a Giant Wave"
 ---

@@ -1,6 +1,6 @@
 ---
 slug: "dream-about-a-black-dog"
-title: "Dream About a Black Dog"
+title: "Dream About a Black Dog" 
 ---
 
 Dreaming about a black dog symbolizes intuition, protection, loyalty, and sometimes shadow emotions such as sadness or fear. Dogs represent companionship and instinct. The color black adds layers of mystery, depth, and the unknown.

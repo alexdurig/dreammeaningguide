@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-bridge-over-water"
 title: "Dream About a Bridge Over Water"
 ---

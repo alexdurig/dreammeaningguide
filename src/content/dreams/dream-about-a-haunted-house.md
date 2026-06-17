@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-haunted-house"
 title: "Dream About a Haunted House"
 ---

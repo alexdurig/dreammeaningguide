@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-losing-your-wallet"
 title: "Dream About Losing Your Wallet"
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-tornado"
 title: "Dream About a Tornado"
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-stormy-sea"
 title: "Dream About a Stormy Sea"
 ---

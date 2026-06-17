@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-being-naked-in-public"
 title: "Dream About Being Naked in Public"
 ---

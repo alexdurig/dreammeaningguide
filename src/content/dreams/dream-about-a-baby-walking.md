@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-baby-walking"
 title: "Dream About a Baby Walking"
 ---

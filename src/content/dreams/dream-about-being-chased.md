@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-being-chased"
 title: "Dream About Being Chased"
 ---

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-broken-mirror"
 title: "Dream About a Broken Mirror"
 ---

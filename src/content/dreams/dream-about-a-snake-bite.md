@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-snake-bite"
 title: "Dream About a Snake Bite"
 ---

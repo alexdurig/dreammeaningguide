@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-house-on-fire"
 title: "Dream About a House on Fire"
 ---

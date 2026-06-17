@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-teeth-falling-out"
 title: "Dream About Teeth Falling Out"
 ---

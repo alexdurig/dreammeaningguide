@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-a-shadow-figure"
 title: "Dream About a Shadow Figure"
 ---

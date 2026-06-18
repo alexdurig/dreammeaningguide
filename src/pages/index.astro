@@ -1,3 +1,5 @@
+import AnimalsIcon from "../components/icons/AnimalsIcon.astro";
+
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
@@ -64,11 +66,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="categories">
     <h2>Featured Categories</h2>
 
-    <div class="grid">
-      <a href="/dreams?category=animals" class="tile">
+   <a href="/dreams?category=animals" class="tile">
+  <div class="icon">
+    <AnimalsIcon />
+  </div>
   <h3>Animals</h3>
   <p>Dreams about cats, dogs, snakes, lions, and more.</p>
-       </a>
+</a>
+
 
       <a href="/dreams?category=water-nature" class="tile">
   <h3>Water & Nature</h3>

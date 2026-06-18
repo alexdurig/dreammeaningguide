@@ -1,5 +1,8 @@
 ---
-const { title = "Dream Meaning Guide", description = "Explore dream meanings, symbols, and interpretations." } = Astro.props;
+const { 
+  title = "Dream Meaning Guide", 
+  description = "Explore dream meanings, symbols, and interpretations." 
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -14,187 +17,186 @@ const { title = "Dream Meaning Guide", description = "Explore dream meanings, sy
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Basic styling -->
     <style>
+      body {
+        margin: 0;
+        font-family: Inter, sans-serif;
+        color: #333;
+      }
 
-  /* Meaning Atlas Footer Styles */
-.meaning-footer {
-  margin-top: 4rem;
-  padding: 3rem 1rem;
-  background: #f8f8f8;
-  color: #333;
-  text-align: center;
-  border-top: 1px solid #e0e0e0;
-  font-size: 0.95rem;
-}
+      /* HEADER */
+      header {
+        background: white;
+        padding: 0.5rem 0 0.3rem 0;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
 
-.footer-brand {
-  font-weight: 600;
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  align-items: center;
-}
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-.footer-logo {
-  font-size: 1.2rem;
-}
+      .logo svg {
+        width: 40px;
+        height: 40px;
+      }
 
-.footer-nav {
-  margin: 1rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.2rem;
-}
+      nav {
+        margin-top: 0.4rem;
+      }
 
-.footer-nav a {
-  color: #333;
-  text-decoration: none;
-  font-weight: 500;
-}
+      nav a {
+        color: #6a4df5;
+        margin: 0 1rem;
+        text-decoration: none;
+        font-weight: 600;
+      }
 
-.footer-nav a:hover {
-  text-decoration: underline;
-}
+      nav a:hover {
+        text-decoration: underline;
+      }
 
-.footer-seer {
-  margin-top: 1.5rem;
-  font-style: italic;
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  align-items: center;
-  color: #444;
-}
+      main {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
 
-.footer-seer-icon {
-  font-size: 1.1rem;
-}
+      /* FOOTER */
+      .meaning-footer {
+        margin-top: 4rem;
+        padding: 3rem 1rem;
+        background: #f8f8f8;
+        color: #333;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+        font-size: 0.95rem;
+      }
 
-.footer-copy {
-  margin-top: 1.5rem;
-  color: #666;
-  font-size: 0.85rem;
-}
+      .footer-brand {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        align-items: center;
+      }
 
-   
-</style>
+      .footer-logo {
+        font-size: 1.2rem;
+      }
+
+      .footer-nav {
+        margin: 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+      }
+
+      .footer-nav a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-seer {
+        margin-top: 1.5rem;
+        font-style: italic;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        align-items: center;
+        color: #444;
+      }
+
+      .footer-seer-icon {
+        font-size: 1.1rem;
+      }
+
+      .footer-copy {
+        margin-top: 1.5rem;
+        color: #666;
+        font-size: 0.85rem;
+      }
+    </style>
   </head>
 
   <body>
+
+    <!-- HEADER -->
     <header>
-      <h1>Dream Meaning Guide</h1>
+      <div class="logo">
+        <svg 
+          viewBox="0 0 120 120" 
+          fill="none" 
+          stroke="#333" 
+          stroke-width="4" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+        >
+          <!-- Stylized M -->
+          <path d="M20 90 L40 40 L60 70 L80 40 L100 90" />
 
-<header style="
-  background: white;
-  padding: 0.2rem 0 0.1rem 0;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+          <!-- Crescent moon -->
+          <path 
+            d="M66 20 
+               A18 18 0 1 1 48 20 
+               A12 18 0 1 0 66 20" 
+            fill="none"
+          />
 
-<svg 
-  width="120" 
-  height="120" 
-  viewBox="0 0 120 120" 
-  fill="none" 
-  stroke="#333" 
-  stroke-width="4" 
-  stroke-linecap="round" 
-  stroke-linejoin="round"
->
-  <!-- Stylized M -->
-  <path d="M20 90 L40 40 L60 70 L80 40 L100 90" />
+          <!-- Gold star -->
+          <circle cx="84" cy="16" r="4" fill="#D4AF37" />
+        </svg>
+      </div>
 
-  <!-- Crescent moon (raised slightly + centered more tightly) -->
-  <path 
-    d="M66 20 
-       A18 18 0 1 1 48 20 
-       A12 18 0 1 0 66 20" 
-    fill="none"
-  />
-  <!-- Gold star (nudged to maintain balance) -->
-  <circle cx="84" cy="16" r="4" fill="#D4AF37" />
-
-</svg>
-
-  <nav style="margin-top: 0.2rem;">
-
-  <nav style="margin-top: 0.2rem;">
-    <a href="/" style="color: #6a4df5; margin: 0 1rem; text-decoration: none; font-weight: 600;">Home</a>
-    <a href="/dreams" style="color: #6a4df5; margin: 0 1rem; text-decoration: none; font-weight: 600;">Dreams</a>
-    <a href="/seer" style="color: #6a4df5; margin: 0 1rem; text-decoration: none; font-weight: 600;">Meaning Atlas Seer</a>
-    <a href="/about" style="color: #6a4df5; margin: 0 1rem; text-decoration: none; font-weight: 600;">About</a>
-    <a href="/contact" style="color: #6a4df5; margin: 0 1rem; text-decoration: none; font-weight: 600;">Contact</a>
-  </nav>
-</header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/dreams">Dreams</a>
+        <a href="/seer">Meaning Atlas Seer</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
 
     <main>
       <slot />
     </main>
 
-  /* Meaning Atlas Footer Styles */
-  .meaning-footer {
-    margin-top: 4rem;
-    padding: 3rem 1rem;
-    background: #f8f8f8;
-    color: #333;
-    text-align: center;
-    border-top: 1px solid #e0e0e0;
-    font-size: 0.95rem;
-  }
+    <!-- FOOTER -->
+    <footer class="meaning-footer">
+      <div class="footer-brand">
+        <span class="footer-logo">🌙</span>
+        <span class="footer-brand-text">A Meaning Atlas Project</span>
+      </div>
 
-  .footer-brand {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    align-items: center;
-  }
+      <nav class="footer-nav">
+        <a href="/seer">The Meaning Atlas Seer</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/sitemap">Sitemap</a>
+      </nav>
 
-  .footer-logo {
-    font-size: 1.2rem;
-  }
+      <div class="footer-seer">
+        <span class="footer-seer-icon">🔮</span>
+        <span>Guided by the Meaning Atlas Seer</span>
+      </div>
 
-  .footer-nav {
-    margin: 1rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.2rem;
-  }
-
-  .footer-nav a {
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .footer-nav a:hover {
-    text-decoration: underline;
-  }
-
-  .footer-seer {
-    margin-top: 1.5rem;
-    font-style: italic;
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    align-items: center;
-    color: #444;
-  }
-
-  .footer-seer-icon {
-    font-size: 1.1rem;
-  }
-
-  .footer-copy {
-    margin-top: 1.5rem;
-    color: #666;
-    font-size: 0.85rem;
-  }
+      <div class="footer-copy">
+        © 2026 The Meaning Atlas — All rights reserved
+      </div>
+    </footer>
 
   </body>
 </html>
+

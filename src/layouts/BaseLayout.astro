@@ -1,4 +1,3 @@
-
 ---
 const {
   title = "Dream Meaning Guide",
@@ -14,9 +13,7 @@ const {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    
 
-    <!-- Global Styles -->
     <style>
       :root {
         --purple: #6a4df5;
@@ -36,77 +33,69 @@ const {
         line-height: 1.6;
       }
 
+      main {
+        max-width: var(--max-width);
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
 
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 3rem;
+        background: var(--purple-light);
+        color: white;
+      }
 
-<header style="
-  background: white;
-  padding: 0.2rem 0 0.1rem 0;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      footer a {
+        color: white;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
 
-  <svg 
-    width="120" 
-    height="120" 
-    viewBox="0 0 120 120" 
-    fill="none" 
-    stroke="#333" 
-    stroke-width="4" 
-    stroke-linecap="round" 
-    stroke-linejoin="round"
-  >
-    <path d="M20 90 L40 40 L60 70 L80 40 L100 90" />
-    <path 
-      d="M66 20 A18 18 0 1 1 48 20 A12 18 0 1 0 66 20" 
-      fill="none"
-    />
-    <circle cx="84" cy="16" r="4" fill="#D4AF37" />
-  </svg>
+  <body>
 
-<nav style="margin-top: 0.2rem;">
-  <a href="/">Home</a>
-  <a href="/dreams">Dreams</a>
-  <a href="/seer">Meaning Atlas Seer</a>
-  <a href="/about">About</a>
-  <a href="/contact">Contact</a>
-</nav>
+    <!-- HEADER -->
+    <header style="
+      background: white;
+      padding: 0.2rem 0 0.1rem 0;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    ">
+      <svg 
+        width="40" 
+        height="40" 
+        viewBox="0 0 120 120" 
+        fill="none" 
+        stroke="#333" 
+        stroke-width="4" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+      >
+        <path d="M20 90 L40 40 L60 70 L80 40 L100 90" />
+        <path d="M66 20 A18 18 0 1 1 48 20 A12 18 0 1 0 66 20" fill="none" />
+        <circle cx="84" cy="16" r="4" fill="#D4AF37" />
+      </svg>
 
-</header>
-
-
+      <nav style="margin-top: 0.2rem;">
+        <a href="/">Home</a>
+        <a href="/dreams">Dreams</a>
+        <a href="/seer">Meaning Atlas Seer</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
 
     <main>
       <slot />
     </main>
 
-  <!-- your page content -->
-
-  <!-- FOOTER START -->
-<footer class="meaning-footer">
-  <div class="footer-brand">
-    <span class="footer-logo">🌙</span>
-    <span class="footer-brand-text">A Meaning Atlas Project</span>
-  </div>
-
-  <nav class="footer-nav">
-    <a href="/seer">The Meaning Atlas Seer</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-    <a href="/privacy">Privacy Policy</a>
-    <a href="/terms">Terms of Use</a>
-    <a href="/sitemap">Sitemap</a>
-  </nav>
-
-  <div class="footer-seer">
-    <span class="footer-seer-icon">🔮</span>
-    <span>Guided by the Meaning Atlas Seer</span>
-  </div>
-
-  <div class="footer-copy">
-    © 2026 The Meaning Atlas — All rights reserved
-  </div>
-</footer>
-<!-- FOOTER END -->
+    <footer>
+      <p>© 2026 The Meaning Atlas — All rights reserved</p>
+    </footer>
 
   </body>
 </html>
+

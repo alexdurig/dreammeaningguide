@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-a-black-cat"
 title: "Dream About a Black Cat"
+category: "animals"
 ---
 
 Dreaming about a black cat symbolizes intuition, mystery, independence, and the unknown. While black cats are often associated with superstition, in dreams they represent deeper emotional and spiritual themes.

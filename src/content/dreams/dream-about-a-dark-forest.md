@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-a-dark-forest"
 title: "Dream About a Dark Forest"
+category: "water-nature"
 ---
 
 Dreaming about a dark forest symbolizes uncertainty, inner exploration, or confronting hidden fears. Forests represent the subconscious mind — deep, mysterious, and full of unknown paths. When the forest is dark, your subconscious is inviting you to explore emotions or situations you may be avoiding.

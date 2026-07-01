@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-being-trapped"
 title: "Dream About Being Trapped"
+category: "nightmares"
 ---
 
 Dreaming about being trapped is a powerful symbol of emotional confinement, pressure, or feeling stuck in your waking life. These dreams often appear when you feel limited by circumstances, responsibilities, or internal fears. The setting of the dream — a room, cage, car, or underground space — reflects the specific area of life where you feel restricted.

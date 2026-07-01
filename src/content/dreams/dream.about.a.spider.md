@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-a-spider"
 title: "Dream About a Spider"
+category: "animals"
 ---
 
 Dreaming about a spider can symbolize creativity, patience, feminine energy, or fear depending on your emotional reaction. Spiders weave intricate webs, making them symbols of creation, strategy, and interconnectedness. But they can also evoke fear or discomfort.

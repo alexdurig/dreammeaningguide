@@ -1,13 +1,133 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import AtlasSeer from "../components/AtlasSeer.astro";
 ---
 
-<BaseLayout title="The Meaning Atlas Seer">
-  <h1 style="text-align:center; margin-top:2rem;">The Meaning Atlas Seer</h1>
-  <p style="text-align:center; max-width:600px; margin:0.5rem auto 2rem; color:#555;">
-    Speak of your dream, and the Seer will reflect its symbols back to you.
-  </p>
+<BaseLayout title="Meaning Atlas Seer">
+  <section style="max-width: 800px; margin: 2rem auto; padding: 1rem; text-align: center;">
+    <!-- Seer Icon -->
+    <svg 
+      width="80" 
+      height="80" 
+      viewBox="0 0 120 120" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      style="margin-bottom: 1rem;"
+    >
+      <!-- Outer circle (the dream sphere) -->
+      <circle cx="60" cy="60" r="40" stroke="#6a4df5" stroke-width="3" fill="#2d2357" />
 
-  <AtlasSeer />
+      <!-- Crescent moon -->
+      <path 
+        d="M75 45
+           A18 18 0 1 1 55 65
+           A12 12 0 1 0 75 45"
+        fill="#faf8ff"
+        stroke="#d4af37"
+        stroke-width="2"
+      />
+
+      <!-- Eye in the center -->
+      <ellipse cx="60" cy="60" rx="14" ry="9" stroke="#d4af37" stroke-width="2" fill="none" />
+      <circle cx="60" cy="60" r="4" fill="#d4af37" />
+
+      <!-- Small stars -->
+      <circle cx="40" cy="40" r="2" fill="#eae6ff" />
+      <circle cx="82" cy="50" r="2" fill="#eae6ff" />
+      <circle cx="48" cy="78" r="2" fill="#eae6ff" />
+    </svg>
+
+    <h1 style="margin-bottom: 0.5rem;">Meaning Atlas Seer</h1>
+    <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: #555;">
+      Whisper a symbol, a feeling, or a fragment of a dream — the Seer will answer in a single line.
+    </p>
+
+    <!-- Input form -->
+    <form id="seer-form" style="margin-bottom: 1.5rem;">
+      <input
+        id="seer-input"
+        type="text"
+        placeholder="Type a symbol or dream fragment..."
+        style="
+          width: 100%;
+          max-width: 500px;
+          padding: 0.6rem 0.8rem;
+          border-radius: 999px;
+          border: 1px solid #ccc;
+          font-size: 0.95rem;
+        "
+        required
+      />
+      <button
+        type="submit"
+        style="
+          margin-top: 0.8rem;
+          padding: 0.5rem 1.2rem;
+          border-radius: 999px;
+          border: none;
+          background: #6a4df5;
+          color: white;
+          font-size: 0.95rem;
+          cursor: pointer;
+        "
+      >
+        Ask the Seer
+      </button>
+    </form>
+
+    <!-- Response area -->
+    <div
+      id="seer-response"
+      style="
+        min-height: 2rem;
+        font-size: 1.05rem;
+        color: #2d2357;
+        font-style: italic;
+      "
+    >
+      The Seer waits, quiet and patient.
+    </div>
+  </section>
+
+  <script>
+    const responses = [
+      "A hidden current is moving beneath the surface.",
+      "What feels like chaos is quietly arranging itself.",
+      "You are standing at the threshold of a small but real change.",
+      "An old pattern is loosening its grip on you.",
+      "This symbol asks you to trust what you already know.",
+      "Something you thought was lost is finding its way back.",
+      "The fear is louder than the truth beneath it.",
+      "You are being invited to see the familiar in a new light.",
+      "A quiet part of you is ready to speak more clearly.",
+      "This is a reminder that you are not stuck, only pausing.",
+      "The path bends here, but it does not break.",
+      "You are closer to the answer than you think.",
+      "What you resist is trying to show you something useful.",
+      "This symbol carries both warning and protection.",
+      "You are being asked to release what no longer fits.",
+      "The unknown here is gentler than it appears.",
+      "A small decision will ripple farther than you expect.",
+      "You are already walking away from what once held you.",
+      "This is a sign to listen more carefully to your own voice.",
+      "The Seer smiles: you are more ready than you realize."
+    ];
+
+    const form = document.getElementById("seer-form");
+    const input = document.getElementById("seer-input");
+    const output = document.getElementById("seer-response");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const trimmed = input.value.trim();
+      if (!trimmed) {
+        output.textContent = "The Seer hears only silence. Offer a single word or image.";
+        return;
+      }
+
+      const index = Math.floor(Math.random() * responses.length);
+      output.textContent = responses[index];
+    });
+  </script>
 </BaseLayout>
+

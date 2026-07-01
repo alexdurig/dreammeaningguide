@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-a-lion"
 title: "Dream About a Lion"
+category: "animals"
 ---
 
 Dreaming about a lion symbolizes strength, courage, leadership, and powerful emotions. Lions represent authority, confidence, and primal instincts. Your reaction to the lion in the dream reveals how you relate to your own inner power.

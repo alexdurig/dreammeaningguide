@@ -1,106 +1,85 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Alphabet letters for navigation
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 ---
 
-<BaseLayout title="Dream Meaning Guide">
+<BaseLayout title="A–Z Dream Dictionary">
 
-  <!-- HERO SECTION -->
+  <!-- HEADER -->
   <section style="
     background: #6a4df5;
     color: white;
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
     text-align: center;
     border-radius: 0 0 12px 12px;
   ">
-    <h1 style="font-size: 2.4rem; margin-bottom: 0.5rem;">
-      Dream Meaning Guide
+    <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">
+      A–Z Dream Dictionary
     </h1>
-    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 1.5rem;">
-      Explore clear, calm interpretations for every dream.
+    <p style="font-size: 1.1rem; opacity: 0.9;">
+      Browse dream meanings alphabetically — fast, simple, intuitive.
     </p>
-
-    <a 
-      href="/dreams" 
-      style="
-        display: inline-block;
-        background: white;
-        color: #6a4df5;
-        padding: 0.8rem 1.6rem;
-        border-radius: 6px;
-        font-weight: 600;
-        text-decoration: none;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-      "
-    >
-      Browse All Dream Interpretations
-    </a>
   </section>
 
-  <!-- FEATURED CATEGORIES -->
-  <section style="max-width: 900px; margin: 3rem auto;">
-    <h2 style="text-align: center; margin-bottom: 2rem; font-size: 1.8rem;">
-      Featured Categories
-    </h2>
-
+  <!-- ALPHABET NAVIGATION -->
+  <section style="max-width: 900px; margin: 2.5rem auto; text-align: center;">
     <div style="
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+      gap: 0.5rem;
     ">
-      <a href="/dreams/animals" style="
-        display: block;
-        padding: 1.5rem;
-        background: #f7f5ff;
-        border-radius: 10px;
-        text-align: center;
-        text-decoration: none;
-        color: #333;
-        font-weight: 600;
-      ">
-        🐾 Animals
-      </a>
-
-      <a href="/dreams/water-nature" style="
-        display: block;
-        padding: 1.5rem;
-        background: #f7f5ff;
-        border-radius: 10px;
-        text-align: center;
-        text-decoration: none;
-        color: #333;
-        font-weight: 600;
-      ">
-        🌊 Water & Nature
-      </a>
-
-      <a href="/dreams/emotions" style="
-        display: block;
-        padding: 1.5rem;
-        background: #f7f5ff;
-        border-radius: 10px;
-        text-align: center;
-        text-decoration: none;
-        color: #333;
-        font-weight: 600;
-      ">
-        💛 Emotions
-      </a>
-
-      <a href="/dreams/nightmares" style="
-        display: block;
-        padding: 1.5rem;
-        background: #f7f5ff;
-        border-radius: 10px;
-        text-align: center;
-        text-decoration: none;
-        color: #333;
-        font-weight: 600;
-      ">
-        😱 Nightmares
-      </a>
+      {letters.map(letter => (
+        <a 
+          href={`/dreams?letter=${letter}`} 
+          style="
+            display: block;
+            padding: 0.8rem;
+            background: #f7f5ff;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #6a4df5;
+            font-weight: 700;
+            font-size: 1.1rem;
+          "
+        >
+          {letter}
+        </a>
+      ))}
     </div>
   </section>
 
+  <!-- DREAM LIST -->
+  <section style="max-width: 900px; margin: 3rem auto;">
+    <h2 style="font-size: 1.6rem; margin-bottom: 1rem; text-align: center;">
+      All Dream Interpretations
+    </h2>
+
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      {
+        Astro.glob("./*.md").map(dream => (
+          <li style="margin-bottom: 0.8rem;">
+            <a 
+              href={`/dreams/${dream.slug}`} 
+              style="
+                text-decoration: none;
+                color: #333;
+                font-size: 1.1rem;
+                padding: 0.6rem 0.4rem;
+                display: block;
+                border-bottom: 1px solid #eee;
+              "
+            >
+              {dream.frontmatter.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
 </BaseLayout>
+
 
 

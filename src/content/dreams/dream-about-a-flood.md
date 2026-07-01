@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-a-flood"
 title: "Dream About a Flood"
+category: "water-nature"
 ---
 
 Dreaming about a flood symbolizes emotional overwhelm, powerful change, or a cleansing process in your life. Water represents emotions, and when it rises uncontrollably, your subconscious is showing you that feelings or situations are building up beyond your comfort level.

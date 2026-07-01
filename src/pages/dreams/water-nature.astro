@@ -1,13 +1,15 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
-const dreams = Astro.glob("./*.md").filter(d => d.frontmatter.category === "water-nature");
+const dreams = (await getCollection("dreams"))
+  .filter(d => d.data.category === "water-nature");
 ---
 
 <BaseLayout title="Water & Nature Dreams">
 
   <section style="
-    background: #6a4df5;
+    background: #4da6f5;
     color: white;
     padding: 3rem 1rem;
     text-align: center;
@@ -17,7 +19,7 @@ const dreams = Astro.glob("./*.md").filter(d => d.frontmatter.category === "wate
       🌊 Water & Nature Dreams
     </h1>
     <p style="font-size: 1.1rem; opacity: 0.9;">
-      Water and nature dreams reflect emotional flow, growth, cleansing, and inner change.
+      Water and nature dreams reveal emotional flow, change, cleansing, and deep intuition.
     </p>
   </section>
 
@@ -33,7 +35,7 @@ const dreams = Astro.glob("./*.md").filter(d => d.frontmatter.category === "wate
             display: block;
             border-bottom: 1px solid #eee;
           ">
-            {d.frontmatter.title}
+            {d.data.title}
           </a>
         </li>
       ))}
@@ -41,3 +43,4 @@ const dreams = Astro.glob("./*.md").filter(d => d.frontmatter.category === "wate
   </section>
 
 </BaseLayout>
+

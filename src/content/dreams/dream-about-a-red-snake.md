@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-a-red-snake"
 title: "Dream About a Red Snake"
+category: "animals"
 ---
 
 Dreaming about a red snake symbolizes passion, emotional intensity, and powerful instincts. Snakes represent transformation, intuition, and hidden truths. The color red adds layers of urgency, desire, and heightened emotion.

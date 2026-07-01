@@ -38,20 +38,7 @@ const {
         margin: 2rem auto;
         padding: 0 1rem;
       }
-
-      footer {
-        text-align: center;
-        padding: 2rem 1rem;
-        margin-top: 3rem;
-        background: var(--purple-light);
-        color: white;
-      }
-
-      footer a {
-        color: white;
-        text-decoration: underline;
-      }
-    </style>
+       </style>
   </head>
 
   <body>
@@ -92,9 +79,44 @@ const {
       <slot />
     </main>
 
-    <footer>
-      <p>© 2026 The Meaning Atlas — All rights reserved</p>
-    </footer>
+<footer style="
+  background: #2d2357;
+  color: #eae6ff;
+  padding: 2.5rem 1rem;
+  margin-top: 4rem;
+  border-top: 2px solid #4b3b8f;
+">
+  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+
+    <!-- Symbolic Identity -->
+    <div style="font-size: 2rem; margin-bottom: 1rem;">
+      ✦
+    </div>
+
+    <!-- Navigation -->
+    <nav style="margin-bottom: 1.5rem;">
+      <a href="/dreams" style="color: #eae6ff; margin: 0 0.8rem; text-decoration: none;">Dream Dictionary</a>
+      <a href="/dreams/animals" style="color: #eae6ff; margin: 0 0.8rem; text-decoration: none;">Animals</a>
+      <a href="/dreams/water-nature" style="color: #eae6ff; margin: 0 0.8rem; text-decoration: none;">Water & Nature</a>
+      <a href="/dreams/emotions" style="color: #eae6ff; margin: 0 0.8rem; text-decoration: none;">Emotions</a>
+      <a href="/dreams/nightmares" style="color: #eae6ff; margin: 0 0.8rem; text-decoration: none;">Nightmares</a>
+    </nav>
+
+    <!-- Legal Links -->
+    <nav style="margin-bottom: 1.5rem; font-size: 0.95rem;">
+      <a href="/privacy" style="color: #cfc8f9; margin: 0 0.8rem; text-decoration: none;">Privacy Policy</a>
+      <a href="/terms" style="color: #cfc8f9; margin: 0 0.8rem; text-decoration: none;">Terms of Use</a>
+      <a href="/disclaimer" style="color: #cfc8f9; margin: 0 0.8rem; text-decoration: none;">Disclaimer</a>
+      <a href="/contact" style="color: #cfc8f9; margin: 0 0.8rem; text-decoration: none;">Contact</a>
+    </nav>
+
+    <!-- Copyright -->
+    <div style="font-size: 0.9rem; opacity: 0.8;">
+      © 2026 DreamMeaningGuide — A Meaning Atlas Project
+    </div>
+
+  </div>
+</footer>
 
   </body>
 </html>

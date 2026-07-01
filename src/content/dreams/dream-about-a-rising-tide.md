@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-a-rising-tide"
 title: "Dream About a Rising Tide"
+category: "water-nature"
 ---
 
 Dreaming about a rising tide symbolizes emotional buildup, approaching change, or a situation that is gradually becoming more intense. Water represents emotions, intuition, and the subconscious. When the tide rises, your inner world is signaling that feelings or circumstances are increasing in pressure or significance.

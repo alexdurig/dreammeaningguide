@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-water"
 title: "Dream About Water"
+category: "water-nature"
 ---
 
 Water is one of the most symbolic dream elements, representing emotions, intuition, healing, and the flow of life. The meaning of a water dream depends heavily on the condition of the water and your interaction with it.

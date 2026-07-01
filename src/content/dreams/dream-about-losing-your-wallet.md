@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-losing-your-wallet"
 title: "Dream About Losing Your Wallet"
+category: "emotions"
 ---
 
 Dreaming about losing your wallet symbolizes concerns about identity, security, and personal stability. A wallet holds your money, identification, and important cards — all symbols of your sense of self and your ability to navigate the world. When it goes missing in a dream, your subconscious is highlighting a fear of losing control or losing something important.

@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-being-naked-in-public"
 title: "Dream About Being Naked in Public"
+category: "emotions"
 ---
 
 Dreaming about being naked in public is a classic symbol of vulnerability, exposure, and fear of judgment. Clothing represents protection, identity, and the roles you play in daily life. When you are suddenly without it, your subconscious is revealing concerns about how others perceive you.

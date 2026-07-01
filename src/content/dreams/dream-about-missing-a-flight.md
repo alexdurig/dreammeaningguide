@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-missing-a-flight"
 title: "Dream About Missing a Flight"
+category: "emotions"
 ---
 
 Dreaming about missing a flight is a classic stress dream that reflects pressure, deadlines, and fear of missing out on important opportunities. Flights in dreams symbolize movement, progress, and major life transitions. When you miss a flight, your subconscious may be expressing anxiety about timing, preparation, or your ability to keep up with expectations.

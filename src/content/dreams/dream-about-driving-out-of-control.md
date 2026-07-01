@@ -2,6 +2,7 @@
 layout: ../../layouts/BaseLayout.astro
 slug: "dream-about-driving-out-of-control"
 title: "Dream About Driving Out of Control"
+category: "nightmares"
 ---
 
 Dreaming about driving out of control symbolizes stress, fear of failure, or a sense that your life is moving too fast. Cars in dreams represent your life path, decisions, and sense of direction. When the car becomes unmanageable, your subconscious is expressing anxiety about losing control.

@@ -1,23 +1,25 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
-const dreams = Astro.glob("./*.md").filter(d => d.frontmatter.category === "emotions");
+const dreams = (await getCollection("dreams"))
+  .filter(d => d.data.category === "emotions");
 ---
 
-<BaseLayout title="Emotion Dreams">
+<BaseLayout title="Emotional Dreams">
 
   <section style="
-    background: #6a4df5;
+    background: #f56a6a;
     color: white;
     padding: 3rem 1rem;
     text-align: center;
     border-radius: 0 0 12px 12px;
   ">
     <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">
-      💛 Emotion Dreams
+      💛 Emotional Dreams
     </h1>
     <p style="font-size: 1.1rem; opacity: 0.9;">
-      Emotional dreams reveal inner conflicts, healing, desires, and unresolved feelings.
+      Emotional dreams reveal inner conflicts, desires, fears, and unresolved feelings.
     </p>
   </section>
 
@@ -33,7 +35,7 @@ const dreams = Astro.glob("./*.md").filter(d => d.frontmatter.category === "emot
             display: block;
             border-bottom: 1px solid #eee;
           ">
-            {d.frontmatter.title}
+            {d.data.title}
           </a>
         </li>
       ))}
@@ -41,3 +43,4 @@ const dreams = Astro.glob("./*.md").filter(d => d.frontmatter.category === "emot
   </section>
 
 </BaseLayout>
+

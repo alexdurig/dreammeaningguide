@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const dreams = Astro.glob("../*.md").filter(d => d.frontmatter.category === "emotions");
+const dreams = Astro.glob("../../dreams/*.md").filter(d => d.frontmatter.category === "emotions");
 ---
 
 <BaseLayout title="Emotion Dreams">

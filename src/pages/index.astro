@@ -57,8 +57,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     </h2>
 
     <ul style="list-style: none; padding: 0; margin: 0;">
-      {
-        Astro.glob("./*.md").map(dream => (
+     
           <li style="margin-bottom: 0.8rem;">
             <a 
               href={`/dreams/${dream.slug}`} 

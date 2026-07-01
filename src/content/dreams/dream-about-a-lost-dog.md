@@ -1,6 +1,7 @@
 ---
 slug: "dream-about-a-lost-dog"
 title: "Dream About a Lost Dog"
+category: "animals"
 ---
 
 Dreaming about a lost dog symbolizes loyalty, emotional connection, and the fear of losing something or someone important. Dogs in dreams represent companionship, protection, and unconditional love. When the dog goes missing, your subconscious is highlighting a sense of emotional distance or uncertainty.

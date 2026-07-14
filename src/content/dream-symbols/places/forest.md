@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Forest"
 category: "places"

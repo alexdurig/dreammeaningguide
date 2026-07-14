@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Seer"
 category: "archetypes"

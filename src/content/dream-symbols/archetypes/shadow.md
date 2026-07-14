@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Shadow"
 category: "archetypes"

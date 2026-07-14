@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Guide"
 category: "archetypes"

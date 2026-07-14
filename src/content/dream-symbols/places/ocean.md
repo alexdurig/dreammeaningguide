@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Ocean"
 category: "places"

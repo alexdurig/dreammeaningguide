@@ -1,4 +1,4 @@
-﻿
+
 export async function GET() {
   const symbols = {
     animals:    ["Snake","Wolf","Bear","Bird","Cat","Horse","Spider","Fox","Owl","Deer"],

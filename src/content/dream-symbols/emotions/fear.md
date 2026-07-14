@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Fear"
 category: "emotions"

@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Mountain"
 category: "places"

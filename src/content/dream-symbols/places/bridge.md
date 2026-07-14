@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Bridge"
 category: "places"

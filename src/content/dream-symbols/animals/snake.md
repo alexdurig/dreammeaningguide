@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Snake"
 category: "animals"

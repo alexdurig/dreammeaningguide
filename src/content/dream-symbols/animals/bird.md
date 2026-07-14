@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Bird"
 category: "animals"

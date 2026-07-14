@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Longing"
 category: "emotions"

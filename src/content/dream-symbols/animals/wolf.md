@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Wolf"
 category: "animals"

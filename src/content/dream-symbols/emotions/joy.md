@@ -1,4 +1,4 @@
-﻿
+
 ---
 title: "Joy"
 category: "emotions"

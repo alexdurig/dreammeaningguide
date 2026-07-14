@@ -1,4 +1,4 @@
-﻿
+
 # DreamMeaningGuide
 
 A calm, symbolic dream interpretation site built with [Astro](https://astro.build/).

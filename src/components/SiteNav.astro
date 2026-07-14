@@ -1,0 +1,97 @@
+﻿
+---
+const { currentPath = "" } = Astro.props;
+const navLinks = [
+  { href: "/",                label: "Home" },
+  { href: "/dream-symbols",  label: "Dream Symbols" },
+  { href: "/seer",           label: "The Seer" },
+  { href: "/journal",        label: "Journal" },
+  { href: "/sleep-tools-hub",label: "Sleep Tools" },
+  { href: "/about",          label: "About" },
+];
+---
+
+<style>
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15, 5, 32, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+    padding: 0.75rem 1.5rem;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #c4b5fd;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .nav-logo:hover { color: #fff; }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: #a78bfa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: #fff; }
+  .affiliate-notice {
+    width: 100%;
+    text-align: center;
+    font-size: 0.72rem;
+    color: #64748b;
+    padding: 0.3rem 0 0;
+    border-top: 1px solid rgba(167, 139, 250, 0.08);
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 640px) {
+    .nav-links { gap: 0.75rem; }
+    .nav-links a { font-size: 0.8rem; }
+  }
+</style>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">✦ DreamMeaningGuide</a>
+    <ul class="nav-links">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class={currentPath === link.href ? "active" : ""}
+            aria-current={currentPath === link.href ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <p class="affiliate-notice">
+    DreamMeaningGuide participates in the Amazon Services LLC Associates Program.
+    Affiliate links help support this site at no extra cost to you.
+  </p>
+</nav>
+
+

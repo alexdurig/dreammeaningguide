@@ -1,0 +1,88 @@
+﻿
+---
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const pageTitle = "The Seer | DreamMeaningGuide";
+const pageDescription = "Ask your question and receive a symbolic answer from The Seer.";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: Inter, sans-serif; background: radial-gradient(circle at top, #2b0f4a, #0f0a1a); color: #e8e0ff; margin: 0; padding: 0; }
+    main { max-width: 800px; margin: 0 auto; padding: 2rem; text-align: center; }
+    h1 { font-family: Cinzel, serif; font-size: 2.4rem; color: #d8c8ff; margin-bottom: 1rem; }
+    .seer-input { margin-top: 2rem; }
+    input { width: 80%; padding: 0.8rem; border-radius: 6px; border: 1px solid #6a4bcf; background: #1a1330; color: #e8e0ff; font-size: 1rem; }
+    button { margin-top: 1rem; padding: 0.7rem 1.4rem; background: #7c3aed; border: none; border-radius: 6px; color: white; font-size: 1rem; cursor: pointer; transition: background 0.3s ease; }
+    button:hover { background: #9d5bff; }
+    .seer-title { font-family: Cinzel, serif; font-size: 1.6rem; margin-top: 2.5rem; opacity: 0; transition: opacity 1.5s ease; }
+    #seer-answer-box { margin-top: 2rem; font-size: 1.4rem; min-height: 120px; opacity: 0; position: relative; }
+    #seer-answer-box::before { content: "✦"; position: absolute; font-size: 6rem; color: rgba(255,255,255,0.08); left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(20deg); animation: glyphShimmer 6s infinite ease-in-out; pointer-events: none; }
+    @keyframes glyphShimmer { 0% { opacity:0.05; transform:translate(-50%,-50%) scale(1.0) rotate(20deg); } 50% { opacity:0.15; transform:translate(-50%,-50%) scale(1.05) rotate(25deg); } 100% { opacity:0.05; transform:translate(-50%,-50%) scale(1.0) rotate(20deg); } }
+    .moon-pulse { font-size: 2.4rem; opacity: 0; animation: moonPulse 2s infinite ease-in-out; margin-top: 1rem; }
+    @keyframes moonPulse { 0% { opacity:0.3; transform:scale(1.0); } 50% { opacity:0.8; transform:scale(1.15); } 100% { opacity:0.3; transform:scale(1.0); } }
+    .fadeRippleGlow { animation: fadeRippleGlow 4s ease forwards; }
+    @keyframes fadeRippleGlow { 0% { opacity:0; filter:blur(8px); text-shadow:0 0 4px #a78bfa; transform:scale(1.02); } 50% { opacity:0.6; filter:blur(4px); text-shadow:0 0 12px #c4b5fd; transform:scale(1.01); } 100% { opacity:1; filter:blur(0px); text-shadow:0 0 18px #e0d4ff; transform:scale(1.0); } }
+  </style>
+</head>
+<body>
+  <SiteNav />
+  <main>
+    <h1>The Seer</h1>
+    <div class="seer-input">
+      <input id="seer-question" type="text" placeholder="Ask your question..." />
+      <br />
+      <button onclick="revealSeerAnswer()">Ask The Seer</button>
+    </div>
+    <div id="seer-title" class="seer-title">The Seer's Answer For You</div>
+    <div class="moon-pulse" id="moon-pulse">🌙</div>
+    <div id="seer-answer-box"></div>
+    <audio id="seer-chime" preload="auto">
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7f3c7e0c57.mp3?filename=soft-chime-ambient-10141.mp3" type="audio/mpeg">
+    </audio>
+  </main>
+  <SiteFooter />
+  <script>
+    const seerPools = {
+      Insight: ["The pattern behind your question is shifting — revealing a truth you are ready to see.","You already sense the answer; The Seer simply confirms what your deeper mind knows.","The tension you feel is not a mistake — it is the pressure of insight forming.","Your question is a doorway; the answer is the room you have not yet entered.","Clarity will not arrive all at once — it will come in small, undeniable pieces.","You are closer to understanding than your doubt is willing to admit.","The Seer shows you this: your next step is smaller than your fear, but larger than your comfort.","The answer is not far away; it is just hiding behind the story you keep telling yourself."],
+      Warning: ["The Seer feels a subtle caution: do not rush what is still unfolding.","A path that looks easy may be asking you to abandon something essential.","You are being invited to notice what you are ignoring — especially the quiet discomfort.","The Seer whispers: beware of choices made only to silence anxiety.","Not every open door is meant for you; some are tests of your discernment.","If you must betray yourself to proceed, the path is not truly yours.","The warning is gentle but firm: do not trade long-term truth for short-term relief.","The Seer shows a fork in the road — one lit by honesty, one by denial."],
+      Encouragement: ["The Seer sees your effort — and it is not invisible to the future you.","You are not behind; you are exactly where your story needed you to pause.","The answer carries this message: keep going, but with more kindness toward yourself.","You are allowed to move slowly and still be moving in the right direction.","The Seer smiles: your courage has already changed more than you realize.","You are not alone in this question; many have stood where you stand now.","The next chapter does not require perfection — only sincerity and one honest step.","The Seer places a hand on your shoulder: you are capable of more gentle strength than you think."],
+      Mystery: ["The Seer does not fully resolve this — some questions are meant to stay half-lit.","You are being invited into a mystery, not a conclusion.","The answer arrives in fragments, like moonlight through branches.","The Seer shows you symbols instead of instructions; follow what feels quietly significant.","Not knowing is not a failure — it is a fertile space where meaning grows.","The mystery around your question is part of its power, not its flaw.","The Seer leaves a riddle: what if the unknown is already working in your favor?","You are standing at the edge of something that cannot be rushed into clarity."],
+      Transformation: ["The Seer sees a shedding — something old is ready to fall away.","Your question is a sign that you have already begun to change.","The answer carries a transformation: you will not return to the person you were before this.","The Seer shows a serpent leaving its skin — uncomfortable, necessary, sacred.","You are not losing yourself; you are losing the version of you that cannot come with you.","The change you fear may be the very change that frees you.","The Seer reveals this: your life is rearranging to match a deeper truth.","You are crossing a threshold; the old story will not survive on the other side."],
+      Destiny: ["The Seer feels a strong pull — your question touches your destiny.","You are closer to your true path than your doubt suggests.","The answer is tied to a long arc in your life, not just this moment.","The Seer shows a thread running through your past, present, and future.","You are not off-course; you are in the middle of a necessary curve.","The calling you feel is real — even if you cannot yet name it.","The Seer whispers: your future self is grateful you asked this question now.","You are aligning with something larger than your current circumstances."],
+      Shadow: ["The Seer gently points to what you avoid — there is meaning there.","Your question brushes against a shadow you have not fully faced.","The answer asks you to look at the part of you that feels least lovable.","The Seer shows a mirror in dim light — you are invited to look longer.","What you push away may be holding a key to your freedom.","The discomfort around this question is a signal, not a flaw.","The Seer reveals that your shadow is not your enemy; it is your unspoken story.","You are ready to bring more of your hidden self into the light."],
+      Light: ["The Seer sees a quiet radiance around you — something good is already forming.","Your question is a beam of light searching for its source.","The answer carries warmth: you are allowed to feel hopeful about this.","The Seer shows a lantern being lit in a long hallway.","You are not in the dark as much as you think; there is guidance nearby.","The light in this situation may come from an unexpected person or moment.","The Seer smiles: joy is not irrelevant to this question — it is part of the answer.","You are allowed to trust that something benevolent is moving with you."]
+    };
+    const seerCategories = Object.keys(seerPools);
+    function typeWriterEffect(element, text, speed = 45) { let i = 0; element.innerHTML = ""; const interval = setInterval(() => { element.innerHTML += text.charAt(i); i++; if (i >= text.length) clearInterval(interval); }, speed); }
+    function chooseSeerAnswer() { const category = seerCategories[Math.floor(Math.random() * seerCategories.length)]; const pool = seerPools[category]; const answer = pool[Math.floor(Math.random() * pool.length)]; return { category, answer }; }
+    function revealSeerAnswer() {
+      const question = document.getElementById("seer-question").value.trim();
+      const title = document.getElementById("seer-title");
+      const answerBox = document.getElementById("seer-answer-box");
+      const moon = document.getElementById("moon-pulse");
+      const chime = document.getElementById("seer-chime");
+      if (!question) return;
+      title.style.opacity = "0"; answerBox.style.opacity = "0"; answerBox.innerHTML = ""; moon.style.opacity = "0";
+      setTimeout(() => { title.style.opacity = "1"; }, 500);
+      setTimeout(() => { moon.style.opacity = "1"; }, 1000);
+      setTimeout(() => {
+        moon.style.opacity = "0"; chime.play();
+        answerBox.classList.remove("fadeRippleGlow"); void answerBox.offsetWidth; answerBox.classList.add("fadeRippleGlow"); answerBox.style.opacity = "1";
+        const { category, answer } = chooseSeerAnswer();
+        typeWriterEffect(answerBox, `[${category}] ` + answer, 40);
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
+
+

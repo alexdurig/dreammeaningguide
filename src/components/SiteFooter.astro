@@ -1,0 +1,62 @@
+﻿
+---
+const year = new Date().getFullYear();
+---
+
+<style>
+  .site-footer {
+    margin-top: 5rem;
+    border-top: 1px solid rgba(167, 139, 250, 0.15);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    padding: 0;
+  }
+  .footer-links a {
+    color: #a78bfa;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-links a:hover { color: #e8e0ff; }
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    color: #c4b5fd;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+</style>
+
+<footer class="site-footer">
+  <span class="footer-logo">✦ DreamMeaningGuide</span>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/dream-symbols">Dream Symbols</a></li>
+    <li><a href="/seer">The Seer</a></li>
+    <li><a href="/journal">Journal</a></li>
+    <li><a href="/sleep-tools-hub">Sleep Tools</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+  <p>
+    Part of <a href="https://themeaningatlas.com" target="_blank" rel="noopener">The Meaning Atlas</a> network.
+  </p>
+  <p style="margin-top:0.5rem;">
+    &copy; {year} DreamMeaningGuide.site — All rights reserved.
+  </p>
+  <p style="margin-top:0.75rem; font-size:0.75rem; color:#475569;">
+    As an Amazon Associate, DreamMeaningGuide earns from qualifying purchases.
+    Product recommendations are editorially independent.
+  </p>
+</footer>
+
+

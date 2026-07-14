@@ -1,0 +1,222 @@
+﻿
+---
+import SiteNav    from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+// sleep-tools-hub.astro
+// DreamMeaningGuide.site — Sleep Tools Hub
+// Replace "dreamguide-20" with your verified Amazon Associates tag before deploying.
+
+const pageTitle = "Sleep Tools Hub | DreamMeaningGuide";
+const pageDescription =
+  "Curated tools for deeper sleep, richer dreams, and meaningful rest. Every recommendation is chosen to support your journey into the unconscious.";
+
+const affiliateTag = "dreamguide-20"; // ← REPLACE with your tag
+
+const amz = (asin: string) =>
+  `https://www.amazon.com/dp/${asin}?tag=${affiliateTag}&linkCode=ogi&th=1&psc=1`;
+
+const sections = [
+  {
+    id: "descent",
+    icon: "🌒",
+    title: "Descent Into Sleep",
+    subtitle: "Pre-sleep rituals that quiet the waking mind",
+    products: [
+      { name: "Manta Sleep Mask – 100% Blackout", asin: "B07QBH7FKK", badge: "Editor's Pick", badgeColor: "#7c3aed", price: "~$35", why: "Modular eye cups create a total sensory seal — no light, no pressure on eyelids. Trusted by light-sensitive dreamers and frequent travelers.", tags: ["sleep mask","blackout","travel"] },
+      { name: "Olly Sleep Melatonin Gummies (Blackberry)", asin: "B00LMJPZS2", badge: "Best Seller", badgeColor: "#0891b2", price: "~$14", why: "3mg melatonin plus L-theanine in a gentle, non-habit-forming format. A soft bridge between wakefulness and the dream threshold.", tags: ["melatonin","supplement","gummies"] },
+      { name: "Zenni Blue-Light Blocking Glasses", asin: null, directUrl: "https://www.zennioptical.com/b/blue-light-glasses", badge: null, price: "~$17+", why: "Blocking screen blue light 90 minutes before bed accelerates melatonin onset. Zenni offers prescription-grade frames at accessible prices.", tags: ["blue light","glasses","screen"], isPlaceholder: false, isExternal: true },
+      { name: "Now Foods L-Theanine 200mg", asin: "B0013OXKHC", badge: null, price: "~$12", why: "Promotes alpha-wave relaxation without sedation — ideal for winding down the overactive mind that resists sleep.", tags: ["l-theanine","supplement","calm"] },
+      { name: "⟶ Magnesium Glycinate — Coming Soon", asin: null, directUrl: null, badge: "Placeholder", badgeColor: "#6b7280", price: "TBD", why: "A highly bioavailable magnesium form shown to support deep sleep and muscle relaxation. Link pending affiliate approval.", tags: ["magnesium","supplement","placeholder"], isPlaceholder: true },
+    ],
+  },
+  {
+    id: "chamber",
+    icon: "🌙",
+    title: "The Dream Chamber",
+    subtitle: "Environment tools that hold and deepen sleep",
+    products: [
+      { name: "LectroFan Classic White Noise Machine", asin: "B00MY3XF3U", badge: "Staff Favorite", badgeColor: "#7c3aed", price: "~$50", why: "Ten fan sounds, ten white/pink/brown noise variants — no looping, no surprises. Masks the chaotic ambient noise that interrupts deep sleep cycles.", tags: ["white noise","sound machine","sleep environment"] },
+      { name: "Gravity Weighted Blanket (20 lb)", asin: "B077L8K3V9", badge: "Most Popular", badgeColor: "#0891b2", price: "~$85", why: "Deep pressure stimulation mimics the sensation of being held, activating the parasympathetic nervous system. Popular with anxious sleepers and light dreamers.", tags: ["weighted blanket","anxiety","sensory"] },
+      { name: "Philips SmartSleep Connected Sleep & Wake-Up Light", asin: "B07C45FBVZ", badge: "Premium Pick", badgeColor: "#7c3aed", price: "~$120", why: "Simulates natural sunset to trigger melatonin production, then sunrise to align cortisol rhythm — replacing jarring alarm sounds with biological light cues.", tags: ["wake-up light","circadian","sunrise alarm"] },
+      { name: "Casper Sleep Pillow (Original)", asin: "B00UBD7NGM", badge: null, price: "~$75", why: "Ergonomically zoned fill prevents neck misalignment — because the body's position during sleep directly shapes dream quality and memory consolidation.", tags: ["pillow","ergonomic","support"] },
+      { name: "Govee RGBIC LED Ambient Light Strip", asin: "B09BKPBS5J", badge: null, price: "~$30", why: "Set to deep violet or warm amber bias lighting at 10% brightness. Tames screen contrast and cues the brain toward evening mode.", tags: ["ambient light","LED","bias lighting"] },
+      { name: "⟶ Blackout Curtains — Link Pending", asin: null, directUrl: null, badge: "Placeholder", badgeColor: "#6b7280", price: "TBD", why: "Total light elimination is one of the highest-leverage sleep improvements available. Awaiting best-value ASIN confirmation.", tags: ["curtains","blackout","light control","placeholder"], isPlaceholder: true },
+    ],
+  },
+  {
+    id: "tracking",
+    icon: "📡",
+    title: "Deep Rest Decoded",
+    subtitle: "Track, measure, and understand your sleep architecture",
+    products: [
+      { name: "Withings Sleep Tracking Mat (Under Mattress)", asin: "B078Z1B43P", badge: "Top Tracker", badgeColor: "#7c3aed", price: "~$100", why: "No wearable required. Slips under your mattress and tracks heart rate, breathing, snoring, and sleep cycles. Data syncs to Health Mate app with sleep score.", tags: ["sleep tracker","no-wearable","heart rate"] },
+      { name: "Oura Ring Gen 3 (Horizon)", asin: null, directUrl: "https://ouraring.com/product/rings/horizon?ref=dreamguide", badge: "Gold Standard", badgeColor: "#d97706", price: "~$299 + subscription", why: "The most accurate consumer-grade sleep stage tracker available. Measures HRV, body temperature, REM/deep ratios, and readiness — worn overnight without disruption.", tags: ["oura ring","HRV","readiness","wearable"], isExternal: true },
+      { name: "Fitbit Charge 6 — Sleep Tracking + SpO2", asin: "B0CDF6Q3WG", badge: null, price: "~$160", why: "Tracks blood oxygen saturation, sleep stages, and skin temperature variation — a solid mid-tier tracker for those who want actionable nightly data at lower cost.", tags: ["fitbit","SpO2","wearable","sleep stages"] },
+      { name: "⟶ Dream Journal — Coming Soon", asin: null, directUrl: null, badge: "Placeholder", badgeColor: "#6b7280", price: "TBD", why: "A curated physical journal for logging dreams, symbols, and patterns immediately upon waking — the analog complement to digital tracking.", tags: ["dream journal","analog","placeholder"], isPlaceholder: true },
+    ],
+  },
+  {
+    id: "emergence",
+    icon: "🌅",
+    title: "Morning Emergence",
+    subtitle: "Tools that honor the transition back into waking life",
+    products: [
+      { name: "Hatch Restore 2 — Smart Sunrise Alarm", asin: "B0BFLGQRLN", badge: "Fan Favorite", badgeColor: "#0891b2", price: "~$200", why: "Combines sunrise simulation, soundscapes, and wind-down routines in one elegant device. A full sleep ritual companion, morning to night.", tags: ["sunrise alarm","smart","soundscape"] },
+      { name: "Keurig K-Mini Single Serve Coffee Maker", asin: "B07GV2S1GS", badge: null, price: "~$80", why: "A practical morning anchor: the simple ritual of brewing coffee signals full emergence from the dream state into intentional waking life.", tags: ["coffee","morning ritual","practical"] },
+      { name: "⟶ Light Therapy Lamp — Coming Soon", asin: null, directUrl: null, badge: "Placeholder", badgeColor: "#6b7280", price: "TBD", why: "10,000-lux SAD lamp for morning cortisol activation — especially useful in low-light seasons. Researching best ASIN.", tags: ["light therapy","SAD lamp","cortisol","placeholder"], isPlaceholder: true },
+      { name: "⟶ Cold Plunge / Ice Bath — Placeholder", asin: null, directUrl: null, badge: "Placeholder", badgeColor: "#6b7280", price: "TBD", why: "Cold exposure 20–30 min after waking triggers norepinephrine and sharpens morning alertness. Product research in progress.", tags: ["cold plunge","ice bath","alertness","placeholder"], isPlaceholder: true },
+    ],
+  },
+  {
+    id: "aroma",
+    icon: "🌿",
+    title: "Scent & Atmosphere",
+    subtitle: "Aromatherapy and sensory tools for the sleep environment",
+    products: [
+      { name: "URPOWER Essential Oil Diffuser (300ml)", asin: "B013T8QMHQ", badge: "Best Value", badgeColor: "#059669", price: "~$20", why: "Ultrasonic misting with 7 ambient light modes. Run lavender or cedarwood oil 30 min before bed to chemically shift the nervous system toward rest.", tags: ["diffuser","aromatherapy","essential oil"] },
+      { name: "Plant Therapy Lavender Essential Oil (100% Pure)", asin: "B009HSBHLM", badge: null, price: "~$13", why: "Consistently rated the most well-studied essential oil for sleep. Linalool content directly modulates GABA receptors — a mild, natural sedative pathway.", tags: ["lavender","essential oil","GABA"] },
+      { name: "Vitruvi Stone Diffuser (Ceramic)", asin: "B01N25T6OJ", badge: "Aesthetic Pick", badgeColor: "#7c3aed", price: "~$119", why: "A premium ceramic diffuser that doubles as a bedside sculpture. Minimal, quiet, and elegant — designed to belong on a sleep altar, not hidden in a cabinet.", tags: ["diffuser","ceramic","aesthetic","premium"] },
+      { name: "⟶ Sleep Candle — Placeholder", asin: null, directUrl: null, badge: "Placeholder", badgeColor: "#6b7280", price: "TBD", why: "A natural beeswax or soy candle with sleep-supporting botanicals (chamomile, sandalwood, valerian). Searching for an affiliate-eligible brand.", tags: ["candle","beeswax","sleep ritual","placeholder"], isPlaceholder: true },
+    ],
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://dreammeaningguide.site/sleep-tools-hub" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --purple-950: #1a0a2e; --purple-900: #2d1554; --purple-800: #4a1d7a; --purple-700: #6b21a8;
+        --purple-600: #7c3aed; --purple-500: #8b5cf6; --purple-400: #a78bfa; --purple-300: #c4b5fd;
+        --gold: #f0c060; --teal: #0891b2; --green: #059669; --slate-700: #334155; --slate-500: #64748b;
+        --white: #ffffff; --card-bg: rgba(45,21,84,0.55); --card-border: rgba(167,139,250,0.18);
+        --glow-purple: 0 0 40px rgba(139,92,246,0.25); --radius-lg: 1rem; --radius-xl: 1.5rem; --transition: 0.22s ease;
+      }
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, sans-serif; background: radial-gradient(ellipse at 20% 0%, #2d1554 0%, #0f0520 55%, #000000 100%); color: var(--white); min-height: 100vh; line-height: 1.6; }
+      body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(1px 1px at 12% 8%, rgba(255,255,255,0.7) 0%, transparent 100%), radial-gradient(1px 1px at 38% 15%, rgba(255,255,255,0.5) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 55% 4%, rgba(255,255,255,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 72% 22%, rgba(255,255,255,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 88% 11%, rgba(255,255,255,0.7) 0%, transparent 100%), radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.3) 0%, transparent 100%), radial-gradient(1px 1px at 63% 40%, rgba(255,255,255,0.5) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 90% 55%, rgba(255,255,255,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 5% 60%, rgba(255,255,255,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 45% 70%, rgba(255,255,255,0.3) 0%, transparent 100%), radial-gradient(1px 1px at 78% 75%, rgba(255,255,255,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 18% 85%, rgba(255,255,255,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 33% 92%, rgba(255,255,255,0.3) 0%, transparent 100%), radial-gradient(1px 1px at 60% 88%, rgba(255,255,255,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 95% 82%, rgba(255,255,255,0.4) 0%, transparent 100%); pointer-events: none; z-index: 0; }
+      .page-wrap { position: relative; z-index: 1; }
+      .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+      .hero { text-align: center; padding: 5rem 1.5rem 3rem; }
+      .hero-moon { font-size: 4.5rem; display: block; margin-bottom: 1.25rem; filter: drop-shadow(0 0 28px rgba(240,192,96,0.5)); animation: float 6s ease-in-out infinite; }
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+      .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem,5vw,3.25rem); font-weight: 700; color: var(--white); letter-spacing: 0.03em; margin-bottom: 1rem; text-shadow: 0 0 40px rgba(139,92,246,0.6); }
+      .hero h1 em { font-style: normal; color: var(--gold); }
+      .hero-tagline { font-size: clamp(1rem,2vw,1.2rem); color: var(--purple-300); max-width: 640px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.7; }
+      .hero-divider { width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--purple-500), transparent); margin: 0 auto; }
+      .section-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 2rem 1.5rem 1rem; max-width: 1100px; margin: 0 auto; }
+      .section-tab { display: flex; align-items: center; gap: 0.4rem; padding: 0.45rem 1rem; border: 1px solid var(--card-border); border-radius: 9999px; background: var(--card-bg); color: var(--purple-300); text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.02em; transition: all var(--transition); backdrop-filter: blur(8px); }
+      .section-tab:hover { background: rgba(139,92,246,0.25); border-color: var(--purple-500); color: var(--white); transform: translateY(-2px); }
+      .tool-section { padding: 3rem 0 1.5rem; scroll-margin-top: 80px; }
+      .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+      .section-icon { font-size: 2rem; filter: drop-shadow(0 0 12px rgba(167,139,250,0.6)); }
+      .section-title { font-family: 'Cinzel', serif; font-size: clamp(1.3rem,3vw,1.75rem); color: var(--white); letter-spacing: 0.02em; }
+      .section-subtitle { color: var(--purple-400); font-size: 0.95rem; margin-bottom: 1.75rem; padding-left: calc(2rem + 1rem + 1rem); font-style: italic; }
+      .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.25rem; }
+      .product-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-xl); padding: 1.5rem; backdrop-filter: blur(12px); transition: all var(--transition); display: flex; flex-direction: column; gap: 0.75rem; }
+      .product-card:not(.is-placeholder):hover { transform: translateY(-4px); box-shadow: var(--glow-purple); border-color: rgba(139,92,246,0.4); }
+      .product-card.is-placeholder { opacity: 0.6; border-style: dashed; border-color: rgba(167,139,250,0.3); cursor: default; }
+      .product-badge { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 9999px; color: #fff; width: fit-content; }
+      .product-name { font-size: 1rem; font-weight: 600; color: var(--white); line-height: 1.4; }
+      .product-card.is-placeholder .product-name { color: var(--purple-300); font-style: italic; }
+      .product-price { font-size: 0.85rem; color: var(--gold); font-weight: 500; }
+      .product-card.is-placeholder .product-price { color: var(--slate-500); }
+      .product-why { font-size: 0.875rem; color: var(--purple-300); line-height: 1.65; flex: 1; }
+      .product-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+      .product-tag { font-size: 0.68rem; color: var(--purple-400); background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.2); border-radius: 9999px; padding: 0.15rem 0.55rem; letter-spacing: 0.03em; }
+      .btn-cta { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.6rem 1.25rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all var(--transition); border: none; width: 100%; text-align: center; }
+      .btn-amazon { background: linear-gradient(135deg, #f90 0%, #e47911 100%); color: #111; }
+      .btn-amazon:hover { filter: brightness(1.1); transform: scale(1.02); }
+      .btn-external { background: linear-gradient(135deg, var(--purple-700) 0%, var(--purple-600) 100%); color: var(--white); border: 1px solid var(--purple-500); }
+      .btn-external:hover { background: linear-gradient(135deg, var(--purple-600) 0%, var(--purple-500) 100%); transform: scale(1.02); }
+      .btn-placeholder { background: rgba(100,116,139,0.2); color: var(--slate-500); border: 1px dashed var(--slate-700); cursor: not-allowed; pointer-events: none; }
+      .section-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(139,92,246,0.3), transparent); margin: 3rem 0 0; }
+      .callout { background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.25); border-left: 3px solid var(--purple-500); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin: 2.5rem 0 1rem; font-size: 0.9rem; color: var(--purple-300); line-height: 1.7; }
+      .callout strong { color: var(--gold); }
+      @media (max-width: 640px) { .section-subtitle { padding-left: 0; } .product-grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrap">
+      <SiteNav currentPath={Astro.url.pathname} />
+      <header class="hero container">
+        <span class="hero-moon">🌙</span>
+        <h1>The <em>Sleep Tools</em> Hub</h1>
+        <p class="hero-tagline">Every tool that deepens sleep opens a wider door to the unconscious. These are the instruments we trust to take you there.</p>
+        <div class="hero-divider"></div>
+      </header>
+      <div class="section-tabs">
+        {sections.map((s) => (
+          <a href={`#${s.id}`} class="section-tab">
+            <span>{s.icon}</span>
+            <span>{s.title}</span>
+          </a>
+        ))}
+      </div>
+      <div class="container">
+        <div class="callout">
+          <strong>How we choose.</strong> Each tool below has been selected for its verified sleep science backing, real-world effectiveness, and alignment with the philosophy of this guide — that quality rest is the foundation of meaningful inner life. Placeholder items are clearly marked and will be filled as soon as affiliate relationships are confirmed.
+        </div>
+      </div>
+      <main class="container">
+        {sections.map((section, si) => (
+          <section id={section.id} class="tool-section">
+            <div class="section-header">
+              <span class="section-icon">{section.icon}</span>
+              <h2 class="section-title">{section.title}</h2>
+            </div>
+            <p class="section-subtitle">{section.subtitle}</p>
+            <div class="product-grid">
+              {section.products.map((p) => {
+                const isPlaceholder = p.isPlaceholder === true;
+                const href = p.asin ? amz(p.asin) : p.directUrl ? p.directUrl : null;
+                return (
+                  <article class={`product-card${isPlaceholder ? " is-placeholder" : ""}`}>
+                    {p.badge && (
+                      <span class="product-badge" style={`background:${p.badgeColor ?? "#6b7280"}`}>{p.badge}</span>
+                    )}
+                    <h3 class="product-name">{p.name}</h3>
+                    <div class="product-price">{p.price}</div>
+                    <p class="product-why">{p.why}</p>
+                    {p.tags && (
+                      <div class="product-tags">
+                        {p.tags.filter((t) => t !== "placeholder").map((tag) => (
+                          <span class="product-tag">#{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                    {isPlaceholder ? (
+                      <span class="btn-cta btn-placeholder">Link Coming Soon</span>
+                    ) : p.isExternal ? (
+                      <a href={href} target="_blank" rel="noopener noreferrer sponsored" class="btn-cta btn-external">View Product ↗</a>
+                    ) : (
+                      <a href={href} target="_blank" rel="noopener noreferrer sponsored" class="btn-cta btn-amazon">🛒 View on Amazon</a>
+                    )}
+                  </article>
+                );
+              })}
+            </div>
+            {si < sections.length - 1 && <div class="section-divider"></div>}
+          </section>
+        ))}
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>
+
+

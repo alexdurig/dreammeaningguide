@@ -1,0 +1,54 @@
+﻿
+---
+import SiteNav from '../../../components/SiteNav.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+
+const pageTitle = "Archetype Dream Symbols | DreamMeaningGuide";
+const pageDescription = "Archetypal figures in dreams speak from the collective unconscious — they carry universal meaning.";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  <link rel="canonical" href="https://dreammeaningguide.site/dream-symbols/archetypes" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body { background: radial-gradient(circle at top, #2b0f4a, #0f0a1a); color: #e8e0ff; font-family: Inter, sans-serif; margin: 0; padding: 0; }
+    main { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
+    h1 { font-family: Cinzel, serif; font-size: 2.4rem; color: #d8c8ff; margin-bottom: 0.5rem; }
+    .subtitle { color: #a78bfa; font-size: 1rem; margin-bottom: 2rem; font-style: italic; }
+    .back-link { display: inline-block; margin-bottom: 2rem; color: #a78bfa; text-decoration: none; font-size: 0.9rem; }
+    .back-link:hover { color: #e8e0ff; }
+    .symbol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+    .symbol-item { background: #1a1330; border: 1px solid #6a4bcf; padding: 1rem; border-radius: 8px; text-align: center; transition: transform 0.3s ease, background 0.3s ease; cursor: pointer; }
+    .symbol-item:hover { transform: scale(1.05); background: #2b1a55; }
+  </style>
+</head>
+<body>
+  <SiteNav currentPath={Astro.url.pathname} />
+  <main>
+    <a href="/dream-symbols" class="back-link">← Back to Dream Symbols</a>
+    <h1>Archetype Symbols</h1>
+    <p class="subtitle">Archetypal figures in dreams speak from the collective unconscious — they carry universal meaning.</p>
+    <div class="symbol-grid">
+          <div class="symbol-item">Shadow</div>
+          <div class="symbol-item">Guide</div>
+          <div class="symbol-item">Child</div>
+          <div class="symbol-item">Warrior</div>
+          <div class="symbol-item">Seer</div>
+          <div class="symbol-item">Lover</div>
+          <div class="symbol-item">Trickster</div>
+          <div class="symbol-item">Hero</div>
+          <div class="symbol-item">Sage</div>
+          <div class="symbol-item">Mother</div>
+    </div>
+  </main>
+  <SiteFooter />
+</body>
+</html>
+
+

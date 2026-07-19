@@ -5,6 +5,8 @@ import SiteFooter from '../components/SiteFooter.astro';
 
 const pageTitle = "The Seer | DreamMeaningGuide";
 const pageDescription = "Ask your question and receive a symbolic answer from The Seer.";
+
+const tags = ["dreams", "symbols", "spirituality", "new age", "alternative beliefs"];
 ---
 
 <!doctype html>
@@ -14,6 +16,7 @@ const pageDescription = "Ask your question and receive a symbolic answer from Th
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{pageTitle}</title>
   <meta name="description" content={pageDescription} />
+  <meta name="keywords" content={tags.join(", ")} />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     body { font-family: Inter, sans-serif; background: radial-gradient(circle at top, #2b0f4a, #0f0a1a); color: #e8e0ff; margin: 0; padding: 0; }

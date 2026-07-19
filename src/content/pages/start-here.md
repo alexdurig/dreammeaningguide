@@ -2,7 +2,7 @@
 title: "Start Here"
 description: "Begin your journey into dream meaning with this orientation guide to DreamMeaningGuide.site."
 pubDate: "2026-07-17"
-tags: ["dreams", "symbolism", "guide", "orientation"]
+tags: ["dreams", "symbolism", "guide", "orientation", "spirituality", "new age", "alternative beliefs"]
 canonical: "https://dreammeaningguide.site/start-here"
 ---
 

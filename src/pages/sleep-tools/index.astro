@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site },
+    { '@type': 'ListItem', position: 2, name: 'Sleep Tools', item: Astro.url.href },
+  ],
+};
+---
+
+<BaseLayout
+  title="Sleep Tools Hub — Resources for Deeper Dreams"
+  description="Curated tools, products, and techniques for deeper sleep, lucid dreaming, and meaningful rest. Affiliate recommendations included."
+  schema={breadcrumbSchema}
+>
+  <main style="max-width: 800px; margin: 0 auto; padding: 2rem 1rem;">
+    <nav aria-label="Breadcrumb">
+      <ol style="display:flex; gap:0.5rem; list-style:none; padding:0; opacity:0.7; font-size:0.9rem;">
+        <li><a href="/">Home</a></li>
+        <li>›</li>
+        <li aria-current="page">Sleep Tools</li>
+      </ol>
+    </nav>
+
+    <header style="margin: 2rem 0;">
+      <h1>Sleep Tools Hub</h1>
+      <p>Curated resources for deeper sleep, lucid dreaming, and meaningful rest.</p>
+    </header>
+
+    <section style="margin-bottom: 2rem;">
+      <p>
+        The quality of your dreams depends enormously on the quality of your sleep. This hub gathers
+        the tools, techniques, and resources most effective for cultivating a rich dream life —
+        from sleep hygiene fundamentals to advanced lucid dreaming practices.
+      </p>
+      <p>
+        Some links on this page are affiliate links. We only recommend products we believe in.
+        See our <a href="/about">affiliate disclosure</a> for full details.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 2rem;">
+      <h2>Dream-Enhancement Techniques</h2>
+      <ul>
+        <li><strong>Dream journaling</strong> — Record dreams immediately upon waking. Use our <a href="/journal">Dream Journal</a> to build your archive.</li>
+        <li><strong>Reality checks</strong> — Practice throughout the day to carry the habit into sleep, enabling lucid dreaming.</li>
+        <li><strong>Sleep scheduling</strong> — Consistent sleep and wake times dramatically improve dream recall and REM quality.</li>
+        <li><strong>Intention setting</strong> — Before sleep, hold a question or image in mind. Ask <a href="/seer">The Seer</a> for a symbolic starting point.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Explore Dream Symbols</h2>
+      <p>
+        Better sleep is only half the picture. Understanding what your dreams are saying is the other.
+        Explore our <a href="/dream-symbols">Dream Symbol Dictionary</a> to decode the archetypes
+        and images in your dream life.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

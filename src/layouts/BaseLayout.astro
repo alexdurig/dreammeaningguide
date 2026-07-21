@@ -1,19 +1,52 @@
-
 ---
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import SEO from "../components/SEO.astro";
 
 export interface Props {
   title: string;
   description?: string;
   canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  schema?: object | object[];
 }
 
 const {
   title,
   description = "Explore dream symbolism, archetypes, and the unconscious mind at DreamMeaningGuide.site.",
   canonical = `https://dreammeaningguide.site${Astro.url.pathname}`,
+  ogImage = '/og-default.png',
+  noindex = false,
+  schema,
 } = Astro.props;
+
+const isHomepage = Astro.url.pathname === '/';
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'DreamMeaningGuide',
+  url: 'https://dreammeaningguide.site',
+  description: 'Decode the symbols, archetypes, and patterns in your dreams.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'DreamMeaningGuide',
+    url: 'https://dreammeaningguide.site',
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://dreammeaningguide.site/dream-symbols?q={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const allSchemas = [
+  ...(isHomepage ? [websiteSchema] : []),
+  ...(schema ? (Array.isArray(schema) ? schema : [schema]) : []),
+];
 ---
 
 <!doctype html>
@@ -21,12 +54,19 @@ const {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
-  <link rel="canonical" href={canonical} />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <SEO
+    title={title}
+    description={description}
+    canonicalURL={canonical}
+    ogImage={ogImage}
+    noindex={noindex}
+    schema={allSchemas.length > 0 ? allSchemas : undefined}
+  />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -49,5 +89,6 @@ const {
   <SiteFooter />
 </body>
 </html>
+
 
 

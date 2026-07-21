@@ -1,1 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const SYMBOLS = [
+  { slug: 'snake', name: 'Snake', category: 'Animals', tagline: 'Transformation, primal instinct & hidden fears', description: 'In dreams, a snake represents transformation, hidden fears, primal instincts, and the unconscious mind. It is one of the most universal symbols across cultures — appearing in mythology, religion, and depth psychology as an agent of change, danger, or healing.', meanings: ['Transformation and shedding of the old self', 'Hidden fears or threats lurking beneath the surface', 'Primal energy, sexuality, and life force (kundalini)', 'Wisdom and healing (the caduceus)', 'Deception or betrayal from an unexpected source'], related: ['wolf', 'shadow', 'fear'] },
+  { slug: 'wolf', name: 'Wolf', category: 'Animals', tagline: 'Instinct, freedom & the shadow self', description: 'The wolf in dreams often signals a call to trust your instincts, reclaim your wild nature, or confront a threatening force. Wolves are pack animals and may also represent community, loyalty, or the fear of betrayal.', meanings: ['Raw instinct and primal intelligence', 'Freedom and independence from social constraints', 'The shadow self — aspects of yourself you suppress', 'A threatening presence or predatory energy', 'Loyalty, kinship, and belonging to a tribe'], related: ['shadow', 'forest', 'guide'] },
+  { slug: 'bird', name: 'Bird', category: 'Animals', tagline: 'Freedom, perspective & messages from beyond', description: 'Birds in dreams carry messages from the higher self or the unconscious. They represent freedom, transcendence, and the ability to rise above earthly concerns and gain a wider perspective on your life.', meanings: ['Spiritual messages and intuition', 'Freedom from limitation or constraint', 'Perspective — seeing the bigger picture', 'The soul or the higher self in flight', 'New ideas, inspiration, and creative vision'], related: ['peace', 'guide', 'seer'] },
+  { slug: 'cat', name: 'Cat', category: 'Animals', tagline: 'Mystery, independence & feminine power', description: 'Cats in dreams embody mystery, grace, and independence. They are deeply connected to the feminine archetype, intuition, and the hidden world of the night. A cat may signal a need to trust your instincts or embrace your independence.', meanings: ['Mystery and the unknown', 'Feminine energy, grace, and sensuality', 'Intuition and psychic sensitivity', 'Independence and self-sufficiency', 'A warning to pay attention to what is hidden'], related: ['shadow', 'seer', 'peace'] },
+  { slug: 'horse', name: 'Horse', category: 'Animals', tagline: 'Power, freedom & unbridled drive', description: 'The horse is one of the most powerful dream symbols, representing raw energy, freedom, and forward momentum. It can signal that you are harnessing great power in your life — or that you are being carried forward by forces beyond your control.', meanings: ['Unbridled power and physical vitality', 'Freedom of movement and personal drive', 'Nobility, grace, and strength of character', 'Being carried by momentum — for good or ill', 'The need to gain control over your instincts'], related: ['warrior', 'guide', 'forest'] },
+  { slug: 'forest', name: 'Forest', category: 'Places', tagline: 'The unconscious, mystery & transformation', description: 'The forest is a classic symbol of the unconscious mind — a place where the familiar world gives way to shadow, mystery, and unknown territory. Entering a forest in a dream often marks the beginning of an inner journey.', meanings: ['The unconscious mind and its hidden depths', 'The unknown — both frightening and full of potential', 'Transformation through a period of confusion or darkness', 'Nature, instinct, and the call of the wild self', 'A transitional space between two phases of life'], related: ['mountain', 'wolf', 'shadow'] },
+  { slug: 'ocean', name: 'Ocean', category: 'Places', tagline: 'The depths of emotion & the collective unconscious', description: 'The ocean in dreams represents the vast, unmeasured depths of the unconscious and the collective emotional life of humanity. It may evoke awe, fear, longing, or peace — depending on the state of the water and your relationship to it.', meanings: ['The collective unconscious and deep emotional life', 'Vastness, mystery, and the infinite', 'Emotional overwhelm or the fear of being submerged', 'Peace, surrender, and trust in the larger flow of life', 'The source — where all life originates'], related: ['bridge', 'peace', 'longing'] },
+  { slug: 'bridge', name: 'Bridge', category: 'Places', tagline: 'Transition, connection & crossing over', description: 'A bridge in a dream marks a crossing point — a transition between two states, two phases of life, or two aspects of the self. It invites you to move forward even when the destination is uncertain.', meanings: ['A major life transition or decision point', 'Connection between two worlds, states, or aspects of self', 'Courage to move forward into the unknown', 'Overcoming an obstacle or emotional divide', 'A link between the conscious and unconscious mind'], related: ['ocean', 'city', 'confusion'] },
+  { slug: 'mountain', name: 'Mountain', category: 'Places', tagline: 'Challenge, achievement & elevated perspective', description: 'Mountains in dreams symbolize the great challenges and achievements of life. Climbing a mountain suggests effort, ambition, and the desire for a higher perspective. Reaching the summit brings clarity and vision.', meanings: ['A significant challenge or goal', 'The spiritual path — difficulty leading to illumination', 'Elevated perspective and clarity of vision', 'Ambition, aspiration, and the desire to rise', 'Obstacles that must be overcome to grow'], related: ['forest', 'warrior', 'guide'] },
+  { slug: 'city', name: 'City', category: 'Places', tagline: 'Society, identity & collective life', description: 'A city in dreams reflects your relationship to society, community, and the external world. The state of the city — vibrant or decaying, familiar or foreign — mirrors your feelings about your place in the social order.', meanings: ['Society, culture, and collective identity', 'Your relationship to the external world', 'Opportunity, ambition, and the public self', 'Feelings of anonymity, alienation, or belonging', 'The constructed environment versus the natural world'], related: ['bridge', 'confusion', 'warrior'] },
+  { slug: 'fear', name: 'Fear', category: 'Emotions', tagline: "The shadow's call & unacknowledged truth", description: "Fear appearing as a dominant emotion in dreams is rarely about the literal object of the fear. It is the psyche's way of drawing attention to something unacknowledged, suppressed, or avoided in waking life.", meanings: ['An unacknowledged threat in waking life', 'Suppressed emotions demanding attention', 'The shadow — aspects of yourself you are afraid to face', 'The approach of necessary change or transformation', 'A signal to examine what you are avoiding'], related: ['shadow', 'snake', 'confusion'] },
+  { slug: 'joy', name: 'Joy', category: 'Emotions', tagline: 'Wholeness, alignment & the self in bloom', description: 'Joy in dreams signals alignment — a moment of contact with the true self. It often accompanies symbols of fulfillment, reunion, or creative expression, and may point to something your waking life needs more of.', meanings: ['Alignment with your authentic self', 'A sense of wholeness and integration', 'Creative energy and aliveness', 'A glimpse of what your soul is seeking', 'Affirmation that you are on the right path'], related: ['peace', 'child', 'guide'] },
+  { slug: 'confusion', name: 'Confusion', category: 'Emotions', tagline: 'Liminality, transition & dissolution of the old', description: "Confusion in dreams marks a liminal state — an in-between place where the old structures have dissolved but the new ones have not yet formed. It is the psyche's signal that you are in a genuine transition.", meanings: ['A liminal or transitional period in life', 'The dissolution of old certainties and beliefs', 'The threshold between who you were and who you are becoming', 'Overwhelm — too many competing demands or choices', 'An invitation to slow down and let clarity emerge'], related: ['forest', 'bridge', 'shadow'] },
+  { slug: 'longing', name: 'Longing', category: 'Emotions', tagline: 'Soul desire & the call of the unlived life', description: "Longing in dreams points directly to the unlived life — the paths not taken, the connections not made, the aspects of self not yet expressed. It is one of the soul's most honest communications.", meanings: ['The unlived life — desires and potentials unrealized', 'Deep soul desire for connection, meaning, or beauty', 'Grief for something lost or left behind', 'A call to examine what is truly missing', 'Nostalgia and the relationship with the past self'], related: ['ocean', 'peace', 'child'] },
+  { slug: 'peace', name: 'Peace', category: 'Emotions', tagline: 'Integration, acceptance & the still center', description: 'Peace in dreams is a rare and profound signal — the feeling of the self at rest, at home in itself. It often follows a period of inner conflict or transformation, marking a moment of genuine integration.', meanings: ['Integration of conflicting aspects of the self', 'Acceptance of what cannot be changed', 'The still center beneath the turbulence of life', 'A moment of contact with the deeper self', 'Completion — the resolution of a long inner journey'], related: ['joy', 'ocean', 'seer'] },
+  { slug: 'shadow', name: 'Shadow', category: 'Archetypes', tagline: 'The rejected self & the source of hidden power', description: 'The Shadow is the part of the psyche that contains everything we have rejected, denied, or refused to see in ourselves. In dreams it often appears as a dark figure, a threatening presence, or a mirror-image self. Integrating the Shadow is central to psychological growth.', meanings: ['Repressed emotions, desires, and aspects of self', 'The source of unconscious projections onto others', 'Hidden power and creativity waiting to be reclaimed', 'The necessary encounter with what you have denied', 'An invitation to wholeness through integration'], related: ['guide', 'warrior', 'fear'] },
+  { slug: 'guide', name: 'Guide', category: 'Archetypes', tagline: 'Inner wisdom & the self that knows the way', description: 'The Guide archetype appears in dreams as a wise figure — an elder, a teacher, an animal companion, or an inner voice — who points the way forward. It represents the wisdom of the deeper self and the accumulated understanding of the psyche.', meanings: ['The wisdom of the deeper self made visible', 'A mentor or helper figure — inner or outer', 'The part of you that already knows the way', 'Trust in intuition and inner knowing', 'The next step on your path, revealed'], related: ['seer', 'child', 'warrior'] },
+  { slug: 'child', name: 'Child', category: 'Archetypes', tagline: 'Innocence, potential & the beginning self', description: 'The Child archetype in dreams carries the energy of new beginnings, innocence, and untapped potential. It may also represent a wound from childhood that is seeking acknowledgment and healing.', meanings: ['New beginnings and fresh potential', 'Innocence, wonder, and the unconditioned self', 'The inner child — often carrying an old wound', 'A call to return to simplicity and openness', 'The future self in its earliest, most vulnerable form'], related: ['guide', 'joy', 'longing'] },
+  { slug: 'warrior', name: 'Warrior', category: 'Archetypes', tagline: 'Courage, discipline & the will to act', description: 'The Warrior archetype embodies directed power, courage, and the willingness to face difficulty without retreating. In dreams it may appear as a call to take decisive action, defend something important, or overcome an inner obstacle.', meanings: ['Courage in the face of difficulty or danger', 'Discipline, focus, and directed will', 'The call to take decisive action', 'Defending what you value from attack or erosion', 'The part of you that does not retreat'], related: ['shadow', 'guide', 'mountain'] },
+  { slug: 'seer', name: 'Seer', category: 'Archetypes', tagline: 'Prophecy, vision & the eye that sees beyond', description: 'The Seer archetype represents prophetic vision, deep knowing, and the capacity to perceive what is hidden. In dreams, the Seer may arrive as an oracle, a blind elder, a mirror, or a voice that speaks truth directly to the dreaming mind.', meanings: ['Prophetic insight and deep inner knowing', 'The capacity to perceive what others cannot', 'Truth-telling — even when unwelcome', 'The integration of past, present, and future', 'An invitation to trust your own vision'], related: ['guide', 'shadow', 'peace'] },
+];
+
+export async function getStaticPaths() {
+  return SYMBOLS.map((symbol) => ({
+    params: { slug: symbol.slug },
+    props: { symbol },
+  }));
+}
+
+const { symbol } = Astro.props;
+
+const definedTermSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTerm',
+  name: `${symbol.name} Dream Symbol`,
+  description: symbol.description,
+  inDefinedTermSet: { '@type': 'DefinedTermSet', name: 'Dream Symbol Dictionary', url: `${Astro.site}dream-symbols` },
+  url: Astro.url.href,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site },
+    { '@type': 'ListItem', position: 2, name: 'Dream Symbols', item: `${Astro.site}dream-symbols` },
+    { '@type': 'ListItem', position: 3, name: symbol.name, item: Astro.url.href },
+  ],
+};
+---
+
+<BaseLayout
+  title={`${symbol.name} Dream Meaning — Symbols, Archetypes & Interpretations`}
+  description={`What does dreaming of a ${symbol.name.toLowerCase()} mean? ${symbol.tagline}. Explore the symbolic, psychological, and archetypal meanings.`}
+  schema={[definedTermSchema, breadcrumbSchema]}
+>
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/dream-symbols">Dream Symbols</a></li>
+      <li aria-current="page">{symbol.name}</li>
+    </ol>
+  </nav>
+
+  <article>
+    <header>
+      <p class="category">{symbol.category}</p>
+      <h1>{symbol.name} Dream Meaning</h1>
+      <p class="tagline">{symbol.tagline}</p>
+    </header>
+    <section class="overview">
+      <h2>What Does It Mean to Dream of a {symbol.name}?</h2>
+      <p>{symbol.description}</p>
+    </section>
+    <section class="meanings">
+      <h2>Core Symbolic Meanings</h2>
+      <ul>
+        {symbol.meanings.map((m) => <li>{m}</li>)}
+      </ul>
+    </section>
+    <section class="related">
+      <h2>Related Dream Symbols</h2>
+      <ul class="related-links">
+        {symbol.related.map((s) => (
+          <li><a href={`/dream-symbols/${s}`}>{s.charAt(0).toUpperCase() + s.slice(1)}</a></li>
+        ))}
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
 

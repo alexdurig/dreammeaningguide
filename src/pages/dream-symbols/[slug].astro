@@ -22,11 +22,41 @@ const bc = {
     { "@type": "ListItem", "position": 3, "name": symbol.name, "item": String(Astro.url) }
   ]
 };
+const faq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `What does it mean to dream of a ${symbol.name.toLowerCase()}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": symbol.description
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `What are the symbolic meanings of a ${symbol.name.toLowerCase()} in dreams?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": symbol.meanings.join('. ') + '.'
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `What other dream symbols are related to the ${symbol.name.toLowerCase()}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Dreams featuring the ${symbol.name.toLowerCase()} often connect to these related symbols: ${symbol.related.map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(', ')}.`
+      }
+    }
+  ]
+};
 ---
 <BaseLayout
   title={symbol.name + " Dream Meaning - Symbols, Archetypes and Interpretations"}
   description={"What does dreaming of a " + symbol.name.toLowerCase() + " mean? " + symbol.tagline + ". Explore the symbolic, psychological, and archetypal meanings."}
-  schema={[term, bc]}
+  schema={[term, bc, faq]}
 >
   <nav aria-label="Breadcrumb">
     <ol>
@@ -55,4 +85,5 @@ const bc = {
     </section>
   </article>
 </BaseLayout>
+
 

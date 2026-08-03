@@ -1,0 +1,22 @@
+---
+const { title } = Astro.props;
+import SiteNav from './SiteNav.astro';
+import SiteFooter from './SiteFooter.astro';
+import SEO from './SEO.astro';
+---
+
+<html lang="en">
+  <head>
+    <SEO title={title} />
+  </head>
+
+  <body style="font-family: Arial, sans-serif; background:#f7f7f7; margin:0;">
+    <SiteNav />
+
+    <main style="max-width:900px; margin:40px auto; padding:20px;">
+      <slot />
+    </main>
+
+    <SiteFooter />
+  </body>
+</html>

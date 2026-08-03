@@ -105,6 +105,20 @@ const tags = ["dream oracle", "symbolic answer", "dream interpretation", "archet
       const moon = document.getElementById("moon-pulse");
       const chime = document.getElementById("seer-chime");
       if (!question) return;
-      title.style.opacity = "0"; answerBox.style.opacity = "0"; answerBox.innerHTML = ""; moon.style.
+      title.style.opacity = "0"; answerBox.style.opacity = "0"; answerBox.innerHTML = "";
+      moon.style.opacity = "1";
+      moon.classList.add("pulse");
+
+      const { category, answer } = chooseSeerAnswer();
+      title.style.opacity = "1";
+
+      setTimeout(() => {
+        typeWriterEffect(answerBox, answer);
+        answerBox.style.opacity = "1";
+        chime.play();
+      }, 600);
+    }
+  </script>
+
 
 

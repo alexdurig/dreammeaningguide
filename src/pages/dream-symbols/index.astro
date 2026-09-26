@@ -1,17 +1,25 @@
-
 ---
 import SiteNav from '../../components/SiteNav.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
+import { SYMBOLS } from '../../data/symbols.js';
 
 const pageTitle = "Dream Symbols | DreamMeaningGuide";
 const pageDescription = "Explore symbolic meanings behind common dream symbols — animals, places, emotions, and archetypes.";
 
 const categories = [
-  { slug: "animals",    icon: "🐺", label: "Animals",    desc: "Instinct, shadow, spirit, and primal wisdom." },
-  { slug: "places",     icon: "🌲", label: "Places",     desc: "Inner landscapes reflected in outer settings." },
-  { slug: "emotions",   icon: "💜", label: "Emotions",   desc: "Amplified feelings from the unconscious mind." },
-  { slug: "archetypes", icon: "✦",  label: "Archetypes", desc: "Universal figures from the collective unconscious." },
+  { slug: "Animals",    icon: "🐺", label: "Animals",    desc: "Instinct, shadow, spirit, and primal wisdom." },
+  { slug: "Places",     icon: "🌲", label: "Places",     desc: "Inner landscapes reflected in outer settings." },
+  { slug: "Emotions",   icon: "💜", label: "Emotions",   desc: "Amplified feelings from the unconscious mind." },
+  { slug: "Archetypes", icon: "✦",  label: "Archetypes", desc: "Universal figures from the collective unconscious." },
 ];
+
+// Group symbols by category
+const grouped = {
+  Animals: SYMBOLS.filter(s => s.category === "Animals"),
+  Places: SYMBOLS.filter(s => s.category === "Places"),
+  Emotions: SYMBOLS.filter(s => s.category === "Emotions"),
+  Archetypes: SYMBOLS.filter(s => s.category === "Archetypes"),
+};
 ---
 
 <!doctype html>
@@ -25,6 +33,7 @@ const categories = [
   <meta property="og:description" content={pageDescription} />
   <link rel="canonical" href="https://dreammeaningguide.site/dream-symbols" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     body { background: radial-gradient(circle at top, #2b0f4a, #0f0a1a); color: #e8e0ff; font-family: Inter, sans-serif; margin: 0; padding: 0; }
     main { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
@@ -42,69 +51,49 @@ const categories = [
     .symbol-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
     .symbol-item { background: #1a1330; border: 1px solid #6a4bcf; padding: 1rem; border-radius: 8px; text-align: center; transition: transform 0.3s ease, background 0.3s ease; cursor: pointer; }
     .symbol-item:hover { transform: scale(1.05); background: #2b1a55; }
+    .symbol-item a { color: #e8e0ff; text-decoration: none; }
   </style>
 </head>
+
 <body>
   <SiteNav currentPath={Astro.url.pathname} />
+
   <main>
     <h1>Dream Symbols</h1>
     <p class="subtitle">Choose a category to explore, or search all symbols below.</p>
+
     <div class="search-box">
       <input id="symbol-search" type="text" placeholder="Search symbols..." oninput="filterSymbols()" />
     </div>
+
     <div class="category-grid">
       {categories.map(cat => (
-        <a href={`/dream-symbols/${cat.slug}`} class="category-card">
+        <a href={`/dream-symbols/${cat.slug.toLowerCase()}`} class="category-card">
           <span class="card-icon">{cat.icon}</span>
           <span class="card-label">{cat.label}</span>
           <span class="card-desc">{cat.desc}</span>
         </a>
       ))}
     </div>
+
     <div id="symbols-container" class="all-symbols">
-      <div class="symbol-category">
-        <h2>Animals</h2>
-        <div class="symbol-list">
-          <div class="symbol-item">Snake</div><div class="symbol-item">Wolf</div>
-          <div class="symbol-item">Bird</div><div class="symbol-item">Cat</div>
-          <div class="symbol-item">Horse</div><div class="symbol-item">Bear</div>
-          <div class="symbol-item">Spider</div><div class="symbol-item">Fox</div>
-          <div class="symbol-item">Owl</div><div class="symbol-item">Deer</div>
+      {Object.keys(grouped).map(cat => (
+        <div class="symbol-category">
+          <h2>{cat}</h2>
+          <div class="symbol-list">
+            {grouped[cat].map(symbol => (
+              <div class="symbol-item">
+                <a href={`/dream-symbols/${symbol.slug}`}>{symbol.name}</a>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      <div class="symbol-category">
-        <h2>Places</h2>
-        <div class="symbol-list">
-          <div class="symbol-item">Forest</div><div class="symbol-item">Ocean</div>
-          <div class="symbol-item">Bridge</div><div class="symbol-item">Mountain</div>
-          <div class="symbol-item">City</div><div class="symbol-item">House</div>
-          <div class="symbol-item">Cave</div><div class="symbol-item">Desert</div>
-          <div class="symbol-item">Garden</div><div class="symbol-item">Library</div>
-        </div>
-      </div>
-      <div class="symbol-category">
-        <h2>Emotions</h2>
-        <div class="symbol-list">
-          <div class="symbol-item">Fear</div><div class="symbol-item">Joy</div>
-          <div class="symbol-item">Confusion</div><div class="symbol-item">Longing</div>
-          <div class="symbol-item">Peace</div><div class="symbol-item">Rage</div>
-          <div class="symbol-item">Grief</div><div class="symbol-item">Awe</div>
-          <div class="symbol-item">Shame</div><div class="symbol-item">Love</div>
-        </div>
-      </div>
-      <div class="symbol-category">
-        <h2>Archetypes</h2>
-        <div class="symbol-list">
-          <div class="symbol-item">Shadow</div><div class="symbol-item">Guide</div>
-          <div class="symbol-item">Child</div><div class="symbol-item">Warrior</div>
-          <div class="symbol-item">Seer</div><div class="symbol-item">Lover</div>
-          <div class="symbol-item">Trickster</div><div class="symbol-item">Hero</div>
-          <div class="symbol-item">Sage</div><div class="symbol-item">Mother</div>
-        </div>
-      </div>
+      ))}
     </div>
   </main>
+
   <SiteFooter />
+
   <script>
     function filterSymbols() {
       const query = document.getElementById("symbol-search").value.toLowerCase();
@@ -115,5 +104,6 @@ const categories = [
   </script>
 </body>
 </html>
+
 
 

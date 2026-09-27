@@ -39,6 +39,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       margin: 0 auto 3rem;
       line-height: 1.7;
     }
+
+    /* OG image styling */
+    .og-image {
+      max-width: 420px;
+      width: 100%;
+      margin: 2rem auto 3rem;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+    }
+
     .nav-cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -116,7 +127,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </p>
   </div>
 
-  <!-- NAV CARDS -->
+  <!-- OG IMAGE ABOVE NAV CARDS -->
+  <img src="/og-default.png" alt="DreamMeaningGuide Symbolic Preview" class="og-image" />
+
+  <!-- NAV CARDS (About removed) -->
   <div class="nav-cards">
     <a href="/dream-symbols" class="nav-card">
       <span class="card-icon">🌀</span>
@@ -137,11 +151,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <span class="card-icon">🌙</span>
       <span class="card-title">Sleep Tools Hub</span>
       <span class="card-desc">Curated tools for deeper sleep, richer dreams, and meaningful rest.</span>
-    </a>
-    <a href="/about" class="nav-card">
-      <span class="card-icon">✦</span>
-      <span class="card-title">About</span>
-      <span class="card-desc">Our mission and philosophy behind DreamMeaningGuide.site.</span>
     </a>
   </div>
 
@@ -188,6 +197,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 
 </BaseLayout>
+
 
 
 

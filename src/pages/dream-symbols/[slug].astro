@@ -58,6 +58,27 @@ const faq = {
   description={"What does dreaming of a " + symbol.name.toLowerCase() + " mean? " + symbol.tagline + ". Explore the symbolic, psychological, and archetypal meanings."}
   schema={[term, bc, faq]}
 >
+<style>
+  nav[aria-label="Breadcrumb"] ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  nav[aria-label="Breadcrumb"] a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  nav[aria-label="Breadcrumb"] a:hover {
+    text-decoration: underline;
+  }
+  nav[aria-label="Breadcrumb"] li {
+    color: #ffffff;
+  }
+</style>
+
   <nav aria-label="Breadcrumb">
     <ol>
       <li><a href="/">Home</a></li>

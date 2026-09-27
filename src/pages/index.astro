@@ -23,6 +23,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       text-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
     }
 
+    .home-og {
+      max-width: 420px;
+      width: 100%;
+      margin: 1.5rem auto 2rem;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+    }
+
     .home-subtitle {
       font-size: 1.2rem;
       color: #a78bfa;
@@ -64,83 +73,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       text-transform: uppercase;
       letter-spacing: 0.06em;
       text-decoration: none;
-      box-shadow: 0 0 0 1px rgba(76, 29, 149, 0.45),
-                  0 14px 32px rgba(15, 23, 42, 0.9);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .home-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.7),
-                  0 18px 40px rgba(15, 23, 42, 0.95);
-    }
-
-    .home-button:active {
-      transform: translateY(1px);
-    }
-
-    .footer-note {
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #bdaef5;
-      line-height: 1.6;
-    }
-  </style>
-
-  <div class="home-container">
-    <h1 class="home-title">DreamMeaningGuide</h1>
-
-    <p class="home-subtitle">
-      Your dreams speak in symbols, patterns, and intuitive messages.  
-      Explore the meaning behind your nightly visions and discover  
-      how they connect to your identity, relationships, and inner life.
-    </p>
-
-    <div class="home-section">
-      <h2>Start Here</h2>
-      <p>
-        New to dream interpretation? Begin with the foundational guides  
-        that explain how symbols work, why dreams repeat themes, and  
-        how intuition shapes meaning.
-      </p>
-      <a href="/start-here" class="home-button">Start Your Journey</a>
-    </div>
-
-    <div class="home-section">
-      <h2>Dream Symbols</h2>
-      <p>
-        Browse hundreds of dream symbols and discover what they reveal  
-        about your inner world. Each symbol includes intuitive meaning,  
-        emotional context, and identity-based insight.
-      </p>
-      <a href="/dream-symbols" class="home-button">Explore Symbols</a>
-    </div>
-
-    <div class="home-section">
-      <h2>The Seer</h2>
-      <p>
-        Consult The Seer — an archetype of identity and intuition —  
-        for symbolic insight into dreams, relationships, and turning points.
-      </p>
-      <a href="/seer" class="home-button">Ask The Seer</a>
-    </div>
-
-    <div class="home-section">
-      <h2>Guides & Tools</h2>
-      <p>
-        Deepen your understanding with dream guides, journaling tools,  
-        sleep rituals, and identity-based meaning frameworks.
-      </p>
-      <a href="/guides" class="home-button">View Guides</a>
-    </div>
-
-    <p class="footer-note">
-      DreamMeaningGuide.site is one wing of the Volt Aura Meaning Mansion.<br />
-      DreamMeaningGuide participates in the Amazon Services LLC Associates Program.
-    </p>
-  </div>
-</BaseLayout>
-
+      box-shadow:
+        0 0 0 1px rgba(76, 29,
 
 
 

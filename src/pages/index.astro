@@ -1,130 +1,194 @@
 ---
-import Layout from '../components/Layout.astro';
-title: "DreamMeaningGuide — Explore Your Symbolic Inner World";
-description: "Decode dream symbols, explore Guides, consult The Seer, and build your dream journal archive.";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout>
-  <main class="content">
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <h1>DreamMeaningGuide</h1>
-      <p class="tagline">
-        Explore your symbolic inner world — decode dream symbols, consult The Seer, and build your dream archive.
-      </p>
-    </section>
-
-    <hr />
-
-    <!-- INTRO SECTION -->
-    <section class="intro">
-      <p>
-        Your dreams are messages from the deeper layers of your mind.  
-        DreamMeaningGuide helps you interpret those messages through symbolism, reflection, and guided insight.
-      </p>
-      <p>
-        Begin your journey by exploring dream symbols, reading Guides, consulting The Seer,  
-        or recording your dreams in the Dream Journal.
-      </p>
-    </section>
-
-    <hr />
-
-    <!-- FAQ SECTION -->
-    <section class="faqs">
-      <h2>Frequently Asked Questions</h2>
-
-      <!-- FAQ 1 -->
-      <details>
-        <summary>How do you navigate the site and the Dream Symbols page?</summary>
-        <p>
-          The site is organized into symbolic chambers. The Dream Symbols page is your reference library —  
-          browse categories like Animals, Archetypes, Emotions, and Places, or search for a specific symbol.  
-          Each symbol page offers a clear interpretation to help you understand what your dreams are communicating.
-        </p>
-      </details>
-
-      <!-- FAQ 2 -->
-      <details>
-        <summary>What is the Guides page for?</summary>
-        <p>
-          Guides are long‑form articles that explore dream meaning, symbolism, sleep science, and the inner life.  
-          They function like blog posts — timeless, reflective pieces designed to deepen your understanding  
-          of dreams and the symbolic world.
-        </p>
-      </details>
-
-      <!-- FAQ 3 -->
-      <details>
-        <summary>What is The Seer?</summary>
-        <p>
-          The Seer is your symbolic companion — a reflective tool that helps you explore meaning in dreams,  
-          relationships, and life events. Ask The Seer about a dream, a symbol, or a situation, and it will  
-          offer insight drawn from archetypes, patterns, and emotional symbolism.
-        </p>
-      </details>
-
-      <!-- FAQ 4 -->
-      <details>
-        <summary>How does the Dream Journal work?</summary>
-        <p>
-          The Dream Journal lets you record dreams directly in your browser — no login required.  
-          Entries are saved locally on your device, creating a private archive of your dream life.  
-          Soon, DreamMeaningGuide will offer pattern analysis across weeks and months, helping you  
-          discover recurring symbols, emotional themes, and long‑term dream cycles.
-        </p>
-      </details>
-    </section>
-
-    <hr />
-
-    <!-- QUICK LINKS -->
-    <section class="quick-links">
-      <h2>Explore the Site</h2>
-      <ul>
-        <li><a href="/dream-symbols">Dream Symbols Dictionary</a></li>
-        <li><a href="/guides">Guides & Articles</a></li>
-        <li><a href="/seer">Consult The Seer</a></li>
-        <li><a href="/journal">Dream Journal</a></li>
-        <li><a href="/sleep-tools">Sleep Tools Hub</a></li>
-      </ul>
-    </section>
-
-  </main>
-
+<BaseLayout
+  title="DreamMeaningGuide — Explore the Symbols of Your Dreams"
+  description="Discover the hidden meanings behind your dreams. Explore symbols, archetypes, and the unconscious mind with DreamMeaningGuide.site."
+>
   <style>
     .hero {
       text-align: center;
-      margin-bottom: 2rem;
+      padding: 6rem 2rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
+    .hero-glyph {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 32px rgba(167, 139, 250, 0.5));
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #d8c8ff;
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
     }
     .tagline {
-      font-size: 1.2rem;
-      color: #cbb7ff;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #a78bfa;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
     }
+    .nav-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+    .nav-card {
+      background: rgba(45, 21, 84, 0.55);
+      border: 1px solid rgba(167, 139, 250, 0.18);
+      border-radius: 1.25rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      color: #e8e0ff;
+      transition: all 0.22s ease;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .nav-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+      border-color: rgba(139, 92, 246, 0.4);
+    }
+    .card-icon { font-size: 2.5rem; }
+    .card-title { font-family: 'Cinzel', serif; font-size: 1.1rem; color: #c4b5fd; }
+    .card-desc { font-size: 0.85rem; color: #a78bfa; line-height: 1.6; }
 
-    .intro {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #e8d9ff;
+    /* FAQ styling */
+    .faqs {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+    }
+    .faqs h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: #d8c8ff;
+      text-align: center;
       margin-bottom: 2rem;
     }
-
-    .faqs h2 {
-      margin-bottom: 1rem;
-    }
     details {
-      background: #1a0030;
-      padding: 1rem;
-      border-radius: 8px;
+      background: rgba(45, 21, 84, 0.55);
+      border: 1px solid rgba(167, 139, 250, 0.18);
+      border-radius: 1rem;
+      padding: 1.25rem 1.5rem;
       margin-bottom: 1rem;
       cursor: pointer;
+      backdrop-filter: blur(12px);
     }
     summary {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: #c4b5fd;
+    }
+    details p {
+      margin-top: 1rem;
+      color: #e8e0ff;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+  </style>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-glyph">✦</span>
+    <h1>Explore the Symbols<br/>of Your Dreams</h1>
+    <p class="tagline">
+      Dreams carry meaning. DreamMeaningGuide helps you decode the symbols,
+      archetypes, and patterns your unconscious mind leaves behind.
+    </p>
+  </div>
+
+  <!-- NAV CARDS -->
+  <div class="nav-cards">
+    <a href="/dream-symbols" class="nav-card">
+      <span class="card-icon">🌀</span>
+      <span class="card-title">Dream Symbols</span>
+      <span class="card-desc">Browse animals, places, emotions, and archetypes and their deeper meanings.</span>
+    </a>
+    <a href="/seer" class="nav-card">
+      <span class="card-icon">🔮</span>
+      <span class="card-title">The Seer</span>
+      <span class="card-desc">Ask a question and receive a symbolic answer from the oracle within.</span>
+    </a>
+    <a href="/journal" class="nav-card">
+      <span class="card-icon">📖</span>
+      <span class="card-title">Dream Journal</span>
+      <span class="card-desc">Record your dreams, receive reflections, and build your personal archive.</span>
+    </a>
+    <a href="/sleep-tools" class="nav-card">
+      <span class="card-icon">🌙</span>
+      <span class="card-title">Sleep Tools Hub</span>
+      <span class="card-desc">Curated tools for deeper sleep, richer dreams, and meaningful rest.</span>
+    </a>
+    <a href="/about" class="nav-card">
+      <span class="card-icon">✦</span>
+      <span class="card-title">About</span>
+      <span class="card-desc">Our mission and philosophy behind DreamMeaningGuide.site.</span>
+    </a>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <section class="faqs">
+    <h2>Frequently Asked Questions</h2>
+
+    <details>
+      <summary>How do you navigate the site and the Dream Symbols page?</summary>
+      <p>
+        The site is organized into symbolic chambers. The Dream Symbols page is your reference library —  
+        browse categories like Animals, Archetypes, Emotions, and Places, or search for a specific symbol.  
+        Each symbol page offers a clear interpretation to help you understand what your dreams are communicating.
+      </p>
+    </details>
+
+    <details>
+      <summary>What is the Guides page for?</summary>
+      <p>
+        Guides are long‑form articles that explore dream meaning, symbolism, sleep science, and the inner life.  
+        They function like blog posts — timeless, reflective pieces designed to deepen your understanding  
+        of dreams and the symbolic world.
+      </p>
+    </details>
+
+    <details>
+      <summary>What is The Seer?</summary>
+      <p>
+        The Seer is your symbolic companion — a reflective tool that helps you explore meaning in dreams,  
+        relationships, and life events. Ask The Seer about a dream, a symbol, or a situation, and it will  
+        offer insight drawn from archetypes, patterns, and emotional symbolism.
+      </p>
+    </details>
+
+    <details>
+      <summary>How does the Dream Journal work?</summary>
+      <p>
+        The Dream Journal lets you record dreams directly in your browser — no login required.  
+        Entries are saved locally on your device, creating a private archive of your dream life.  
+        Soon, DreamMeaningGuide will offer pattern analysis across weeks and months, helping you  
+        discover recurring symbols, emotional themes, and long‑term dream cycles.
+      </p>
+    </details>
+  </section>
+
+</BaseLayout>
+
 
 
 

@@ -1,207 +1,298 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const responses = [
+  "The symbol you seek is already moving toward you.",
+  "A hidden pattern is forming beneath recent events.",
+  "Your dream is asking you to look twice at something familiar.",
+  "The answer is not distant — it is repeating softly.",
+  "A shift in your inner landscape is preparing new meaning.",
+  "Your unconscious is gathering symbols for a future insight.",
+  "Something forgotten is trying to return to your attention.",
+  "The dream is not about the image — it is about the feeling beneath it.",
+  "Your intuition already knows the direction; the dream is confirmation.",
+  "A symbolic doorway is opening in your nightly visions.",
+  "The message is gentle, but persistent — listen again tonight.",
+  "Your dream is echoing a pattern from your waking life.",
+  "The symbol appears when your mind is ready to interpret it.",
+  "A quiet truth is rising from your unconscious.",
+  "Your dream is weaving together past and present meaning.",
+  "The symbol is a guide, not a destination.",
+  "Your inner world is preparing you for a transition.",
+  "The dream is pointing toward something you have not named yet.",
+  "A deeper layer of your psyche is beginning to speak.",
+  "Your dream is a mirror — but not of the surface.",
+  "The symbol carries a message about your next emotional step.",
+  "Your unconscious is offering clarity disguised as mystery.",
+  "The meaning will reveal itself when you stop searching for it.",
+  "Your dream is a rehearsal for something real.",
+  "The symbol is asking you to pause and reflect.",
+  "Your intuition is stronger than the dream itself.",
+  "A new archetype is entering your symbolic life.",
+  "Your dream is the beginning of a longer conversation.",
+  "The symbol is a visitor — welcome it.",
+  "Your unconscious is aligning something important.",
+  "The dream is a threshold — step through gently.",
+  "Your symbol is a compass, not a map.",
+  "The meaning is already forming — trust the process."
+];
 ---
 
-<BaseLayout
-  title="DreamMeaningGuide — Explore the Symbols of Your Dreams"
-  description="Discover the hidden meanings behind your dreams. Explore symbols, archetypes, and the unconscious mind with DreamMeaningGuide.site."
->
+<BaseLayout title="The Seer" description="Ask The Seer for symbolic insight.">
   <style>
-    .hero {
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .hero-glyph {
-      font-size: 5rem;
-      display: block;
-      margin-bottom: 1.5rem;
-      filter: drop-shadow(0 0 32px rgba(167, 139, 250, 0.5));
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      color: #d8c8ff;
-      margin-bottom: 1.25rem;
-      line-height: 1.2;
-    }
-    .tagline {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: #a78bfa;
-      font-weight: 300;
-      max-width: 600px;
-      margin: 0 auto 3rem;
-      line-height: 1.7;
-    }
-
-    /* OG image styling */
-    .og-image {
-      max-width: 420px;
+    .seer-container {
+      max-width: 720px;
       width: 100%;
-      margin: 2rem auto 3rem;
-      display: block;
-      border-radius: 12px;
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+      margin: 4rem auto;
+      padding: 2.5rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .nav-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.25rem;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1.5rem 5rem;
+    /* Ambient fog */
+    .seer-container::before,
+    .seer-container::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 20% 0%, rgba(255,255,255,0.06), transparent 55%),
+                  radial-gradient(circle at 80% 100%, rgba(167,139,250,0.08), transparent 60%);
+      opacity: 0.6;
+      filter: blur(18px);
+      pointer-events: none;
+      animation: fogDrift 26s linear infinite;
+      mix-blend-mode: screen;
     }
-    .nav-card {
-      background: rgba(45, 21, 84, 0.55);
-      border: 1px solid rgba(167, 139, 250, 0.18);
-      border-radius: 1.25rem;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      text-decoration: none;
-      color: #e8e0ff;
-      transition: all 0.22s ease;
-      backdrop-filter: blur(12px);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      align-items: center;
-    }
-    .nav-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
-      border-color: rgba(139, 92, 246, 0.4);
-    }
-    .card-icon { font-size: 2.5rem; }
-    .card-title { font-family: 'Cinzel', serif; font-size: 1.1rem; color: #c4b5fd; }
-    .card-desc { font-size: 0.85rem; color: #a78bfa; line-height: 1.6; }
 
-    /* FAQ styling */
-    .faqs {
-      max-width: 900px;
-      margin: 0 auto 4rem;
-      padding: 0 1.5rem;
+    .seer-container::after {
+      animation-duration: 38s;
+      opacity: 0.4;
     }
-    .faqs h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 2rem;
-      color: #d8c8ff;
-      text-align: center;
-      margin-bottom: 2rem;
+
+    @keyframes fogDrift {
+      0% { transform: translate3d(-10px, 0, 0); }
+      50% { transform: translate3d(10px, -8px, 0); }
+      100% { transform: translate3d(-10px, 0, 0); }
     }
-    details {
-      background: rgba(45, 21, 84, 0.55);
-      border: 1px solid rgba(167, 139, 250, 0.18);
-      border-radius: 1rem;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1rem;
-      cursor: pointer;
-      backdrop-filter: blur(12px);
+
+    /* Sacred Eye (Oculus Aura) */
+    .seer-eye {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, #fff7d6 0%, #f2d98b 40%, #d4a63f 75%, #8a5a12 100%);
+      box-shadow: 0 0 35px rgba(255, 230, 150, 0.7), 0 0 80px rgba(255, 200, 120, 0.8);
+      animation: eyeBob 7s ease-in-out infinite;
     }
-    summary {
-      font-family: 'Cinzel', serif;
-      font-size: 1.2rem;
-      color: #c4b5fd;
+
+    @keyframes eyeBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
-    details p {
-      margin-top: 1rem;
-      color: #e8e0ff;
-      line-height: 1.6;
+
+    /* Eye iris */
+    .seer-eye::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 90px;
+      height: 90px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, #000 0%, #2d1f4f 40%, transparent 70%);
+      opacity: 0.7;
+    }
+
+    /* Eye pupil */
+    .seer-eye::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 32px;
+      height: 32px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #000;
+      box-shadow: 0 0 12px rgba(0,0,0,0.6);
+    }
+
+    .seer-title {
+      font-family: "Cinzel", serif;
+      color: #e5ddff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .seer-subtitle {
+      color: #a78bfa;
       font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.6;
+    }
+
+    .seer-input {
+      width: 100%;
+      padding: 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(167,139,250,0.45);
+      background: rgba(30,10,60,0.75);
+      color: #e8e0ff;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .seer-button {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      padding: 1rem 1.6rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0%, #f5f3ff, #c4b5fd 40%, #7c3aed 100%);
+      color: #120016;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: block;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .seer-listening {
+      margin-top: 1.4rem;
+      font-size: 0.9rem;
+      color: rgba(199,181,255,0.8);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+    }
+
+    .seer-listening.active {
+      opacity: 1;
+      animation: shimmer 2.4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { opacity: 0.15; }
+      50% { opacity: 0.9; }
+      100% { opacity: 0.2; }
+    }
+
+    .seer-response {
+      margin-top: 2rem;
+      padding: 1.1rem 1rem;
+      min-height: 70px;
+      border-radius: 14px;
+      border: 1px solid rgba(167,139,250,0.5);
+      background: rgba(24,16,48,0.95);
+      color: #e8e0ff;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .seer-response.active {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 
-  <!-- HERO -->
-  <div class="hero">
-    <span class="hero-glyph">✦</span>
-    <h1>Explore the Symbols<br/>of Your Dreams</h1>
-    <p class="tagline">
-      Dreams carry meaning. DreamMeaningGuide helps you decode the symbols,
-      archetypes, and patterns your unconscious mind leaves behind.
+  <div class="seer-container">
+    <div class="seer-eye"></div>
+
+    <h1 class="seer-title">The Seer</h1>
+
+    <p class="seer-subtitle">
+      Ask your question. The Sacred Eye listens beneath symbols, dreams, and identity.
     </p>
+
+    <input
+      id="seerInput"
+      class="seer-input"
+      type="text"
+      placeholder="Type your question here..."
+      onkeydown="if(event.key==='Enter'){ generateSeerResponse(); }"
+    />
+
+    <button class="seer-button" onclick="generateSeerResponse()">
+      Ask The Seer
+    </button>
+
+    <div id="seerListening" class="seer-listening">
+      The Seer is listening...
+    </div>
+
+    <div id="seerResponse" class="seer-response"></div>
   </div>
 
-  <!-- OG IMAGE ABOVE NAV CARDS -->
-<img 
-  src="/og-default.png" 
-  alt="DreamMeaningGuide Symbolic Preview" 
-  class="og-image"
-  style="max-width: 850px; width: 100%; margin: 2rem auto 3rem; display: block;"
-/>
+  <script is:raw>
+    function generateSeerResponse() {
+      const responses = [
+        "The symbol you seek is already moving toward you.",
+        "A hidden pattern is forming beneath recent events.",
+        "Your dream is asking you to look twice at something familiar.",
+        "The answer is not distant — it is repeating softly.",
+        "A shift in your inner landscape is preparing new meaning.",
+        "Your unconscious is gathering symbols for a future insight.",
+        "Something forgotten is trying to return to your attention.",
+        "The dream is not about the image — it is about the feeling beneath it.",
+        "Your intuition already knows the direction; the dream is confirmation.",
+        "A symbolic doorway is opening in your nightly visions.",
+        "The message is gentle, but persistent — listen again tonight.",
+        "Your dream is echoing a pattern from your waking life.",
+        "The symbol appears when your mind is ready to interpret it.",
+        "A quiet truth is rising from your unconscious.",
+        "Your dream is weaving together past and present meaning.",
+        "The symbol is a guide, not a destination.",
+        "Your inner world is preparing you for a transition.",
+        "The dream is pointing toward something you have not named yet.",
+        "A deeper layer of your psyche is beginning to speak.",
+        "Your dream is a mirror — but not of the surface.",
+        "The symbol carries a message about your next emotional step.",
+        "Your unconscious is offering clarity disguised as mystery.",
+        "The meaning will reveal itself when you stop searching for it.",
+        "Your dream is a rehearsal for something real.",
+        "The symbol is asking you to pause and reflect.",
+        "Your intuition is stronger than the dream itself.",
+        "A new archetype is entering your symbolic life.",
+        "Your dream is the beginning of a longer conversation.",
+        "The symbol is a visitor — welcome it.",
+        "Your unconscious is aligning something important.",
+        "The dream is a threshold — step through gently.",
+        "Your symbol is a compass, not a map.",
+        "The meaning is already forming — trust the process."
+      ];
 
-  <!-- NAV CARDS (About removed) -->
-  <div class="nav-cards">
-    <a href="/dream-symbols" class="nav-card">
-      <span class="card-icon">🌀</span>
-      <span class="card-title">Dream Symbols</span>
-      <span class="card-desc">Browse animals, places, emotions, and archetypes and their deeper meanings.</span>
-    </a>
-    <a href="/seer" class="nav-card">
-      <span class="card-icon">🔮</span>
-      <span class="card-title">The Seer</span>
-      <span class="card-desc">Ask a question and receive a symbolic answer from the oracle within.</span>
-    </a>
-    <a href="/journal" class="nav-card">
-      <span class="card-icon">📖</span>
-      <span class="card-title">Dream Journal</span>
-      <span class="card-desc">Record your dreams, receive reflections, and build your personal archive.</span>
-    </a>
-    <a href="/sleep-tools" class="nav-card">
-      <span class="card-icon">🌙</span>
-      <span class="card-title">Sleep Tools Hub</span>
-      <span class="card-desc">Curated tools for deeper sleep, richer dreams, and meaningful rest.</span>
-    </a>
-  </div>
+      const input = document.getElementById("seerInput");
+      const listening = document.getElementById("seerListening");
+      const output = document.getElementById("seerResponse");
 
-  <!-- FAQ SECTION -->
-  <section class="faqs">
-    <h2>Frequently Asked Questions</h2>
+      listening.classList.add("active");
+      output.classList.remove("active");
 
-    <details>
-      <summary>How do you navigate the site and the Dream Symbols page?</summary>
-      <p>
-        The site is organized into symbolic chambers. The Dream Symbols page is your reference library —  
-        browse categories like Animals, Archetypes, Emotions, and Places, or search for a specific symbol.  
-        Each symbol page offers a clear interpretation to help you understand what your dreams are communicating.
-      </p>
-    </details>
+      const response = responses[Math.floor(Math.random() * responses.length)];
 
-    <details>
-      <summary>What is the Guides page for?</summary>
-      <p>
-        Guides are long‑form articles that explore dream meaning, symbolism, sleep science, and the inner life.  
-        They function like blog posts — timeless, reflective pieces designed to deepen your understanding  
-        of dreams and the symbolic world.
-      </p>
-    </details>
-
-    <details>
-      <summary>What is The Seer?</summary>
-      <p>
-        The Seer is your symbolic companion — a reflective tool that helps you explore meaning in dreams,  
-        relationships, and life events. Ask The Seer about a dream, a symbol, or a situation, and it will  
-        offer insight drawn from archetypes, patterns, and emotional symbolism.
-      </p>
-    </details>
-
-    <details>
-      <summary>How does the Dream Journal work?</summary>
-      <p>
-        The Dream Journal lets you record dreams directly in your browser — no login required.  
-        Entries are saved locally on your device, creating a private archive of your dream life.  
-        Soon, DreamMeaningGuide will offer pattern analysis across weeks and months, helping you  
-        discover recurring symbols, emotional themes, and long‑term dream cycles.
-      </p>
-    </details>
-  </section>
-
+      setTimeout(() => {
+        listening.classList.remove("active");
+        output.textContent = response;
+        output.classList.add("active");
+      }, 900);
+    }
+  </script>
 </BaseLayout>
+
 
 
 

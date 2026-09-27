@@ -38,17 +38,13 @@ const responses = [
 ];
 
 function getRandomResponse() {
-  const index = Math.floor(Math.random() * responses.length);
-  return responses[index];
+  return responses[Math.floor(Math.random() * responses.length)];
 }
 
 const initialResponse = getRandomResponse();
 ---
 
-<BaseLayout
-  title="The Seer — Your Symbolic Oracle"
-  description="Ask The Seer for symbolic insight into dreams, relationships, and life events."
->
+<BaseLayout title="The Seer" description="Ask The Seer for symbolic insight.">
   <style>
     .seer-container {
       max-width: 700px;
@@ -65,79 +61,8 @@ const initialResponse = getRandomResponse();
       color: #c4b5fd;
       filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
       animation: float 6s ease-in-out infinite;
-    }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
 
-    .seer-input {
-      width: 100%;
-      padding: 1rem;
-      border-radius: 10px;
-      border: 1px solid rgba(167, 139, 250, 0.3);
-      background: rgba(45, 21, 84, 0.4);
-      color: #e8e0ff;
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      backdrop-filter: blur(10px);
-      box-sizing: border-box;
-    }
-
-    .seer-button {
-      width: 100%;
-      max-width: 280px;
-      margin: 0 auto;
-      padding: 0.75rem 1.5rem;
-      border-radius: 10px;
-      background: #a78bfa;
-      color: #120016;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: block;
-    }
-
-    .seer-button:hover {
-      background: #c4b5fd;
-    }
-
-    .seer-response {
-      margin-top: 2rem;
-      font-size: 1.3rem;
-      color: #e8e0ff;
-      opacity: 0;
-      animation: fadeIn 1.5s forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @media (max-width: 600px) {
-      .seer-container {
-        padding: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .seer-glyph {
-        font-size: 3rem;
-      }
-
-      .seer-response {
-        font-size: 1.1rem;
-      }
-    }
-  </style>
-
-  <div class="seer-container">
-    <div class="seer-glyph">🔮</div>
-
-    <h1 style="font-family: 'Cinzel', serif; color: #d8c8ff; margin-bottom: 1rem;">
-      The Seer
 
 
 

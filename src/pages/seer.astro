@@ -40,6 +40,7 @@ const responses = [
 
 <BaseLayout title="The Seer" description="Ask The Seer for symbolic insight.">
   <style>
+    /* Container */
     .seer-container {
       max-width: 720px;
       width: 100%;
@@ -50,24 +51,30 @@ const responses = [
       overflow: hidden;
     }
 
-    /* Ambient fog */
-    .seer-container::before,
+    /* Cosmic background ambiance */
+    .seer-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(80, 0, 120, 0.4), transparent 70%),
+                  radial-gradient(circle at 50% 100%, rgba(20, 0, 40, 0.5), transparent 70%);
+      filter: blur(40px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    /* Drifting fog */
     .seer-container::after {
       content: "";
       position: absolute;
       inset: -40%;
       background: radial-gradient(circle at 20% 0%, rgba(255,255,255,0.06), transparent 55%),
                   radial-gradient(circle at 80% 100%, rgba(167,139,250,0.08), transparent 60%);
-      opacity: 0.6;
+      opacity: 0.5;
       filter: blur(18px);
       pointer-events: none;
       animation: fogDrift 26s linear infinite;
       mix-blend-mode: screen;
-    }
-
-    .seer-container::after {
-      animation-duration: 38s;
-      opacity: 0.4;
     }
 
     @keyframes fogDrift {
@@ -76,60 +83,98 @@ const responses = [
       100% { transform: translate3d(-10px, 0, 0); }
     }
 
-    /* Golden moon with facial features */
-    .seer-moon {
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 1rem;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #fff7d6 0%, #f2d98b 40%, #d4a63f 75%, #8a5a12 100%);
-      box-shadow: 0 0 35px rgba(255, 230, 150, 0.7), 0 0 80px rgba(255, 200, 120, 0.8);
-      position: relative;
-      animation: moonBob 7s ease-in-out infinite;
+    /* Starfield */
+    .stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
     }
 
-    @keyframes moonBob {
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      animation: starDrift 12s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes starDrift {
+      0% { transform: translateY(0); opacity: 0.8; }
+      100% { transform: translateY(40px); opacity: 0.2; }
+    }
+
+    /* Sacred Eye (Oculus Aura) */
+    .seer-eye {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, #1a0f1f 0%, #3a1f3f 40%, #000 70%);
+      box-shadow: 0 0 60px rgba(120, 0, 160, 0.5),
+                  0 0 120px rgba(40, 0, 80, 0.6);
+      animation: eyeFloat 7s ease-in-out infinite;
+    }
+
+    @keyframes eyeFloat {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    /* Eyes + faint smile */
-    .seer-moon::before {
+    /* Golden iris */
+    .seer-eye::before {
       content: "";
       position: absolute;
       left: 50%;
-      top: 42%;
-      width: 60px;
-      height: 60px;
-      transform: translateX(-50%);
-      background:
-        radial-gradient(circle at 35% 40%, rgba(0,0,0,0.35), transparent 55%),
-        radial-gradient(circle at 65% 40%, rgba(0,0,0,0.35), transparent 55%),
-        radial-gradient(circle at 50% 70%, rgba(0,0,0,0.25), transparent 60%);
-      opacity: 0.45;
+      top: 50%;
+      width: 120px;
+      height: 120px;
+      transform: translate(-50%, -50%);
       border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, #d4a63f 0%, #8a5a12 40%, #3a1f3f 70%);
+      opacity: 0.85;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.6);
     }
 
-    .seer-moon::after {
+    /* Nebula swirl */
+    .seer-eye::after {
       content: "";
       position: absolute;
       left: 50%;
-      top: 68%;
-      width: 50px;
-      height: 20px;
-      transform: translateX(-50%);
-      border-bottom: 2px solid rgba(0,0,0,0.35);
+      top: 50%;
+      width: 140px;
+      height: 140px;
+      transform: translate(-50%, -50%);
       border-radius: 50%;
-      opacity: 0.4;
+      background: radial-gradient(circle at 40% 40%, rgba(120,0,160,0.4), transparent 60%),
+                  radial-gradient(circle at 70% 60%, rgba(200,120,255,0.3), transparent 70%);
+      mix-blend-mode: screen;
+      opacity: 0.5;
+      animation: nebulaPulse 9s ease-in-out infinite;
     }
 
-    .seer-glyph {
-      font-size: 3rem;
-      margin-bottom: 1.25rem;
-      color: #c4b5fd;
-      filter: drop-shadow(0 0 22px rgba(139,92,246,0.55));
+    @keyframes nebulaPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
     }
 
+    /* Pupil */
+    .seer-pupil {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 40px;
+      height: 40px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #000;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    /* Title */
     .seer-title {
       font-family: "Cinzel", serif;
       color: #e5ddff;
@@ -141,29 +186,32 @@ const responses = [
 
     .seer-subtitle {
       color: #a78bfa;
-      font-size: 0.98rem;
+      font-size: 1rem;
       max-width: 520px;
       margin: 0 auto 2.25rem;
       line-height: 1.6;
     }
 
+    /* Input */
     .seer-input {
       width: 100%;
-      padding: 1.1rem;
+      padding: 1.2rem;
       border-radius: 12px;
       border: 1px solid rgba(167,139,250,0.45);
       background: rgba(30,10,60,0.75);
       color: #e8e0ff;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 1.5rem;
       backdrop-filter: blur(12px);
+      text-align: center;
     }
 
+    /* Button */
     .seer-button {
       width: 100%;
       max-width: 320px;
       margin: 0 auto;
-      padding: 0.9rem 1.6rem;
+      padding: 1rem 1.6rem;
       border-radius: 999px;
       background: radial-gradient(circle at 20% 0%, #f5f3ff, #c4b5fd 40%, #7c3aed 100%);
       color: #120016;
@@ -176,6 +224,7 @@ const responses = [
       text-transform: uppercase;
     }
 
+    /* Listening shimmer */
     .seer-listening {
       margin-top: 1.4rem;
       font-size: 0.9rem;
@@ -196,6 +245,7 @@ const responses = [
       100% { opacity: 0.2; }
     }
 
+    /* Response */
     .seer-response {
       margin-top: 2rem;
       padding: 1.1rem 1rem;
@@ -218,14 +268,25 @@ const responses = [
   </style>
 
   <div class="seer-container">
-    <div class="seer-moon"></div>
 
-    <div class="seer-glyph">🔮</div>
+    <!-- Starfield -->
+    <div class="stars">
+      <div class="star" style="top:10%; left:20%; animation-delay:0s;"></div>
+      <div class="star" style="top:30%; left:70%; animation-delay:2s;"></div>
+      <div class="star" style="top:60%; left:40%; animation-delay:4s;"></div>
+      <div class="star" style="top:80%; left:10%; animation-delay:6s;"></div>
+      <div class="star" style="top:50%; left:90%; animation-delay:1s;"></div>
+    </div>
+
+    <!-- Sacred Eye -->
+    <div class="seer-eye">
+      <div class="seer-pupil"></div>
+    </div>
 
     <h1 class="seer-title">The Seer</h1>
 
     <p class="seer-subtitle">
-      Ask your question. The Seer listens beneath symbols, dreams, and identity.
+      Ask your question. The Sacred Eye listens beneath symbols, dreams, and identity.
     </p>
 
     <input
@@ -287,7 +348,22 @@ const responses = [
 
       const input = document.getElementById("seerInput");
       const listening = document.getElementById("seerListening");
-      const output = document.getElement
+      const output = document.getElementById("seerResponse");
+
+      listening.classList.add("active");
+      output.classList.remove("active");
+
+      const response = responses[Math.floor(Math.random() * responses.length)];
+
+      setTimeout(() => {
+        listening.classList.remove("active");
+        output.textContent = response;
+        output.classList.add("active");
+      }, 900);
+    }
+  </script>
+</BaseLayout>
+
 
 
 

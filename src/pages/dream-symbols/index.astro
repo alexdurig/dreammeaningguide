@@ -3,9 +3,6 @@ import SiteNav from '../../components/SiteNav.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import { SYMBOLS } from '../../data/symbols.js';
 
-const pageTitle = "Dream Symbols | DreamMeaningGuide";
-const pageDescription = "Explore symbolic meanings behind common dream symbols — animals, places, emotions, and archetypes.";
-
 const categories = [
   { slug: "animals",    icon: "🐺", label: "Animals",    desc: "Instinct, shadow, spirit, and primal wisdom." },
   { slug: "places",     icon: "🌲", label: "Places",     desc: "Inner landscapes reflected in outer settings." },
@@ -13,7 +10,6 @@ const categories = [
   { slug: "archetypes", icon: "✦",  label: "Archetypes", desc: "Universal figures from the collective unconscious." },
 ];
 
-// Group symbols by category
 const grouped = {
   animals: SYMBOLS.filter(s => s.category === "Animals"),
   places: SYMBOLS.filter(s => s.category === "Places"),
@@ -21,6 +17,42 @@ const grouped = {
   archetypes: SYMBOLS.filter(s => s.category === "Archetypes"),
 };
 ---
+
+<style>
+  body {
+    background: radial-gradient(circle at top, #2b0f4a, #0f0a1a);
+    color: #e8e0ff;
+    font-family: Inter, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .category-card {
+    background: rgba(45,21,84,0.55);
+    border: 1px solid rgba(167,139,250,0.18);
+    border-radius: 1.25rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: #e8e0ff;
+    transition: all 0.22s ease;
+    backdrop-filter: blur(12px);
+    cursor: default;
+  }
+
+  .card-label {
+    font-family: Cinzel, serif;
+    font-size: 1.1rem;
+    color: #f5eaff;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-desc {
+    font-size: 0.85rem;
+    color: #e8e0ff;
+    line-height: 1.6;
+  }
+</style>
 
 <SiteNav currentPath={Astro.url.pathname} />
 
@@ -30,49 +62,39 @@ const grouped = {
     Dream Symbols
   </h1>
 
-  <p class="subtitle" style="text-align:center;color:#a78bfa;margin-bottom:3rem;font-size:1rem;">
+  <p style="text-align:center;color:#a78bfa;margin-bottom:3rem;font-size:1rem;">
     Choose a category to explore, or search all symbols below.
   </p>
 
-  <div class="search-box" style="text-align:center;margin-bottom:2.5rem;">
+  <div style="text-align:center;margin-bottom:2.5rem;">
     <input id="symbol-search" type="text" placeholder="Search symbols..."
       style="width:80%;padding:0.8rem;border-radius:6px;border:1px solid #6a4bcf;background:#1a1330;color:#e8e0ff;font-size:1rem;"
       oninput="filterSymbols()" />
   </div>
 
-  <div class="category-grid"
-       style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem;margin-bottom:3rem;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem;margin-bottom:3rem;">
     {categories.map(cat => (
-      <a href={`/dream-symbols/${cat.slug}`}
-         class="category-card"
-         style="background:rgba(45,21,84,0.55);border:1px solid rgba(167,139,250,0.18);border-radius:1.25rem;
-                padding:2rem 1.5rem;text-align:center;text-decoration:none;color:#e8e0ff;transition:all 0.22s ease;
-                backdrop-filter:blur(12px);">
+      <div class="category-card">
         <span style="font-size:2.5rem;display:block;margin-bottom:0.75rem;">{cat.icon}</span>
-        <span style="font-family:Cinzel,serif;font-size:1.1rem;color:#c4b5fd;display:block;margin-bottom:0.5rem;">
-          {cat.label}
-        </span>
-        <span style="font-size:0.85rem;color:#a78bfa;line-height:1.6;">{cat.desc}</span>
-      </a>
+        <span class="card-label">{cat.label}</span>
+        <span class="card-desc">{cat.desc}</span>
+      </div>
     ))}
   </div>
 
-  <div id="symbols-container" class="all-symbols">
+  <div id="symbols-container">
     {Object.keys(grouped).map(cat => (
-      <div class="symbol-category">
+      <div>
         <h2 style="font-family:Cinzel,serif;font-size:1.6rem;color:#cbb4ff;border-bottom:1px solid #6a4bcf;
                    padding-bottom:0.3rem;margin-bottom:1rem;margin-top:2rem;">
           {cat.charAt(0).toUpperCase() + cat.slice(1)}
         </h2>
 
-        <div class="symbol-list"
-             style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;">
           {grouped[cat].map(symbol => (
-            <div class="symbol-item"
-                 style="background:#1a1330;border:1px solid #6a4bcf;padding:1rem;border-radius:8px;text-align:center;
+            <div style="background:#1a1330;border:1px solid #6a4bcf;padding:1rem;border-radius:8px;text-align:center;
                         transition:transform 0.3s ease,background 0.3s ease;cursor:pointer;">
-              <a href={`/dream-symbols/${symbol.slug}`}
-                 style="color:#e8e0ff;text-decoration:none;">
+              <a href={`/dream-symbols/${symbol.slug}`} style="color:#e8e0ff;text-decoration:none;">
                 {symbol.name}
               </a>
             </div>
@@ -89,11 +111,12 @@ const grouped = {
 <script>
   function filterSymbols() {
     const query = document.getElementById("symbol-search").value.toLowerCase();
-    document.querySelectorAll(".symbol-item").forEach(item => {
+    document.querySelectorAll("#symbols-container div").forEach(item => {
       item.style.display = item.textContent.toLowerCase().includes(query) ? "block" : "none";
     });
   }
 </script>
+
 
 
 

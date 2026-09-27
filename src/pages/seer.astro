@@ -52,7 +52,6 @@ const initialResponse = getRandomResponse();
       margin: 4rem auto;
       padding: 2rem;
       text-align: center;
-      box-sizing: border-box;
     }
 
     .seer-glyph {
@@ -61,7 +60,81 @@ const initialResponse = getRandomResponse();
       color: #c4b5fd;
       filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
       animation: float 6s ease-in-out infinite;
+    }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .seer-input {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      background: rgba(45, 21, 84, 0.4);
+      color: #e8e0ff;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .seer-button {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      background: #a78bfa;
+      color: #120016;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      display: block;
+    }
+
+    .seer-response {
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      color: #e8e0ff;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+
+  <div class="seer-container">
+    <div class="seer-glyph">🔮</div>
+
+    <h1 style="font-family: 'Cinzel', serif; color: #d8c8ff;">
+      The Seer
+    </h1>
+
+    <p style="color: #a78bfa; margin-bottom: 2rem;">
+      Ask your question. The Seer will answer with symbolic insight.
+    </p>
+
+    <input id="seerInput" class="seer-input" type="text" placeholder="Ask The Seer..." />
+
+    <button class="seer-button" onclick="generateSeerResponse()">
+      Reveal Insight
+    </button>
+
+    <div id="seerResponse" class="seer-response">
+      {initialResponse}
+    </div>
+  </div>
+
+  <script is:raw>
+    function generateSeerResponse() {
+      const responses = [
+        "The symbol you seek is already moving toward you.",
+        "A hidden pattern is forming beneath recent events.",
+        "Your dream is asking you to look twice at something familiar.",
+        "The answer is not distant — it is repeating softly
 
 
 

@@ -1,124 +1,196 @@
 ---
-import SiteNav from '../components/SiteNav.astro';
-import SiteFooter from '../components/SiteFooter.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageTitle = "The Seer | DreamMeaningGuide";
-const pageDescription = "Ask a question and receive a symbolic answer from The Seer — an oracle drawn from the language of dreams, archetypes, and the unconscious mind.";
-const tags = ["dream oracle", "symbolic answer", "dream interpretation", "archetypes", "spirituality"];
+const responses = [
+  "The symbol you seek is already moving toward you.",
+  "A hidden pattern is forming beneath recent events.",
+  "Your dream is asking you to look twice at something familiar.",
+  "The answer is not distant — it is repeating softly.",
+  "A shift in your inner landscape is preparing new meaning.",
+  "Your unconscious is gathering symbols for a future insight.",
+  "Something forgotten is trying to return to your attention.",
+  "The dream is not about the image — it is about the feeling beneath it.",
+  "Your intuition already knows the direction; the dream is confirmation.",
+  "A symbolic doorway is opening in your nightly visions.",
+  "The message is gentle, but persistent — listen again tonight.",
+  "Your dream is echoing a pattern from your waking life.",
+  "The symbol appears when your mind is ready to interpret it.",
+  "A quiet truth is rising from your unconscious.",
+  "Your dream is weaving together past and present meaning.",
+  "The symbol is a guide, not a destination.",
+  "Your inner world is preparing you for a transition.",
+  "The dream is pointing toward something you have not named yet.",
+  "A deeper layer of your psyche is beginning to speak.",
+  "Your dream is a mirror — but not of the surface.",
+  "The symbol carries a message about your next emotional step.",
+  "Your unconscious is offering clarity disguised as mystery.",
+  "The meaning will reveal itself when you stop searching for it.",
+  "Your dream is a rehearsal for something real.",
+  "The symbol is asking you to pause and reflect.",
+  "Your intuition is stronger than the dream itself.",
+  "A new archetype is entering your symbolic life.",
+  "Your dream is the beginning of a longer conversation.",
+  "The symbol is a visitor — welcome it.",
+  "Your unconscious is aligning something important.",
+  "The dream is a threshold — step through gently.",
+  "Your symbol is a compass, not a map.",
+  "The meaning is already forming — trust the process."
+];
+
+function getRandomResponse() {
+  const index = Math.floor(Math.random() * responses.length);
+  return responses[index];
+}
+
+const initialResponse = getRandomResponse();
 ---
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{pageTitle}</title>
-  <meta name="description" content={pageDescription} />
-  <meta name="keywords" content={tags.join(", ")} />
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={pageDescription} />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dreammeaningguide.site/seer" />
-  <meta property="og:image" content="https://dreammeaningguide.site/og-default.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<BaseLayout
+  title="The Seer — Your Symbolic Oracle"
+  description="Ask The Seer for symbolic insight into dreams, relationships, and life events."
+>
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body { font-family: Inter, sans-serif; background: radial-gradient(circle at top, #2b0f4a, #0f0a1a); color: #e8e0ff; margin: 0; padding: 0; min-height: 100vh; }
-    main { max-width: 760px; margin: 0 auto; padding: 3rem 2rem; text-align: center; }
-    h1 { font-family: Cinzel, serif; font-size: 2.6rem; color: #d8c8ff; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
-    .seer-intro { max-width: 560px; margin: 0 auto 2.5rem; }
-    .seer-intro p { font-size: 1.05rem; color: #c4b5fd; line-height: 1.8; margin-bottom: 0.8rem; }
-    .divider { font-size: 1.2rem; color: #7c3aed; margin: 1.2rem 0; letter-spacing: 0.3em; }
-    .example-prompts { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 2rem; }
-    .example-prompts button { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.4); color: #c4b5fd; border-radius: 20px; padding: 0.4rem 1rem; font-size: 0.85rem; cursor: pointer; font-family: Inter, sans-serif; transition: all 0.2s ease; }
-    .example-prompts button:hover { background: rgba(124,58,237,0.35); border-color: #9d5bff; color: #e8e0ff; }
-    .seer-input { margin-bottom: 1.5rem; }
-    input[type=text] { width: 90%; max-width: 520px; padding: 0.9rem 1.2rem; border-radius: 8px; border: 1px solid #6a4bcf; background: #1a1330; color: #e8e0ff; font-size: 1rem; font-family: Inter, sans-serif; outline: none; transition: border-color 0.2s; }
-    input[type=text]:focus { border-color: #9d5bff; }
-    .ask-btn { display: block; margin: 0.9rem auto 0; padding: 0.75rem 2rem; background: #7c3aed; border: none; border-radius: 8px; color: white; font-size: 1rem; font-family: Cinzel, serif; letter-spacing: 0.05em; cursor: pointer; transition: background 0.3s ease; }
-    .ask-btn:hover { background: #9d5bff; }
-    .seer-title { font-family: Cinzel, serif; font-size: 1.5rem; color: #d8c8ff; margin-top: 2.5rem; opacity: 0; transition: opacity 1.5s ease; }
-    .moon-pulse { font-size: 2.4rem; opacity: 0; animation: moonPulse 2s infinite ease-in-out; margin-top: 1rem; }
-    @keyframes moonPulse { 0% { opacity:0.3; transform:scale(1.0); } 50% { opacity:0.8; transform:scale(1.15); } 100% { opacity:0.3; transform:scale(1.0); } }
-    #seer-answer-box { margin-top: 2rem; font-size: 1.3rem; line-height: 1.9; min-height: 120px; opacity: 0; color: #e8e0ff; }
-    .fadeRippleGlow { animation: fadeRippleGlow 4s ease forwards; }
-    @keyframes fadeRippleGlow { 0% { opacity:0; filter:blur(8px); text-shadow:0 0 4px #a78bfa; transform:scale(1.02); } 50% { opacity:0.6; filter:blur(4px); text-shadow:0 0 12px #c4b5fd; transform:scale(1.01); } 100% { opacity:1; filter:blur(0px); text-shadow:0 0 18px #e0d4ff; transform:scale(1.0); } }
-    .seer-footer-note { margin-top: 3rem; font-size: 0.8rem; color: #7c6a9a; line-height: 1.6; }
+    .seer-container {
+      max-width: 700px;
+      margin: 4rem auto;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .seer-glyph {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: #c4b5fd;
+      filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .seer-input {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      background: rgba(45, 21, 84, 0.4);
+      color: #e8e0ff;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .seer-button {
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      background: #a78bfa;
+      color: #120016;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .seer-button:hover {
+      background: #c4b5fd;
+    }
+
+    .seer-response {
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      color: #e8e0ff;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
-</head>
-<body>
-  <SiteNav />
-  <main>
-    <h1>The Seer</h1>
 
-    <div class="seer-intro">
-      <p>The Seer speaks in the language of the unconscious — in symbols, archetypes, and echoes from the deep. Bring your question with sincerity, and the answer will find you.</p>
-      <div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
-      <p>You may ask about a dream that lingers, a decision that weighs on you, a feeling without a name, or a symbol whose meaning you seek.</p>
+  <div class="seer-container">
+    <div class="seer-glyph">🔮</div>
+
+    <h1 style="font-family: 'Cinzel', serif; color: #d8c8ff; margin-bottom: 1rem;">
+      The Seer
+    </h1>
+
+    <p style="color: #a78bfa; margin-bottom: 2rem;">
+      Ask your question. The Seer will answer with symbolic insight.
+    </p>
+
+    <input
+      id="seerInput"
+      class="seer-input"
+      type="text"
+      placeholder="Ask The Seer about a dream, symbol, or situation..."
+    />
+
+    <button class="seer-button" onclick="generateSeerResponse()">
+      Reveal Insight
+    </button>
+
+    <div id="seerResponse" class="seer-response">
+      {initialResponse}
     </div>
-
-    <div class="example-prompts" aria-label="Example questions">
-      <button onclick="usePrompt(this)">Why do I keep dreaming of water?</button>
-      <button onclick="usePrompt(this)">Am I on the right path?</button>
-      <button onclick="usePrompt(this)">What does my recurring dream mean?</button>
-      <button onclick="usePrompt(this)">What is holding me back?</button>
-      <button onclick="usePrompt(this)">Should I trust this feeling?</button>
-    </div>
-
-    <div class="seer-input">
-      <input id="seer-question" type="text" placeholder="Ask your question..." />
-      <button class="ask-btn" onclick="revealSeerAnswer()">Ask The Seer</button>
-    </div>
-
-    <div id="seer-title" class="seer-title">The Seer's Answer For You</div>
-    <div class="moon-pulse" id="moon-pulse">🌙</div>
-    <div id="seer-answer-box"></div>
-
-    <p class="seer-footer-note">The Seer draws from a living pool of archetypal wisdom. Each answer is symbolic — a mirror, not a map. Use your own discernment.</p>
-
-    <audio id="seer-chime" preload="auto">
-      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7f3c7e0c57.mp3?filename=soft-chime-ambient-10141.mp3" type="audio/mpeg">
-    </audio>
-  </main>
-  <SiteFooter />
+  </div>
 
   <script>
-    const seerPools = {
-      Insight: ["The pattern behind your question is shifting — revealing a truth you are ready to see.","You already sense the answer; The Seer simply confirms what your deeper mind knows.","The tension you feel is not a mistake — it is the pressure of insight forming.","Your question is a doorway; the answer is the room you have not yet entered.","Clarity will not arrive all at once — it will come in small, undeniable pieces.","You are closer to understanding than your doubt is willing to admit.","The Seer shows you this: your next step is smaller than your fear, but larger than your comfort.","The answer is not far away; it is just hiding behind the story you keep telling yourself."],
-      Warning: ["The Seer feels a subtle caution: do not rush what is still unfolding.","A path that looks easy may be asking you to abandon something essential.","You are being invited to notice what you are ignoring — especially the quiet discomfort.","The Seer whispers: beware of choices made only to silence anxiety.","Not every open door is meant for you; some are tests of your discernment.","If you must betray yourself to proceed, the path is not truly yours.","The warning is gentle but firm: do not trade long-term truth for short-term relief.","The Seer shows a fork in the road — one lit by honesty, one by denial."],
-      Encouragement: ["The Seer sees your effort — and it is not invisible to the future you.","You are not behind; you are exactly where your story needed you to pause.","The answer carries this message: keep going, but with more kindness toward yourself.","You are allowed to move slowly and still be moving in the right direction.","The Seer smiles: your courage has already changed more than you realize.","You are not alone in this question; many have stood where you stand now.","The next chapter does not require perfection — only sincerity and one honest step.","The Seer places a hand on your shoulder: you are capable of more gentle strength than you think."],
-      Mystery: ["The Seer does not fully resolve this — some questions are meant to stay half-lit.","You are being invited into a mystery, not a conclusion.","The answer arrives in fragments, like moonlight through branches.","The Seer shows you symbols instead of instructions; follow what feels quietly significant.","Not knowing is not a failure — it is a fertile space where meaning grows.","The mystery around your question is part of its power, not its flaw.","The Seer leaves a riddle: what if the unknown is already working in your favor?","You are standing at the edge of something that cannot be rushed into clarity."],
-      Transformation: ["The Seer sees a shedding — something old is ready to fall away.","Your question is a sign that you have already begun to change.","The answer carries a transformation: you will not return to the person you were before this.","The Seer shows a serpent leaving its skin — uncomfortable, necessary, sacred.","You are not losing yourself; you are losing the version of you that cannot come with you.","The change you fear may be the very change that frees you.","The Seer reveals this: your life is rearranging to match a deeper truth.","You are crossing a threshold; the old story will not survive on the other side."],
-      Destiny: ["The Seer feels a strong pull — your question touches your destiny.","You are closer to your true path than your doubt suggests.","The answer is tied to a long arc in your life, not just this moment.","The Seer shows a thread running through your past, present, and future.","You are not off-course; you are in the middle of a necessary curve.","The calling you feel is real — even if you cannot yet name it.","The Seer whispers: your future self is grateful you asked this question now.","You are aligning with something larger than your current circumstances."],
-      Shadow: ["The Seer gently points to what you avoid — there is meaning there.","Your question brushes against a shadow you have not fully faced.","The answer asks you to look at the part of you that feels least lovable.","The Seer shows a mirror in dim light — you are invited to look longer.","What you push away may be holding a key to your freedom.","The discomfort around this question is a signal, not a flaw.","The Seer reveals that your shadow is not your enemy; it is your unspoken story.","You are ready to bring more of your hidden self into the light."],
-      Light: ["The Seer sees a quiet radiance around you — something good is already forming.","Your question is a beam of light searching for its source.","The answer carries warmth: you are allowed to feel hopeful about this.","The Seer shows a lantern being lit in a long hallway.","You are not in the dark as much as you think; there is guidance nearby.","The light in this situation may come from an unexpected person or moment.","The Seer smiles: joy is not irrelevant to this question — it is part of the answer.","You are allowed to trust that something benevolent is moving with you."]
-    };
-    const seerCategories = Object.keys(seerPools);
-    function usePrompt(btn) { document.getElementById('seer-question').value = btn.textContent; }
-    function typeWriterEffect(element, text, speed = 45) { let i = 0; element.innerHTML = ""; const interval = setInterval(() => { element.innerHTML += text.charAt(i); i++; if (i >= text.length) clearInterval(interval); }, speed); }
-    function chooseSeerAnswer() { const category = seerCategories[Math.floor(Math.random() * seerCategories.length)]; const pool = seerPools[category]; const answer = pool[Math.floor(Math.random() * pool.length)]; return { category, answer }; }
-    function revealSeerAnswer() {
-      const question = document.getElementById("seer-question").value.trim();
-      const title = document.getElementById("seer-title");
-      const answerBox = document.getElementById("seer-answer-box");
-      const moon = document.getElementById("moon-pulse");
-      const chime = document.getElementById("seer-chime");
-      if (!question) return;
-      title.style.opacity = "0"; answerBox.style.opacity = "0"; answerBox.innerHTML = "";
-      moon.style.opacity = "1";
-      moon.classList.add("pulse");
+    function generateSeerResponse() {
+      const responses = [
+        "The symbol you seek is already moving toward you.",
+        "A hidden pattern is forming beneath recent events.",
+        "Your dream is asking you to look twice at something familiar.",
+        "The answer is not distant — it is repeating softly.",
+        "A shift in your inner landscape is preparing new meaning.",
+        "Your unconscious is gathering symbols for a future insight.",
+        "Something forgotten is trying to return to your attention.",
+        "The dream is not about the image — it is about the feeling beneath it.",
+        "Your intuition already knows the direction; the dream is confirmation.",
+        "A symbolic doorway is opening in your nightly visions.",
+        "The message is gentle, but persistent — listen again tonight.",
+        "Your dream is echoing a pattern from your waking life.",
+        "The symbol appears when your mind is ready to interpret it.",
+        "A quiet truth is rising from your unconscious.",
+        "Your dream is weaving together past and present meaning.",
+        "The symbol is a guide, not a destination.",
+        "Your inner world is preparing you for a transition.",
+        "The dream is pointing toward something you have not named yet.",
+        "A deeper layer of your psyche is beginning to speak.",
+        "Your dream is a mirror — but not of the surface.",
+        "The symbol carries a message about your next emotional step.",
+        "Your unconscious is offering clarity disguised as mystery.",
+        "The meaning will reveal itself when you stop searching for it.",
+        "Your dream is a rehearsal for something real.",
+        "The symbol is asking you to pause and reflect.",
+        "Your intuition is stronger than the dream itself.",
+        "A new archetype is entering your symbolic life.",
+        "Your dream is the beginning of a longer conversation.",
+        "The symbol is a visitor — welcome it.",
+        "Your unconscious is aligning something important.",
+        "The dream is a threshold — step through gently.",
+        "Your symbol is a compass, not a map.",
+        "The meaning is already forming — trust the process."
+      ];
 
-      const { category, answer } = chooseSeerAnswer();
-      title.style.opacity = "1";
+      const index = Math.floor(Math.random() * responses.length);
+      const response = responses[index];
+
+      const output = document.getElementById("seerResponse");
+      output.style.opacity = 0;
 
       setTimeout(() => {
-        typeWriterEffect(answerBox, answer);
-        answerBox.style.opacity = "1";
-        chime.play();
-      }, 600);
+        output.textContent = response;
+        output.style.animation = "fadeIn 1.5s forwards";
+      }, 300);
     }
   </script>
+
+</BaseLayout>
+
 
 
 

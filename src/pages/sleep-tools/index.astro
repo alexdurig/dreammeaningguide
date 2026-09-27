@@ -1,64 +1,162 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: Astro.site },
-    { '@type': 'ListItem', position: 2, name: 'Sleep Tools', item: Astro.url.href },
-  ],
-};
+title: "Sleep Tools Hub"
+description: "Curated resources for deeper sleep, lucid dreaming, and meaningful rest."
 ---
 
-<BaseLayout
-  title="Sleep Tools Hub — Resources for Deeper Dreams"
-  description="Curated tools, products, and techniques for deeper sleep, lucid dreaming, and meaningful rest. Affiliate recommendations included."
-  schema={breadcrumbSchema}
->
-  <main style="max-width: 800px; margin: 0 auto; padding: 2rem 1rem;">
-    <nav aria-label="Breadcrumb">
-      <ol style="display:flex; gap:0.5rem; list-style:none; padding:0; opacity:0.7; font-size:0.9rem;">
-        <li><a href="/">Home</a></li>
-        <li>›</li>
-        <li aria-current="page">Sleep Tools</li>
-      </ol>
-    </nav>
+<h1>Sleep Tools Hub</h1>
+<p class="intro">
+  Curated resources for deeper sleep, lucid dreaming, and meaningful rest.
+</p>
 
-    <header style="margin: 2rem 0;">
-      <h1>Sleep Tools Hub</h1>
-      <p>Curated resources for deeper sleep, lucid dreaming, and meaningful rest.</p>
-    </header>
+<p>
+  The quality of your dreams depends enormously on the quality of your sleep. 
+  This hub gathers the tools, techniques, and resources most effective for cultivating a rich dream life — 
+  from sleep hygiene fundamentals to advanced lucid dreaming practices.
+</p>
 
-    <section style="margin-bottom: 2rem;">
-      <p>
-        The quality of your dreams depends enormously on the quality of your sleep. This hub gathers
-        the tools, techniques, and resources most effective for cultivating a rich dream life —
-        from sleep hygiene fundamentals to advanced lucid dreaming practices.
-      </p>
-      <p>
-        Some links on this page are affiliate links. We only recommend products we believe in.
-        See our <a href="/about">affiliate disclosure</a> for full details.
-      </p>
-    </section>
+<p class="disclosure">
+  Some links on this page are affiliate links. We only recommend products we believe in. 
+  See our affiliate disclosure for full details.
+</p>
 
-    <section style="margin-bottom: 2rem;">
-      <h2>Dream-Enhancement Techniques</h2>
-      <ul>
-        <li><strong>Dream journaling</strong> — Record dreams immediately upon waking. Use our <a href="/journal">Dream Journal</a> to build your archive.</li>
-        <li><strong>Reality checks</strong> — Practice throughout the day to carry the habit into sleep, enabling lucid dreaming.</li>
-        <li><strong>Sleep scheduling</strong> — Consistent sleep and wake times dramatically improve dream recall and REM quality.</li>
-        <li><strong>Intention setting</strong> — Before sleep, hold a question or image in mind. Ask <a href="/seer">The Seer</a> for a symbolic starting point.</li>
-      </ul>
-    </section>
+<hr />
 
-    <section>
-      <h2>Explore Dream Symbols</h2>
-      <p>
-        Better sleep is only half the picture. Understanding what your dreams are saying is the other.
-        Explore our <a href="/dream-symbols">Dream Symbol Dictionary</a> to decode the archetypes
-        and images in your dream life.
-      </p>
-    </section>
-  </main>
-</BaseLayout>
+<h2>Dream-Enhancement Techniques</h2>
+
+<ul>
+  <li><strong>Dream journaling</strong> — Record dreams immediately upon waking. Use our Dream Journal to build your archive.</li>
+  <li><strong>Reality checks</strong> — Practice throughout the day to carry the habit into sleep, enabling lucid dreaming.</li>
+  <li><strong>Sleep scheduling</strong> — Consistent sleep and wake times dramatically improve dream recall and REM quality.</li>
+  <li><strong>Intention setting</strong> — Before sleep, hold a question or image in mind. Ask The Seer for a symbolic starting point.</li>
+</ul>
+
+<hr />
+
+<h2>Explore Dream Symbols</h2>
+
+<p>
+  Better sleep is only half the picture. Understanding what your dreams are saying is the other. 
+  Explore our <a href="/dream-symbols">Dream Symbol Dictionary</a> to decode the archetypes and images in your dream life.
+</p>
+
+<hr />
+
+<h2>Recommended Sleep Tools</h2>
+<p>These short-link recommendations use your affiliate tag <strong>dreammeaningg-20</strong>.</p>
+
+<div class="tools-grid">
+
+  <!-- Sleep Masks -->
+  <section>
+    <h3>Sleep Masks</h3>
+    <p>Complete darkness improves melatonin production and dream vividness.</p>
+
+    <ul>
+      <li>
+        <a href="https://amzn.to/4hPTBpe" target="_blank">
+          Kitsch Contour Sleep Mask — total darkness, lash-safe design
+        </a>
+      </li>
+      <li>
+        <a href="https://amzn.to/4hPTBpe" target="_blank">
+          Manta Sleep Mask — adjustable eye cups for zero pressure
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Weighted Blankets -->
+  <section>
+    <h3>Weighted Blankets</h3>
+    <p>Deep pressure stimulation calms the nervous system and improves REM stability.</p>
+
+    <ul>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">Bearaby Cotton Napper — breathable weighted comfort</a></li>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">YnM Weighted Blanket — classic glass-bead design</a></li>
+    </ul>
+  </section>
+
+  <!-- Dream Journals -->
+  <section>
+    <h3>Dream Journals</h3>
+    <p>Your dream archive is the foundation of symbolic insight.</p>
+
+    <ul>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">Moleskine Classic — durable, elegant, perfect for nightly entries</a></li>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">Papier Custom Journal — personalized dream diary</a></li>
+    </ul>
+  </section>
+
+  <!-- Sleep Trackers -->
+  <section>
+    <h3>Sleep Trackers</h3>
+    <p>Track REM cycles, sleep stages, and dream-rich periods.</p>
+
+    <ul>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">Fitbit Inspire — simple REM tracking</a></li>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">Oura Ring — advanced sleep analytics</a></li>
+    </ul>
+  </section>
+
+  <!-- White Noise & Sound -->
+  <section>
+    <h3>White Noise & Sound</h3>
+    <p>Stable sound environments reduce micro-awakenings and improve dream continuity.</p>
+
+    <ul>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">LectroFan — pure white noise</a></li>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">Hatch Restore — sleep sounds + sunrise alarm</a></li>
+    </ul>
+  </section>
+
+  <!-- Supplements -->
+  <section>
+    <h3>Sleep Supplements</h3>
+    <p>Gentle support for REM depth and dream vividness.</p>
+
+    <ul>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">Magnesium Glycinate — calming and sleep-supportive</a></li>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">L-Theanine — reduces mental chatter</a></li>
+    </ul>
+  </section>
+
+  <!-- Bedroom Lighting -->
+  <section>
+    <h3>Bedroom Lighting</h3>
+    <p>Warm, low-light environments prepare the mind for symbolic dreaming.</p>
+
+    <ul>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">Amber Night Lights — melatonin-safe</a></li>
+      <li><a href="https://amzn.to/4hPTBpe" target="_blank">Himalayan Salt Lamp — soft ambient glow</a></li>
+    </ul>
+  </section>
+
+</div>
+
+<style>
+  h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .intro {
+    font-size: 1.2rem;
+    color: #ccc;
+  }
+  .disclosure {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  .tools-grid section {
+    margin-bottom: 2rem;
+  }
+  .tools-grid ul {
+    padding-left: 1.2rem;
+  }
+  a {
+    color: #a78bfa; /* DreamMeaningGuide purple */
+  }
+  a:hover {
+    color: #c4b5fd;
+  }
+</style>
+

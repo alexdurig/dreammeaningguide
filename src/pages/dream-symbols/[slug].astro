@@ -5,59 +5,9 @@ export async function getStaticPaths() {
   return SYMBOLS.map((s) => ({ params: { slug: s.slug }, props: { symbol: s } }));
 }
 const { symbol } = Astro.props;
-const term = {
-  "@context": "https://schema.org",
-  "@type": "DefinedTerm",
-  "name": symbol.name + " Dream Symbol",
-  "description": symbol.description,
-  "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "Dream Symbol Dictionary", "url": String(Astro.site) + "dream-symbols" },
-  "url": String(Astro.url)
-};
-const bc = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": Astro.site },
-    { "@type": "ListItem", "position": 2, "name": "Dream Symbols", "item": String(Astro.site) + "dream-symbols" },
-    { "@type": "ListItem", "position": 3, "name": symbol.name, "item": String(Astro.url) }
-  ]
-};
-const faq = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": `What does it mean to dream of a ${symbol.name.toLowerCase()}?`,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": symbol.description
-      }
-    },
-    {
-      "@type": "Question",
-      "name": `What are the symbolic meanings of a ${symbol.name.toLowerCase()} in dreams?`,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": symbol.meanings.join('. ') + '.'
-      }
-    },
-    {
-      "@type": "Question",
-      "name": `What other dream symbols are related to the ${symbol.name.toLowerCase()}?`,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": `Dreams featuring the ${symbol.name.toLowerCase()} often connect to these related symbols: ${symbol.related.map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(', ')}.`
-      }
-    }
-  ]
-};
+
+// schema objects...
 ---
-<BaseLayout
-  title={symbol.name + " Dream Meaning - Symbols, Archetypes and Interpretations"}
-  description={"What does dreaming of a " + symbol.name.toLowerCase() + " mean? " + symbol.tagline + ". Explore the symbolic, psychological, and archetypal meanings."}
-  schema={[term, bc, faq]}
->
 <style>
   nav[aria-label="Breadcrumb"] ol {
     list-style: none;
@@ -79,6 +29,12 @@ const faq = {
   }
 </style>
 
+<BaseLayout
+  title={symbol.name + " Dream Meaning - Symbols, Archetypes and Interpretations"}
+  description={"What does dreaming of a " + symbol.name.toLowerCase() + " mean? " + symbol.tagline + ". Explore the symbolic, psychological, and archetypal meanings."}
+  schema={[term, bc, faq]}
+>
+
   <nav aria-label="Breadcrumb">
     <ol>
       <li><a href="/">Home</a></li>
@@ -86,25 +42,12 @@ const faq = {
       <li aria-current="page">{symbol.name}</li>
     </ol>
   </nav>
+
   <article>
-    <header>
-      <p class="category">{symbol.category}</p>
-      <h1>{symbol.name} Dream Meaning</h1>
-      <p class="tagline">{symbol.tagline}</p>
-    </header>
-    <section class="overview">
-      <h2>What Does It Mean to Dream of a {symbol.name}?</h2>
-      <p>{symbol.description}</p>
-    </section>
-    <section class="meanings">
-      <h2>Core Symbolic Meanings</h2>
-      <ul>{symbol.meanings.map((m) => <li>{m}</li>)}</ul>
-    </section>
-    <section class="related">
-      <h2>Related Dream Symbols</h2>
-      <ul>{symbol.related.map((s) => <li><a href={"/dream-symbols/" + s}>{s.charAt(0).toUpperCase() + s.slice(1)}</a></li>)}</ul>
-    </section>
+    <!-- rest of your page -->
   </article>
+
 </BaseLayout>
+
 
 

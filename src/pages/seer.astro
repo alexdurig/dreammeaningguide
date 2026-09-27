@@ -59,6 +59,64 @@ const initialResponse = getRandomResponse();
   box-sizing: border-box;
 }
 
+.seer-glyph {
+  font-size: 4rem;
+}
+
+.seer-input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.seer-button {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  display: block;
+}
+
+.seer-response {
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .seer-container {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .seer-glyph {
+    font-size: 3rem;
+  }
+
+  .seer-input {
+    font-size: 0.95rem;
+    padding: 0.85rem;
+  }
+
+  .seer-button {
+    font-size: 0.95rem;
+    padding: 0.65rem 1.25rem;
+  }
+
+  .seer-response {
+    font-size: 1.1rem;
+  }
+}
+
+/* Make the Seer responsive */
+.seer-container {
+  max-width: 700px;
+  width: 100%;
+  margin: 4rem auto;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
 .seer-input {
   width: 100%;
   max-width: 100%;

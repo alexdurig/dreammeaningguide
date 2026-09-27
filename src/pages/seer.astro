@@ -36,151 +36,325 @@ const responses = [
   "Your symbol is a compass, not a map.",
   "The meaning is already forming — trust the process."
 ];
-
-function getRandomResponse() {
-  return responses[Math.floor(Math.random() * responses.length)];
-}
-
-const initialResponse = getRandomResponse();
 ---
 
-<BaseLayout title="The Seer" description="Ask The Seer for symbolic insight.">
-
+<BaseLayout
+  title="The Seer — Your Symbolic Oracle"
+  description="Consult The Seer for symbolic insight into dreams, identity, and intention."
+>
   <style>
     .seer-container {
-      max-width: 700px;
+      max-width: 720px;
       width: 100%;
       margin: 4rem auto;
-      padding: 2rem;
+      padding: 2.5rem 2rem 3rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient haze / fog */
+    .seer-container::before,
+    .seer-container::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(
+        circle at 20% 0%,
+        rgba(255, 255, 255, 0.06),
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 80% 100%,
+        rgba(167, 139, 250, 0.08),
+        transparent 60%
+      );
+      opacity: 0.6;
+      filter: blur(18px);
+      pointer-events: none;
+      animation: seerFog 26s linear infinite;
+      mix-blend-mode: screen;
+    }
+
+    .seer-container::after {
+      animation-duration: 38s;
+      opacity: 0.4;
+    }
+
+    @keyframes seerFog {
+      0% { transform: translate3d(-10px, 0, 0); }
+      50% { transform: translate3d(10px, -8px, 0); }
+      100% { transform: translate3d(-10px, 0, 0); }
+    }
+
+    /* Moon archetype above the crystal ball */
+    .seer-moon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 0.75rem;
+      border-radius: 50%;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 30%, #f5f3ff 0%, #e0dcff 35%, #c4b5fd 70%, #4c1d95 100%);
+      box-shadow:
+        0 0 35px rgba(167, 139, 250, 0.7),
+        0 0 80px rgba(76, 29, 149, 0.8);
+      overflow: hidden;
+      animation: moonFloat 18s ease-in-out infinite;
+    }
+
+    @keyframes moonFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Subtle, genderless facial hint */
+    .seer-moon::before,
+    .seer-moon::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.35;
+      mix-blend-mode: soft-light;
+    }
+
+    .seer-moon::before {
+      width: 70%;
+      height: 70%;
+      left: 15%;
+      top: 18%;
+      background:
+        radial-gradient(circle at 35% 40%, rgba(76, 29, 149, 0.55), transparent 55%),
+        radial-gradient(circle at 65% 40%, rgba(76, 29, 149, 0.55), transparent 55%),
+        radial-gradient(circle at 50% 65%, rgba(30, 64, 175, 0.7), transparent 60%);
+    }
+
+    .seer-moon::after {
+      width: 85%;
+      height: 85%;
+      left: 7.5%;
+      top: 10%;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(24, 24, 27, 0.35), transparent 60%),
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(24, 24, 27, 0.35) 45%,
+          transparent 80%
+        );
     }
 
     .seer-glyph {
-      font-size: 4rem;
-      margin-bottom: 1rem;
+      font-size: 3.2rem;
+      margin-bottom: 1.25rem;
       color: #c4b5fd;
-      filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
-      animation: float 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 22px rgba(139, 92, 246, 0.55));
+      animation: glyphPulse 7s ease-in-out infinite;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    @keyframes glyphPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.06); opacity: 0.9; }
+    }
+
+    .seer-title {
+      font-family: "Cinzel", serif;
+      color: #e5ddff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .seer-subtitle {
+      color: #a78bfa;
+      font-size: 0.98rem;
+      max-width: 520px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.6;
+    }
+
+    .seer-input-label {
+      color: #d8c8ff;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     .seer-input {
       width: 100%;
       padding: 1rem;
-      border-radius: 10px;
-      border: 1px solid rgba(167, 139, 250, 0.3);
-      background: rgba(45, 21, 84, 0.4);
+      border-radius: 12px;
+      border: 1px solid rgba(167, 139, 250, 0.45);
+      background: rgba(30, 10, 60, 0.75);
       color: #e8e0ff;
       font-size: 1rem;
       margin-bottom: 1.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 0 0 1px rgba(76, 29, 149, 0.35),
+        0 18px 40px rgba(15, 23, 42, 0.85);
+    }
+
+    .seer-input::placeholder {
+      color: rgba(199, 181, 255, 0.6);
     }
 
     .seer-button {
       width: 100%;
-      max-width: 280px;
+      max-width: 320px;
       margin: 0 auto;
-      padding: 0.75rem 1.5rem;
-      border-radius: 10px;
-      background: #a78bfa;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0%, #f5f3ff, #c4b5fd 40%, #7c3aed 100%);
       color: #120016;
-      font-weight: bold;
+      font-weight: 600;
       border: none;
       cursor: pointer;
       display: block;
+      font-size: 0.98rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow:
+        0 0 0 1px rgba(76, 29, 149, 0.45),
+        0 14px 32px rgba(15, 23, 42, 0.9);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
     }
 
+    .seer-button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow:
+        0 0 0 1px rgba(76, 29, 149, 0.6),
+        0 18px 40px rgba(15, 23, 42, 0.95);
+    }
+
+    .seer-button:active {
+      transform: translateY(1px);
+      box-shadow:
+        0 0 0 1px rgba(76, 29, 149, 0.7),
+        0 10px 24px rgba(15, 23, 42, 0.9);
+    }
+
+    /* Listening shimmer */
+    .seer-listening {
+      margin-top: 1.4rem;
+      font-size: 0.9rem;
+      color: rgba(199, 181, 255, 0.8);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .seer-listening.active {
+      opacity: 1;
+      animation: listeningShimmer 2.4s ease-in-out infinite;
+    }
+
+    @keyframes listeningShimmer {
+      0% { opacity: 0.15; text-shadow: 0 0 6px rgba(167, 139, 250, 0.7); }
+      50% { opacity: 0.9; text-shadow: 0 0 14px rgba(199, 181, 255, 0.9); }
+      100% { opacity: 0.2; text-shadow: 0 0 6px rgba(167, 139, 250, 0.6); }
+    }
+
+    /* Response chamber */
     .seer-response {
       margin-top: 2rem;
-      font-size: 1.3rem;
+      padding: 1.1rem 1rem;
+      min-height: 70px;
+      border-radius: 14px;
+      border: 1px solid rgba(167, 139, 250, 0.5);
+      background: radial-gradient(circle at 0% 0%, rgba(55, 30, 95, 0.9), rgba(24, 16, 48, 0.95));
       color: #e8e0ff;
+      font-size: 1.15rem;
+      line-height: 1.7;
       opacity: 0;
-      animation: fadeIn 1.5s forwards;
+      transform: translateY(6px);
+      box-shadow:
+        0 0 0 1px rgba(76, 29, 149, 0.45),
+        0 18px 40px rgba(15, 23, 42, 0.9);
+      transition: opacity 0.9s ease, transform 0.9s ease, box-shadow 0.4s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .seer-response.active {
+      opacity: 1;
+      transform: translateY(0);
+      box-shadow:
+        0 0 0 1px rgba(167, 139, 250, 0.7),
+        0 22px 48px rgba(15, 23, 42, 0.95);
+    }
+
+    .seer-response-empty {
+      color: rgba(199, 181, 255, 0.55);
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      .seer-container {
+        margin-top: 2.5rem;
+        padding: 2rem 1.4rem 2.6rem;
+      }
+
+      .seer-moon {
+        width: 96px;
+        height: 96px;
+      }
+
+      .seer-glyph {
+        font-size: 2.6rem;
+      }
+
+      .seer-title {
+        font-size: 1.35rem;
+      }
+
+      .seer-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .seer-input {
+        font-size: 0.95rem;
+        padding: 0.9rem;
+      }
+
+      .seer-button {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.4rem;
+      }
+
+      .seer-response {
+        font-size: 1.05rem;
+      }
     }
   </style>
 
   <div class="seer-container">
+    <div class="seer-moon"></div>
+
     <div class="seer-glyph">🔮</div>
 
-    <h1 style="font-family: 'Cinzel', serif; color: #d8c8ff;">
-      The Seer
-    </h1>
+    <h1 class="seer-title">The Seer</h1>
 
-    <p style="color: #a78bfa; margin-bottom: 2rem;">
-      Ask your question here. 
+    <p class="seer-subtitle">
+      Consult an archetype of identity as old as the man in the moon — a
+      baseline awareness of awareness that listens beneath every dream,
+      symbol, and intention.
     </p>
 
-    <input id="seerInput" class="seer-input" type="text" placeholder="Ask The Seer..." />
-
-    <button class="seer-button" onclick="generateSeerResponse()">
-      Click here and the Seer answers your question with symbolic insight.
-    </button>
-
-    <div id="seerResponse" class="seer-response">
-      {initialResponse}
+    <div class="seer-input-label">
+      Ask your question here
     </div>
-  </div>
 
-  <script is:raw>
-    function generateSeerResponse() {
-      const responses = [
-        "The symbol you seek is already moving toward you.",
-        "A hidden pattern is forming beneath recent events.",
-        "Your dream is asking you to look twice at something familiar.",
-        "The answer is not distant — it is repeating softly.",
-        "A shift in your inner landscape is preparing new meaning.",
-        "Your unconscious is gathering symbols for a future insight.",
-        "Something forgotten is trying to return to your attention.",
-        "The dream is not about the image — it is about the feeling beneath it.",
-        "Your intuition already knows the direction; the dream is confirmation.",
-        "A symbolic doorway is opening in your nightly visions.",
-        "The message is gentle, but persistent — listen again tonight.",
-        "Your dream is echoing a pattern from your waking life.",
-        "The symbol appears when your mind is ready to interpret it.",
-        "A quiet truth is rising from your unconscious.",
-        "Your dream is weaving together past and present meaning.",
-        "The symbol is a guide, not a destination.",
-        "Your inner world is preparing you for a transition.",
-        "The dream is pointing toward something you have not named yet.",
-        "A deeper layer of your psyche is beginning to speak.",
-        "Your dream is a mirror — but not of the surface.",
-        "The symbol carries a message about your next emotional step.",
-        "Your unconscious is offering clarity disguised as mystery.",
-        "The meaning will reveal itself when you stop searching for it.",
-        "Your dream is a rehearsal for something real.",
-        "The symbol is asking you to pause and reflect.",
-        "Your intuition is stronger than the dream itself.",
-        "A new archetype is entering your symbolic life.",
-        "Your dream is the beginning of a longer conversation.",
-        "The symbol is a visitor — welcome it.",
-        "Your unconscious is aligning something important.",
-        "The dream is a threshold — step through gently.",
-        "Your symbol is a compass, not a map.",
-        "The meaning is already forming — trust the process."
-      ];
+    <input
+      id="seerInput"
+      class="seer-input"
+      type="text"
+      placeholder="Ask The Seer about a dream, symbol, relationship, or turning point..."
 
-      const response = responses[Math.floor(Math.random() * responses.length)];
-      const output = document.getElementById("seerResponse");
-
-      output.style.opacity = 0;
-
-      setTimeout(() => {
-        output.textContent = response;
-        output.style.animation = "fadeIn 1.5s forwards";
-      }, 300);
-    }
-  </script>
-<script src="/seer.js" defer></script>
-
-</BaseLayout>
 
 
 

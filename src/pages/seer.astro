@@ -40,7 +40,6 @@ const responses = [
 
 <BaseLayout title="The Seer" description="Ask The Seer for symbolic insight.">
   <style>
-    /* Container */
     .seer-container {
       max-width: 720px;
       width: 100%;
@@ -51,7 +50,7 @@ const responses = [
       overflow: hidden;
     }
 
-    /* Cosmic background ambiance */
+    /* Cosmic background */
     .seer-container::before {
       content: "";
       position: absolute;
@@ -63,7 +62,7 @@ const responses = [
       pointer-events: none;
     }
 
-    /* Drifting fog */
+    /* Fog */
     .seer-container::after {
       content: "";
       position: absolute;
@@ -83,7 +82,7 @@ const responses = [
       100% { transform: translate3d(-10px, 0, 0); }
     }
 
-    /* Starfield container */
+    /* Stars */
     .stars {
       position: absolute;
       inset: 0;
@@ -91,7 +90,6 @@ const responses = [
       overflow: hidden;
     }
 
-    /* Star layers */
     .star, .star2, .star3 {
       position: absolute;
       background: rgba(255,255,255,0.8);
@@ -99,25 +97,9 @@ const responses = [
       pointer-events: none;
     }
 
-    .star {
-      width: 2px;
-      height: 2px;
-      animation: starDrift 14s linear infinite;
-    }
-
-    .star2 {
-      width: 3px;
-      height: 3px;
-      animation: starDrift2 18s linear infinite;
-      opacity: 0.7;
-    }
-
-    .star3 {
-      width: 1px;
-      height: 1px;
-      animation: starDrift3 9s linear infinite;
-      opacity: 0.9;
-    }
+    .star { width: 2px; height: 2px; animation: starDrift 14s linear infinite; }
+    .star2 { width: 3px; height: 3px; animation: starDrift2 18s linear infinite; opacity: 0.7; }
+    .star3 { width: 1px; height: 1px; animation: starDrift3 9s linear infinite; opacity: 0.9; }
 
     @keyframes starDrift {
       0% { transform: translateY(0); opacity: 0.8; }
@@ -134,7 +116,7 @@ const responses = [
       100% { transform: translateY(30px); opacity: 0.3; }
     }
 
-    /* Sacred Eye (Oculus Aura) */
+    /* Sacred Eye */
     .seer-eye {
       width: 200px;
       height: 200px;
@@ -154,7 +136,6 @@ const responses = [
       50% { transform: translateY(-10px); }
     }
 
-    /* Golden iris */
     .seer-eye::before {
       content: "";
       position: absolute;
@@ -174,7 +155,6 @@ const responses = [
         inset 0 0 20px rgba(255,255,255,0.2);
     }
 
-    /* Nebula swirl */
     .seer-eye::after {
       content: "";
       position: absolute;
@@ -203,7 +183,6 @@ const responses = [
       100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
-    /* Pupil */
     .seer-pupil {
       position: absolute;
       left: 50%;
@@ -222,7 +201,6 @@ const responses = [
       50% { width: 50px; height: 50px; }
     }
 
-    /* Title */
     .seer-title {
       font-family: "Cinzel", serif;
       color: #e5ddff;
@@ -240,27 +218,22 @@ const responses = [
       line-height: 1.6;
     }
 
-    /* Input */
+    /* ⭐ CENTERED INPUT FIELD */
     .seer-input {
       width: 100%;
+      max-width: 400px;
       padding: 1.2rem;
       border-radius: 12px;
       border: 1px solid rgba(167,139,250,0.45);
       background: rgba(30,10,60,0.75);
       color: #e8e0ff;
       font-size: 1.2rem;
-      margin-bottom: 1.5rem;
+      margin: 0 auto 1.5rem auto;
       backdrop-filter: blur(12px);
       text-align: center;
-
-  margin: 0 auto;
-}
-display: block;
-margin-left: auto;
-margin-right: auto;
+      display: block;
     }
 
-    /* Button */
     .seer-button {
       width: 100%;
       max-width: 320px;
@@ -278,7 +251,6 @@ margin-right: auto;
       text-transform: uppercase;
     }
 
-    /* Listening shimmer */
     .seer-listening {
       margin-top: 1.4rem;
       font-size: 0.9rem;
@@ -299,7 +271,6 @@ margin-right: auto;
       100% { opacity: 0.2; }
     }
 
-    /* Response */
     .seer-response {
       margin-top: 2rem;
       padding: 1.1rem 1rem;
@@ -323,7 +294,6 @@ margin-right: auto;
 
   <div class="seer-container">
 
-    <!-- Starfield -->
     <div class="stars">
       <div class="star" style="top:5%; left:15%; animation-delay:0s;"></div>
       <div class="star" style="top:18%; left:70%; animation-delay:1s;"></div>
@@ -341,7 +311,6 @@ margin-right: auto;
       <div class="star3" style="top:68%; left:75%; animation-delay:1.2s;"></div>
     </div>
 
-    <!-- Sacred Eye -->
     <div class="seer-eye">
       <div class="seer-pupil"></div>
     </div>
@@ -426,6 +395,7 @@ margin-right: auto;
     }
   </script>
 </BaseLayout>
+
 
 
 

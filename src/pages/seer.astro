@@ -1,13 +1,71 @@
+
 ---
 const seerSayings = [
   "The images that return are not accidents; they are invitations.",
   "You do not dream in words, yet your dreams speak in sentences.",
   "Every symbol you resist has already chosen you.",
   "The dream is not a story you watch; it is a mirror you enter.",
-  "You are not here to decode the dream. You are here to let it rearrange you."
+  "You are not here to decode the dream. You are here to let it rearrange you.",
+  "The dream does not ask for your agreement; it asks for your attention.",
+  "What you call a nightmare is often a message that refused to whisper.",
+  "The smallest detail in a dream can be the loudest voice in your life.",
+  "You wake up, but the dream does not end; it moves into your day as a pattern.",
+  "Every recurring image is a door that has not yet been opened.",
+  "You do not have to understand a symbol for it to begin working on you.",
+  "The dream is not trying to solve your problems; it is trying to reveal your position.",
+  "When you chase meaning too quickly, you outrun the message.",
+  "The dream speaks in exaggerations so that your waking mind cannot ignore it.",
+  "You are not the author of your dreams; you are the listener.",
+  "The dream remembers what you have forgotten about yourself.",
+  "Every figure in your dream carries a piece of your own voice.",
+  "The dream is not linear; it is layered. You are allowed to return to it.",
+  "You cannot control what appears in your dreams, but you can choose how gently you receive it.",
+  "The dream does not punish; it exposes.",
+  "When a place appears again and again, it is not geography—it is a state of soul.",
+  "The dream often hides its clearest message in the strangest image.",
+  "You are not meant to decode everything; you are meant to notice what will not let you go.",
+  "The dream is a rehearsal space for truths you are not yet ready to speak aloud.",
+  "Every animal in a dream carries instinct, memory, and a direction.",
+  "The dream does not flatter you; it shows you where you are divided.",
+  "You cannot outrun a symbol that has chosen you; you can only learn to walk with it.",
+  "The dream is not a test; it is a conversation.",
+  "When you wake disturbed, it is often because the dream has touched something true.",
+  "The dream does not care about your schedule; it arrives when your defenses are lowest.",
+  "You are not alone in your dreams; parts of you you have not met yet are already there.",
+  "The dream is a night‑language; translation requires patience, not force.",
+  "Every door in a dream is a question: what are you willing to enter?",
+  "The dream repeats what you ignore.",
+  "You cannot bargain with a symbol; you can only listen to its timing.",
+  "The dream is not random; it is precise in ways that are not yet obvious.",
+  "When you dismiss a dream, you often dismiss a part of yourself.",
+  "The dream is a mirror that does not care about your self‑image.",
+  "You are not here to conquer your dreams; you are here to be changed by them.",
+  "The dream often speaks first in feeling, and only later in words.",
+  "Every unresolved story in your life writes itself into your dreams.",
+  "The dream is a night‑map of your loyalties and your fears.",
+  "You do not have to share your dream for it to be real; its reality is in its effect on you.",
+  "The dream is a place where your future self sometimes visits your present.",
+  "When you remember a dream years later, it is because its work is not finished.",
+  "The dream is not a puzzle to solve; it is a relationship to tend.",
+  "You are not wrong for being confused; the dream arrives before the explanation.",
+  "The dream is a lantern in a room you did not know you had.",
+  "Every symbol that embarrasses you is asking for a more honest conversation.",
+  "The dream does not speak in moral judgments; it speaks in images of imbalance.",
+  "You are allowed to be gentle with what your dream reveals.",
+  "The dream is not trying to fix you; it is trying to show you where you are already moving.",
+  "When you listen to your dreams, you become less surprised by your life.",
+  "The dream is a night‑oracle; it will not shout, but it will repeat.",
+  "You are not here to tame your dreams; you are here to recognize their authority.",
+  "The dream often answers questions you did not know you were asking.",
+  "Every symbol that frightens you is also a doorway to courage.",
+  "The dream is a living archive of your inner negotiations.",
+  "You do not dream alone; your ancestors sometimes speak in your images.",
+  "The dream is not a distraction; it is a parallel briefing.",
+  "You are allowed to take one sentence from a dream and carry it for a year.",
+  "The dream is a night‑mirror; it shows you the shape of your unseen commitments."
 ];
 
-function getRandomSaying() {
+function pickSaying() {
   return seerSayings[Math.floor(Math.random() * seerSayings.length)];
 }
 ---
@@ -17,10 +75,10 @@ function getRandomSaying() {
     <meta charset="utf-8" />
     <title>The Seer · DreamMeaningGuide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <style>
       :root {
         --bg-deep: #050514;
-        --bg-chamber: #0b0718;
         --fg: #e9e3ff;
         --accent-purple: #6A4BFF;
         --accent-soft: #C7B3FF;
@@ -42,41 +100,22 @@ function getRandomSaying() {
         color: var(--fg);
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
+        padding-top: 2rem;
       }
 
       main {
         width: 100%;
         max-width: 1040px;
-        padding: 3.5rem 1.5rem 4.5rem;
+        padding: 0 1.5rem 4rem;
       }
 
-      .seer-shell {
-        border-radius: 24px;
-        background: radial-gradient(circle at 50% 0%, #1b1436 0, #080513 60%);
-        box-shadow:
-          0 0 40px rgba(0, 0, 0, 0.8),
-          0 0 80px rgba(106, 75, 255, 0.35);
-        border: 1px solid rgba(243, 201, 122, 0.18);
-        padding: 2.5rem 2rem 2.75rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .seer-shell::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        border: 1px solid rgba(199, 179, 255, 0.18);
-        pointer-events: none;
-      }
+      /* HEADER */
 
       .seer-header {
         text-align: center;
         margin-bottom: 2.5rem;
-        position: relative;
       }
 
       .seer-title-row {
@@ -122,27 +161,15 @@ function getRandomSaying() {
         );
       }
 
-      .seer-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-        gap: 2.5rem;
-        margin-top: 2.5rem;
-      }
-
-      @media (max-width: 840px) {
-        .seer-layout {
-          grid-template-columns: minmax(0, 1fr);
-        }
-      }
-
-      /* ORACLE COLUMN */
+      /* SEER ORACLE CENTERED */
 
       .seer-oracle {
         position: relative;
-        height: 360px;
+        height: 380px;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 3rem;
       }
 
       .seer-oracle-inner {
@@ -164,7 +191,7 @@ function getRandomSaying() {
         100% { transform: translateY(0px); }
       }
 
-      /* Star field */
+      /* STAR FIELD */
 
       .seer-stars {
         position: absolute;
@@ -193,6 +220,11 @@ function getRandomSaying() {
       .seer-star:nth-child(8) { top: 68%; left: 12%; animation-delay: 2.7s; }
       .seer-star:nth-child(9) { top: 32%; left: 90%; animation-delay: 0.9s; }
       .seer-star:nth-child(10){ top: 85%; left: 55%; animation-delay: 3.9s; }
+      .seer-star:nth-child(11){ top: 12%; left: 42%; animation-delay: 2.3s; }
+      .seer-star:nth-child(12){ top: 72%; left: 72%; animation-delay: 1.5s; }
+      .seer-star:nth-child(13){ top: 48%; left: 48%; animation-delay: 4.1s; }
+      .seer-star:nth-child(14){ top: 28%; left: 25%; animation-delay: 3.0s; }
+      .seer-star:nth-child(15){ top: 88%; left: 15%; animation-delay: 5.0s; }
 
       @keyframes star-fade {
         0%   { opacity: 0; transform: scale(0.7); }
@@ -202,7 +234,7 @@ function getRandomSaying() {
         100% { opacity: 0; transform: scale(0.7); }
       }
 
-      /* INTERACTION COLUMN */
+      /* INTERACTION PANEL UNDER THE SEER */
 
       .seer-panel {
         background: radial-gradient(circle at 0% 0%, #1c1436 0, #0b0718 55%);
@@ -211,6 +243,8 @@ function getRandomSaying() {
         box-shadow: 0 0 24px rgba(0, 0, 0, 0.7);
         padding: 1.75rem 1.5rem 1.9rem;
         position: relative;
+        max-width: 720px;
+        margin: 0 auto;
       }
 
       .seer-panel::before {
@@ -228,12 +262,14 @@ function getRandomSaying() {
         text-transform: uppercase;
         color: var(--accent-soft);
         margin-bottom: 0.75rem;
+        text-align: center;
       }
 
       .seer-panel-sub {
         font-size: 0.9rem;
         color: #cbc4f3;
         margin-bottom: 1.4rem;
+        text-align: center;
       }
 
       .seer-input {
@@ -255,7 +291,7 @@ function getRandomSaying() {
 
       .seer-actions {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         margin-top: 0.9rem;
       }
 
@@ -279,13 +315,6 @@ function getRandomSaying() {
         box-shadow:
           0 0 16px rgba(243, 201, 122, 0.8),
           0 0 30px rgba(106, 75, 255, 0.7);
-      }
-
-      .seer-button:active {
-        transform: translateY(1px);
-        box-shadow:
-          0 0 10px rgba(243, 201, 122, 0.6),
-          0 0 20px rgba(106, 75, 255, 0.5);
       }
 
       .seer-output-shell {
@@ -337,100 +366,97 @@ function getRandomSaying() {
       }
     </style>
   </head>
+
   <body>
     <main>
-      <section class="seer-shell">
-        <header class="seer-header">
-          <div class="seer-title-row">
-            <div class="seer-moon"></div>
-            <h1 class="seer-title">The Seer</h1>
-          </div>
-          <p class="seer-subtitle">
-            A quiet oracle at the center of DreamMeaningGuide—an eye that breathes, five uneven rays of meaning
-            descending into your night, and a chamber that listens before it speaks.
-          </p>
-          <div class="seer-divider"></div>
-        </header>
+      <!-- HEADER -->
+      <section class="seer-header">
+        <div class="seer-title-row">
+          <div class="seer-moon"></div>
+          <h1 class="seer-title">The Seer</h1>
+        </div>
+        <p class="seer-subtitle">
+          A quiet oracle at the center of DreamMeaningGuide—an eye that breathes, five uneven rays of meaning
+          descending into your night, and a chamber that listens before it speaks.
+        </p>
+        <div class="seer-divider"></div>
+      </section>
 
-        <div class="seer-layout">
-          <!-- ORACLE COLUMN -->
-          <section class="seer-oracle" aria-label="The Seer symbol">
-            <div class="seer-stars">
-              <div class="seer-star"></div>
-              <div class="seer-star"></div>
-              <div class="seer-star"></div>
-              <div class="seer-star"></div>
-              <div class="seer-star"></div>
-              <div class="seer-star"></div>
-              <div class="seer-star"></div>
-              <div class="seer-star"></div>
-              <div class="seer-star"></div>
-              <div class="seer-star"></div>
-            </div>
+      <!-- SEER ORACLE CENTERED -->
+      <section class="seer-oracle" aria-label="The Seer symbol">
+        <div class="seer-stars">
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+          <div class="seer-star"></div>
+        </div>
 
-            <div class="seer-oracle-inner">
-              <svg class="seer-svg" width="240" height="280" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg">
-                <!-- Pupil (lunar purple) -->
-                <circle cx="120" cy="90" r="14" fill="#6A4BFF" />
+        <div class="seer-oracle-inner">
+          <svg class="seer-svg" width="240" height="280" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="120" cy="90" r="14" fill="#6A4BFF" />
+            <path d="M40 90 Q120 20 200 90 Q120 160 40 90Z"
+                  fill="none" stroke="#6A4BFF" stroke-width="9" stroke-linecap="round" />
+            <circle cx="120" cy="90" r="36"
+                    fill="none" stroke="#C7B3FF" stroke-width="6" />
 
-                <!-- Outer Eye Arc -->
-                <path d="M40 90 Q120 20 200 90 Q120 160 40 90Z"
-                      fill="none" stroke="#6A4BFF" stroke-width="9" stroke-linecap="round" />
+            <line x1="120" y1="108" x2="120" y2="230"
+                  stroke="#6A4BFF" stroke-width="7"
+                  stroke-dasharray="8 18" stroke-linecap="round" />
 
-                <!-- Inner Iris Ring -->
-                <circle cx="120" cy="90" r="36"
-                        fill="none" stroke="#C7B3FF" stroke-width="6" />
+            <line x1="120" y1="108" x2="98" y2="215"
+                  stroke="#6A4BFF" stroke-width="7"
+                  stroke-dasharray="8 18" stroke-linecap="round" />
 
-                <!-- Five uneven dotted rays (DreamMeaningGuide aura) -->
-                <line x1="120" y1="108" x2="120" y2="230"
-                      stroke="#6A4BFF" stroke-width="7"
-                      stroke-dasharray="8 18" stroke-linecap="round" />
+            <line x1="120" y1="108" x2="142" y2="250"
+                  stroke="#6A4BFF" stroke-width="7"
+                  stroke-dasharray="8 18" stroke-linecap="round" />
 
-                <line x1="120" y1="108" x2="98" y2="215"
-                      stroke="#6A4BFF" stroke-width="7"
-                      stroke-dasharray="8 18" stroke-linecap="round" />
+            <line x1="120" y1="108" x2="80" y2="235"
+                  stroke="#6A4BFF" stroke-width="7"
+                  stroke-dasharray="8 18" stroke-linecap="round" />
 
-                <line x1="120" y1="108" x2="142" y2="250"
-                      stroke="#6A4BFF" stroke-width="7"
-                      stroke-dasharray="8 18" stroke-linecap="round" />
+            <line x1="120" y1="108" x2="170" y2="220"
+                  stroke="#6A4BFF" stroke-width="7"
+                  stroke-dasharray="8 18" stroke-linecap="round" />
+          </svg>
+        </div>
+      </section>
 
-                <line x1="120" y1="108" x2="80" y2="235"
-                      stroke="#6A4BFF" stroke-width="7"
-                      stroke-dasharray="8 18" stroke-linecap="round" />
+      <!-- INTERACTION PANEL UNDER THE SEER -->
+      <section class="seer-panel">
+        <h2 class="seer-panel-title">Offer a dream to The Seer</h2>
+        <p class="seer-panel-sub">
+          Describe a single image, scene, or feeling from your dream. The Seer will not explain it away;
+          it will offer a sentence that lets the symbol keep breathing.
+        </p>
 
-                <line x1="120" y1="108" x2="170" y2="220"
-                      stroke="#6A4BFF" stroke-width="7"
-                      stroke-dasharray="8 18" stroke-linecap="round" />
-              </svg>
-            </div>
-          </section>
+        <textarea
+          id="seer-input"
+          class="seer-input"
+          placeholder="For example: I was walking through a flooded library, and every book was humming softly."
+        ></textarea>
 
-          <!-- INTERACTION COLUMN -->
-          <section class="seer-panel">
-            <h2 class="seer-panel-title">Offer a dream to the chamber</h2>
-            <p class="seer-panel-sub">
-              Describe a single image, scene, or feeling from your dream. The Seer will not explain it away;
-              it will offer a sentence that lets the symbol keep breathing.
-            </p>
+        <div class="seer-actions">
+          <button id="seer-button" class="seer-button" type="button">
+            Listen to The Seer
+          </button>
+        </div>
 
-            <textarea
-              id="seer-input"
-              class="seer-input"
-              placeholder="For example: I was walking through a flooded library, and every book was humming softly."
-            ></textarea>
-
-            <div class="seer-actions">
-              <button id="seer-button" class="seer-button" type="button">
-                Listen to The Seer
-              </button>
-            </div>
-
-            <div id="seer-output-shell" class="seer-output-shell">
-              <div class="seer-output-glow"></div>
-              <div class="seer-output-label">The Seer replies</div>
-              <div id="seer-output-text" class="seer-output-text"></div>
-            </div>
-          </section>
+        <div id="seer-output-shell" class="seer-output-shell">
+          <div class="seer-output-glow"></div>
+          <div class="seer-output-label">The Seer replies</div>
+          <div id="seer-output-text" class="seer-output-text"></div>
         </div>
       </section>
 

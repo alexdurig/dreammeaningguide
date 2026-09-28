@@ -107,12 +107,12 @@ function pickSaying() {
         gap: 0.75rem;
       }
 
-      .seer-moon {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: radial-gradient(circle at 30% 30%, #ffffff 0, #d7cfff 40%, #8f7fff 100%);
-        box-shadow: 0 0 18px rgba(199, 179, 255, 0.7);
+   .seer-eye {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #000000 0%, #000000 25%, #8f7fff 26%, #8f7fff 55%, #ffffff 56%, #ffffff 100%);
+  box-shadow: 0 0 18px rgba(199, 179, 255, 0.7);
       }
 
       .seer-title {
@@ -131,17 +131,6 @@ function pickSaying() {
         color: #b9b1e8;
       }
 
-      .seer-divider {
-        margin: 1.8rem auto 0;
-        width: 160px;
-        height: 1px;
-        background: linear-gradient(
-          to right,
-          rgba(243, 201, 122, 0),
-          rgba(243, 201, 122, 0.7),
-          rgba(243, 201, 122, 0)
-        );
-      }
 
       /* SEER ORACLE */
       .seer-oracle {
@@ -300,17 +289,27 @@ function pickSaying() {
       <!-- HEADER -->
       <section class="seer-header">
         <div class="seer-title-row">
-          <div class="seer-moon"></div>
+          <div class="seer-eye"></div>
           <h1 class="seer-title">The Seer</h1>
         </div>
         <p class="seer-subtitle">
-          A quiet oracle at the center of DreamMeaningGuide—an eye that breathes, five uneven rays of meaning
-          descending into your night, and a chamber that listens before it speaks.        </p>
+          A quiet oracle at the center of DreamMeaningGuide... an eye that breathes, five uneven rays of meaning
+          descending into your night, from its chamber, listening before it speaks. </p>
       <!-- SEER ORACLE -->
       <section class="seer-oracle">
         <div class="seer-stars">
-          <!-- 15 stars -->
+          <!-- 45 stars -->
           <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+          <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+          <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+          <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+          <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+        <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+          <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+          <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+          <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+          <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
+        <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
           <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
           <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
           <div class="seer-star"></div><div class="seer-star"></div><div class="seer-star"></div>
@@ -323,7 +322,6 @@ function pickSaying() {
                   fill="none" stroke="#6A4BFF" stroke-width="9" stroke-linecap="round" />
             <circle cx="120" cy="90" r="36"
                     fill="none" stroke="#C7B3FF" stroke-width="6" />
-
             <line x1="120" y1="108" x2="120" y2="230"
                   stroke="#6A4BFF" stroke-width="7" stroke-dasharray="8 18" stroke-linecap="round" />
             <line x1="120" y1="108" x2="98" y2="215"
@@ -334,25 +332,18 @@ function pickSaying() {
                   stroke="#6A4BFF" stroke-width="7" stroke-dasharray="8 18" stroke-linecap="round" />
             <line x1="120" y1="108" x2="170" y2="220"
                   stroke="#6A4BFF" stroke-width="7" stroke-dasharray="8 18" stroke-linecap="round" />
-          </svg>
-        </div>
-      </section>
-
+          </svg> </div> </section>
       <!-- PANEL -->
       <section class="seer-panel">
         <h2 class="seer-panel-title">Offer a dream to The Seer</h2>
         <p class="seer-panel-sub">
           Describe a single image, scene, or feeling from your dream. The Seer will not explain it away;
-          it will offer a sentence that lets the symbol keep breathing.
-        </p>
-
+          it will offer a sentence that brings the symbol to life.        </p>
         <textarea id="seer-input" class="seer-input"
           placeholder="For example: I was walking through a flooded library, and every book was humming softly."></textarea>
-
         <div class="seer-actions">
           <button id="seer-button" class="seer-button">Listen to The Seer</button>
         </div>
-
         <div id="seer-output-shell" class="seer-output-shell">
           <div class="seer-output-glow"></div>
           <div class="seer-output-label">The Seer replies</div>

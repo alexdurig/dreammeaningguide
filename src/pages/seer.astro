@@ -70,12 +70,11 @@ function pickSaying() {
 ---
 
 <style>
-  /* FULL-SCREEN CHAMBER */
   :global(body) {
-    margin: 0;
-    padding: 0;
     background: radial-gradient(circle at 20% 0%, #1a1633 0, #050514 55%),
                 radial-gradient(circle at 80% 100%, #120a24 0, #050514 60%);
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -115,7 +114,6 @@ function pickSaying() {
     padding: 3rem 1.5rem 4rem;
   }
 
-  /* HEADER */
   .seer-header {
     text-align: center;
     margin-bottom: 2rem;
@@ -165,7 +163,6 @@ function pickSaying() {
     );
   }
 
-  /* EYE */
   .seer-eye-apex {
     display: flex;
     align-items: center;
@@ -193,7 +190,6 @@ function pickSaying() {
     100% { transform: translateY(0px); }
   }
 
-  /* GRID */
   .seer-base-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -206,7 +202,6 @@ function pickSaying() {
     }
   }
 
-  /* PANELS */
   .seer-panel {
     background: radial-gradient(circle at 0% 0%, #1c1436 0, #0b0718 55%);
     border-radius: 18px;
@@ -310,7 +305,8 @@ function pickSaying() {
       <h1 class="seer-title">THE SEER</h1>
     </div>
     <p class="seer-subtitle">
-      A quiet oracle in the Inner Sanctum that always listens before it speaks.
+      A quiet oracle at the center of DreamMeaningGuide—an eye that breathes, five uneven rays of meaning
+      descending into your night, and a chamber that listens before it speaks.
     </p>
     <div class="seer-divider"></div>
   </section>
@@ -342,8 +338,8 @@ function pickSaying() {
     <section class="seer-panel">
       <h2 class="seer-panel-title">Offer a dream to The Seer</h2>
       <p class="seer-panel-sub">
-        Describe a single image, scene, or feeling from your dream. The Seer will breathe life into the synbols of your dreams;
-        it will answer any question you ask of it.
+        Describe a single image, scene, or feeling from your dream. The Seer will not explain it away;
+        it will offer a sentence that lets the symbol keep breathing.
       </p>
 
       <textarea id="seer-input" class="seer-input"
@@ -357,52 +353,24 @@ function pickSaying() {
     <section class="seer-panel">
       <h2 class="seer-panel-title">The Seer replies</h2>
       <p class="seer-panel-sub">
-        The Seer breathes life into the symbols of your dreams.
+        The Seer speaks in one sentence at a time—enough to move with you, not enough to close the symbol.
       </p>
+
+      <div id="seer-output-shell" class="seer-output-shell">
+        <div class="seer-output-glow"></div>
+        <div class="seer-output-label">Night‑oracle response</div>
+        <div id="seer-output-text" class="seer-output-text"></div>
+      </div>
+    </section>
+  </section>
+</main>
+
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("seer-input");
     const button = document.getElementById("seer-button");
     const outputShell = document.getElementById("seer-output-shell");
-    const outputText = document.getElementById("seer-output-text");
-    const starsContainer = document.querySelector(".seer-stars");
-
-    // Generate stars
-    const starCount = 70;
-    for (let i = 0; i < starCount; i++) {
-      const star = document.createElement("div");
-      star.className = "seer-star";
-      star.style.top = Math.random() * 100 + "%";
-      star.style.left = Math.random() * 100 + "%";
-      star.style.animationDelay = (Math.random() * 7).toFixed(2) + "s";
-      starsContainer.appendChild(star);
-    }
-
-    function revealSentence(sentence) {
-      outputText.innerHTML = "";
-      const chars = sentence.split("");
-      chars.forEach((ch, index) => {
-        const span = document.createElement("span");
-        span.textContent = ch;
-        outputText.appendChild(span);
-        setTimeout(() => {
-          span.classList.add("revealed");
-        }, 40 * index);
-      });
-    }
-
-    button.addEventListener("click", () => {
-      const userText = (input.value || "").trim();
-      const base = pickSaying();
-      const sentence = userText
-        ? base + " " + "This dream image is already working on you, whether or not you understand it yet."
-        : base;
-
-      outputShell.classList.add("active");
-      revealSentence(sentence);
-    });
-  });
-</script>
+    const outputText = document.getElementById("seer-output-text
 
 
 

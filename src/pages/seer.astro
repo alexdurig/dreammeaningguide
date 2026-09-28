@@ -364,6 +364,29 @@ function pickSaying() {
     </section>
   </section>
 </main>
+<div class="seer-stars"></div>
+
+<main class="seer-main">
+
+  <section class="seer-base-grid">
+
+    <section class="seer-panel">
+      <h2>Offer a dream to The Seer</h2>
+      <textarea id="seer-input" class="seer-input"></textarea>
+      <button id="seer-button" class="seer-button">Listen to The Seer</button>
+    </section>
+
+    <section class="seer-panel">
+      <h2>The Seer replies</h2>
+      <div id="seer-output-shell" class="seer-output-shell">
+        <div class="seer-output-glow"></div>
+        <div id="seer-output-text" class="seer-output-text"></div>
+      </div>
+    </section>
+
+  </section>
+
+</main>
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
@@ -373,7 +396,6 @@ function pickSaying() {
     const outputText = document.getElementById("seer-output-text");
     const starsContainer = document.querySelector(".seer-stars");
 
-    // Generate stars
     const starCount = 70;
     for (let i = 0; i < starCount; i++) {
       const star = document.createElement("div");
@@ -398,17 +420,14 @@ function pickSaying() {
     }
 
     button.addEventListener("click", () => {
-      const userText = (input.value || "").trim();
       const base = pickSaying();
-      const sentence = userText
-        ? base + " " + "This dream image is already working on you, whether or not you understand it yet."
-        : base;
-
+      revealSentence(base);
       outputShell.classList.add("active");
-      revealSentence(sentence);
     });
   });
 </script>
+
+
 
 
 

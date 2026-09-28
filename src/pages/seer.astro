@@ -359,6 +359,50 @@ function pickSaying() {
       <p class="seer-panel-sub">
         The Seer breathes life into the symbols of your dreams.
       </p>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("seer-input");
+    const button = document.getElementById("seer-button");
+    const outputShell = document.getElementById("seer-output-shell");
+    const outputText = document.getElementById("seer-output-text");
+    const starsContainer = document.querySelector(".seer-stars");
+
+    // Generate stars
+    const starCount = 70;
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement("div");
+      star.className = "seer-star";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.animationDelay = (Math.random() * 7).toFixed(2) + "s";
+      starsContainer.appendChild(star);
+    }
+
+    function revealSentence(sentence) {
+      outputText.innerHTML = "";
+      const chars = sentence.split("");
+      chars.forEach((ch, index) => {
+        const span = document.createElement("span");
+        span.textContent = ch;
+        outputText.appendChild(span);
+        setTimeout(() => {
+          span.classList.add("revealed");
+        }, 40 * index);
+      });
+    }
+
+    button.addEventListener("click", () => {
+      const userText = (input.value || "").trim();
+      const base = pickSaying();
+      const sentence = userText
+        ? base + " " + "This dream image is already working on you, whether or not you understand it yet."
+        : base;
+
+      outputShell.classList.add("active");
+      revealSentence(sentence);
+    });
+  });
+</script>
 
 
 

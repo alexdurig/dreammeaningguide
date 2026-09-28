@@ -3,7 +3,7 @@ import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 
 const pageTitle = "Dream Journal | DreamMeaningGuide";
-const pageDescription = "Record your dreams, save your entries, and revisit your personal dream archive anytime.";
+const pageDescription = "Record your dreams, save your entries, and revisit your personal dream archive anytime, free of charge.";
 ---
 
 <!doctype html>
@@ -27,16 +27,17 @@ const pageDescription = "Record your dreams, save your entries, and revisit your
     .info-box {
       background: #1a1330;
       border: 1px solid #6a4bcf;
-      padding: 1rem;
+      padding: 1.2rem;
       border-radius: 10px;
       margin-bottom: 2rem;
       font-size: 1rem;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .info-box strong {
       font-family: Cinzel, serif;
       color: #cbb4ff;
+      font-size: 1.2rem;
     }
 
     h2 { font-family: Cinzel, serif; font-size: 1.8rem; color: #cbb4ff; margin-top: 2rem; border-bottom: 1px solid #6a4bcf; padding-bottom: 0.3rem; }
@@ -112,10 +113,14 @@ const pageDescription = "Record your dreams, save your entries, and revisit your
     <h1>Dream Journal</h1>
 
     <div class="info-box">
-      <strong>Your Dream Journal Is Active</strong><br>
-      Your entries are saved privately on your device.  
-      You can return anytime to read past entries or add new ones.
-      <div id="last-saved" style="margin-top:0.5rem; font-size:0.9rem; opacity:0.8;"></div>
+      <strong>How Your Dream Journal Works</strong><br><br>
+      Your dream entries are saved privately on the device you are using right now — whether it is a PC, Mac, tablet, or phone.<br><br>
+      You do not need to register, create an account, pay any money, or sign in.  
+      Your entries are stored automatically and will be here whenever you return.<br><br>
+      Because your journal is saved on your device, your entries are only available on this same device.  
+      If you switch to another computer or phone, your journal will not appear there.<br><br>
+      You can read your past entries anytime and add new entries whenever you wish.
+      <div id="last-saved" style="margin-top:0.7rem; font-size:0.9rem; opacity:0.8;"></div>
     </div>
 
     <h2>Write a New Dream</h2>
@@ -166,18 +171,6 @@ const pageDescription = "Record your dreams, save your entries, and revisit your
       if (archive.length > 0) {
         lastSaved.textContent = "Last saved: " + archive[0].date;
       }
-
-      archive.forEach((entry, index) => {
-        const card = document.createElement("div");
-        card.className = "entry-card";
-        card.onclick = () => openFullEntry(index);
-        card.innerHTML = `
-          <strong>${entry.title || "Untitled Dream"}</strong><br>
-          <em>${entry.date}</em><br>
-          <span>${entry.text.substring(0, 80)}...</span>
-        `;
-        list.appendChild(card);
-      });
     }
 
     function saveEntry() {

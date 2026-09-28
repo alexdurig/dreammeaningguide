@@ -3,225 +3,153 @@ import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 
 const pageTitle = "Dream Journal | DreamMeaningGuide";
-const pageDescription = "Record your dreams, save your entries, and revisit your personal dream archive anytime, free of charge.";
+const pageDescription = "Record your dreams, save your entries, and revisit your personal dream archive anytime.";
 ---
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{pageTitle}</title>
-  <meta name="description" content={pageDescription} />
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={pageDescription} />
-  <link rel="canonical" href="https://dreammeaningguide.site/journal" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<SiteNav />
 
-  <style>
-    body { background: radial-gradient(circle at top, #2b0f4a, #0f0a1a); color: #e8e0ff; font-family: Inter, sans-serif; margin: 0; padding: 0; }
-    main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+<main class="journal-container">
+  <h1>Dream Journal</h1>
 
-    h1 { font-family: Cinzel, serif; font-size: 2.6rem; text-align: center; color: #d8c8ff; margin-bottom: 1rem; }
+  <div class="info-box">
+    <strong>How Your Dream Journal Works</strong><br><br>
+    Your dream entries are saved privately on the device you are using right now — whether it is a PC, Mac, tablet, or phone.<br><br>
+    You do not need to register, create an account, or sign in.  
+    Your entries are stored automatically and will be here whenever you return.<br><br>
+    Because your journal is saved on your device, your entries are only available on this same device.  
+    If you switch to another computer or phone, your journal will not appear there.<br><br>
+    You can read your past entries anytime and add new entries whenever you wish.
+    <div id="last-saved" class="last-saved"></div>
+  </div>
 
-    .info-box {
-      background: #1a1330;
-      border: 1px solid #6a4bcf;
-      padding: 1.2rem;
-      border-radius: 10px;
-      margin-bottom: 2rem;
-      font-size: 1rem;
-      line-height: 1.6;
+  <h2>Write a New Dream</h2>
+
+  <label>Title (optional)</label>
+  <input id="entry-title" type="text" placeholder="Dream title..." />
+
+  <label>Tags (optional)</label>
+  <input id="entry-tags" type="text" placeholder="e.g., flying, ocean, shadow..." />
+
+  <label>Your Dream</label>
+  <textarea id="entry-text" placeholder="Write your dream here..."></textarea>
+
+  <button id="save-button">Save Dream Entry</button>
+
+  <div id="save-confirmation" class="save-confirmation">Your dream has been saved.</div>
+
+  <h2>Your Dream Archive</h2>
+  <div id="archive-count" class="archive-count"></div>
+
+  <div id="archive-list" class="archive-list"></div>
+
+  <div id="full-entry-view" class="full-entry-view">
+    <h2 id="full-entry-title"></h2>
+    <p><strong>Date:</strong> <span id="full-entry-date"></span></p>
+    <p><strong>Tags:</strong> <span id="full-entry-tags"></span></p>
+    <p id="full-entry-text"></p>
+    <button class="back-button" id="back-button">Back to Archive</button>
+  </div>
+</main>
+
+<SiteFooter />
+
+<style>
+  body { background: radial-gradient(circle at top, #2b0f4a, #0f0a1a); color: #e8e0ff; font-family: Inter, sans-serif; }
+  main.journal-container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+  h1 { font-family: Cinzel, serif; font-size: 2.6rem; text-align: center; color: #d8c8ff; }
+  h2 { font-family: Cinzel, serif; font-size: 1.8rem; color: #cbb4ff; border-bottom: 1px solid #6a4bcf; padding-bottom: 0.3rem; margin-top: 2rem; }
+  .info-box { background: #1a1330; border: 1px solid #6a4bcf; padding: 1.2rem; border-radius: 10px; margin-bottom: 2rem; }
+  .last-saved { margin-top: 0.7rem; font-size: 0.9rem; opacity: 0.8; }
+  input, textarea { width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #6a4bcf; background: #1a1330; color: #e8e0ff; margin-top: 0.5rem; }
+  textarea { height: 200px; }
+  button { margin-top: 1rem; padding: 0.7rem 1.4rem; background: #7c3aed; border: none; border-radius: 6px; color: white; cursor: pointer; }
+  .save-confirmation { margin-top: 1rem; padding: 0.8rem; background: #2b1a55; border: 1px solid #6a4bcf; border-radius: 8px; text-align: center; display: none; }
+  .entry-card { background: #1a1330; border: 1px solid #6a4bcf; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; cursor: pointer; }
+  .archive-list { max-height: 300px; overflow-y: auto; margin-top: 1rem; }
+  .full-entry-view { display: none; background: #1a1330; border: 1px solid #6a4bcf; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; }
+</style>
+
+<script>
+  function loadArchive() {
+    const archive = JSON.parse(localStorage.getItem("dreamJournalArchive") || "[]");
+
+    const list = document.getElementById("archive-list");
+    const count = document.getElementById("archive-count");
+    const lastSaved = document.getElementById("last-saved");
+
+    list.innerHTML = "";
+
+    count.textContent = archive.length === 0
+      ? "You have no saved dreams yet."
+      : `You have ${archive.length} saved dream${archive.length > 1 ? "s" : ""}.`;
+
+    if (archive.length > 0) {
+      lastSaved.textContent = "Last saved: " + archive[0].date;
     }
 
-    .info-box strong {
-      font-family: Cinzel, serif;
-      color: #cbb4ff;
-      font-size: 1.2rem;
-    }
+    archive.forEach((entry, index) => {
+      const card = document.createElement("div");
+      card.className = "entry-card";
+      card.onclick = () => openFullEntry(index);
+      card.innerHTML = `
+        <strong>${entry.title || "Untitled Dream"}</strong><br>
+        <em>${entry.date}</em><br>
+        <span>${entry.text.substring(0, 80)}...</span>
+      `;
+      list.appendChild(card);
+    });
+  }
 
-    h2 { font-family: Cinzel, serif; font-size: 1.8rem; color: #cbb4ff; margin-top: 2rem; border-bottom: 1px solid #6a4bcf; padding-bottom: 0.3rem; }
+  function saveEntry() {
+    const title = document.getElementById("entry-title").value.trim();
+    const tags = document.getElementById("entry-tags").value.trim();
+    const text = document.getElementById("entry-text").value.trim();
+    const confirmBox = document.getElementById("save-confirmation");
 
-    input, textarea {
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: 8px;
-      border: 1px solid #6a4bcf;
-      background: #1a1330;
-      color: #e8e0ff;
-      font-size: 1rem;
-      margin-top: 0.5rem;
-    }
+    if (!text) return;
 
-    textarea { height: 200px; }
+    const dateString = new Date().toLocaleString();
 
-    button {
-      margin-top: 1rem;
-      padding: 0.7rem 1.4rem;
-      background: #7c3aed;
-      border: none;
-      border-radius: 6px;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+    const newEntry = { title, tags, text, date: dateString };
 
-    button:hover { background: #9d5bff; }
+    const archive = JSON.parse(localStorage.getItem("dreamJournalArchive") || "[]");
+    archive.unshift(newEntry);
 
-    .save-confirmation {
-      margin-top: 1rem;
-      padding: 0.8rem;
-      background: #2b1a55;
-      border: 1px solid #6a4bcf;
-      border-radius: 8px;
-      text-align: center;
-      display: none;
-    }
+    localStorage.setItem("dreamJournalArchive", JSON.stringify(archive));
 
-    .entry-card {
-      background: #1a1330;
-      border: 1px solid #6a4bcf;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
+    confirmBox.style.display = "block";
+    setTimeout(() => { confirmBox.style.display = "none"; }, 3000);
 
-    .entry-card:hover { transform: scale(1.03); background: #2b1a55; }
+    document.getElementById("entry-title").value = "";
+    document.getElementById("entry-tags").value = "";
+    document.getElementById("entry-text").value = "";
 
-    .archive-list { max-height: 300px; overflow-y: auto; margin-top: 1rem; padding-right: 0.5rem; }
+    loadArchive();
+  }
 
-    .full-entry-view {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background: #1a1330;
-      border: 1px solid #6a4bcf;
-      border-radius: 8px;
-      display: none;
-    }
+  function openFullEntry(index) {
+    const archive = JSON.parse(localStorage.getItem("dreamJournalArchive") || "[]");
+    const entry = archive[index];
 
-    .back-button { margin-top: 1rem; background: #6a4bcf; }
-  </style>
-</head>
+    document.getElementById("full-entry-title").textContent = entry.title || "Untitled Dream";
+    document.getElementById("full-entry-date").textContent = entry.date;
+    document.getElementById("full-entry-tags").textContent = entry.tags || "None";
+    document.getElementById("full-entry-text").textContent = entry.text;
 
-<body>
-  <SiteNav />
+    document.getElementById("full-entry-view").style.display = "block";
+    document.getElementById("archive-list").style.display = "none";
+  }
 
-  <main>
-    <h1>Dream Journal</h1>
+  document.getElementById("back-button").onclick = () => {
+    document.getElementById("full-entry-view").style.display = "none";
+    document.getElementById("archive-list").style.display = "block";
+  };
 
-    <div class="info-box">
-      <strong>How Your Dream Journal Works</strong><br><br>
-      Your dream entries are saved privately on the device you are using right now — whether it is a PC, Mac, tablet, or phone.<br><br>
-      You do not need to register, create an account, pay any money, or sign in.  
-      Your entries are stored automatically and will be here whenever you return.<br><br>
-      Because your journal is saved on your device, your entries are only available on this same device.  
-      If you switch to another computer or phone, your journal will not appear there.<br><br>
-      You can read your past entries anytime and add new entries whenever you wish.
-      <div id="last-saved" style="margin-top:0.7rem; font-size:0.9rem; opacity:0.8;"></div>
-    </div>
+  document.getElementById("save-button").onclick = saveEntry;
 
-    <h2>Write a New Dream</h2>
+  window.onload = loadArchive;
+</script>
 
-    <label>Title (optional)</label>
-    <input id="entry-title" type="text" placeholder="Dream title..." />
-
-    <label>Tags (optional)</label>
-    <input id="entry-tags" type="text" placeholder="e.g., flying, ocean, shadow..." />
-
-    <label>Your Dream</label>
-    <textarea id="entry-text" placeholder="Write your dream here..."></textarea>
-
-    <button onclick="saveEntry()">Save Dream Entry</button>
-
-    <div id="save-confirmation" class="save-confirmation">Your dream has been saved.</div>
-
-    <h2>Your Dream Archive</h2>
-    <div id="archive-count" style="margin-bottom:0.5rem; opacity:0.8;"></div>
-
-    <div id="archive-list" class="archive-list"></div>
-
-    <div id="full-entry-view" class="full-entry-view">
-      <h2 id="full-entry-title"></h2>
-      <p><strong>Date:</strong> <span id="full-entry-date"></span></p>
-      <p><strong>Tags:</strong> <span id="full-entry-tags"></span></p>
-      <p id="full-entry-text"></p>
-      <button class="back-button" onclick="closeFullEntry()">Back to Archive</button>
-    </div>
-  </main>
-
-  <SiteFooter />
-
-  <script>
-    function loadArchive() {
-      const archive = JSON.parse(localStorage.getItem("dreamJournalArchive") || "[]");
-
-      const list = document.getElementById("archive-list");
-      const count = document.getElementById("archive-count");
-      const lastSaved = document.getElementById("last-saved");
-
-      list.innerHTML = "";
-
-      count.textContent = archive.length === 0
-        ? "You have no saved dreams yet."
-        : `You have ${archive.length} saved dream${archive.length > 1 ? "s" : ""}.`;
-
-      if (archive.length > 0) {
-        lastSaved.textContent = "Last saved: " + archive[0].date;
-      }
-    }
-
-    function saveEntry() {
-      const title = document.getElementById("entry-title").value.trim();
-      const tags = document.getElementById("entry-tags").value.trim();
-      const text = document.getElementById("entry-text").value.trim();
-      const confirmBox = document.getElementById("save-confirmation");
-
-      if (!text) return;
-
-      const dateString = new Date().toLocaleString();
-
-      const newEntry = { title, tags, text, date: dateString };
-
-      const archive = JSON.parse(localStorage.getItem("dreamJournalArchive") || "[]");
-      archive.unshift(newEntry);
-
-      localStorage.setItem("dreamJournalArchive", JSON.stringify(archive));
-
-      confirmBox.style.display = "block";
-      setTimeout(() => { confirmBox.style.display = "none"; }, 3000);
-
-      document.getElementById("entry-title").value = "";
-      document.getElementById("entry-tags").value = "";
-      document.getElementById("entry-text").value = "";
-
-      loadArchive();
-    }
-
-    function openFullEntry(index) {
-      const archive = JSON.parse(localStorage.getItem("dreamJournalArchive") || "[]");
-      const entry = archive[index];
-
-      document.getElementById("full-entry-title").textContent = entry.title || "Untitled Dream";
-      document.getElementById("full-entry-date").textContent = entry.date;
-      document.getElementById("full-entry-tags").textContent = entry.tags || "None";
-      document.getElementById("full-entry-text").textContent = entry.text;
-
-      document.getElementById("full-entry-view").style.display = "block";
-      document.getElementById("archive-list").style.display = "none";
-    }
-
-    function closeFullEntry() {
-      document.getElementById("full-entry-view").style.display = "none";
-      document.getElementById("archive-list").style.display = "block";
-    }
-
-    window.onload = loadArchive;
-  </script>
-</body>
-</html>
 
 
 

@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/global.css">
+
+    <title>Contact</title>
+</head>
+
+<body>
+
+    <!-- NAV BAR (top of page, no logo above it) -->
+    <div id="nav-placeholder"></div>
+    <script>
+        fetch("/components/Nav.html")
+            .then(r => r.text())
+            .then(html => {
+                document.getElementById("nav-placeholder").innerHTML = html;
+            });
+    </script>
+
+    <!-- HERO (single logo + single title) -->
+    <div id="hero-placeholder"></div>
+    <script>
+        fetch("/components/Hero.html")
+            .then(r => r.text())
+            .then(html => {
+                html = html.replace("[[PAGE_TITLE]]", "Contact");
+                html = html.replace("[[PAGE_SUBTITLE]]", "Your Contact with DreamMeaningGuide.site Is 100% Assured");
+                document.getElementById("hero-placeholder").innerHTML = html;
+                
+            });
+    </script>
+
+   <!-- MAIN CONTENT -->
+
+
+</head>
+<body>
+    <main>
+        <h1>DreamMeaningGuide — Contact</h1>
+
+        <p><strong>Effective Date:</strong> September 2026</p>
+
+        <p>
+            DreamMeaningGuide (“we,” “our,” or “us”) is committed to beoing available to Users of the site.
+            This Contact Page explains how we sustain and enable communication with Users of the site.
+        </p>
+      <p>Usersd may always contact DreamMeaningGuide.site thruogh the following means:</p>
+      <p>Email us at: support@DreamMeaningGuide.site or Call us at: (502) 654-9500</p>
+      <p>Snail mail us at:</p>
+      <p>DreamMeaningGuide.site</p>
+      <p>c/o Dr. Alexander Durig</p>
+      <p>1708 S. 2nd St #5</p>
+      <p>Louisville, KY 40208</p>

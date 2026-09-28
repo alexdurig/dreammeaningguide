@@ -219,22 +219,16 @@ function pickSaying() {
     <section class="seer-panel">
       <h2>Offer a dream to The Seer</h2>
       <p>
-        Describe a single image, scene, or feeling from your dream. The Seer will not explain it away;
-        it will offer a sentence that lets the symbol keep breathing.
+        Describe an image, scene, or feeling from your dream and Hit Enter.
       </p>
-
       <textarea id="seer-input" class="seer-input"
         placeholder="For example: I was walking through a flooded library, and every book was humming softly."></textarea>
-
-      <div class="seer-actions">
-        <button id="seer-button" class="seer-button">Listen to The Seer</button>
-      </div>
     </section>
 
     <section class="seer-panel">
       <h2>The Seer replies</h2>
       <p>
-        The Seer speaks in one sentence at a time—enough to move with you, not enough to close the symbol.
+        The Seer will give you a dream reading or answer any question.
       </p>
 
       <div id="seer-output-shell" class="seer-output-shell">
@@ -248,7 +242,6 @@ function pickSaying() {
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("seer-input");
-    const button = document.getElementById("seer-button");
     const outputShell = document.getElementById("seer-output-shell");
     const outputText = document.getElementById("seer-output-text");
     const starsContainer = document.querySelector(".seer-stars");

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/global.css">
+
+    <title>Terms of Use</title>
+</head>
+
+<body>
+
+    <!-- NAV BAR (top of page, no logo above it) -->
+    <div id="nav-placeholder"></div>
+    <script>
+        fetch("/components/Nav.html")
+            .then(r => r.text())
+            .then(html => {
+                document.getElementById("nav-placeholder").innerHTML = html;
+            });
+    </script>
+
+    <!-- HERO (single logo + single title) -->
+    <div id="hero-placeholder"></div>
+    <script>
+        fetch("/components/Hero.html")
+            .then(r => r.text())
+            .then(html => {
+                html = html.replace("[[PAGE_TITLE]]", "48-Hour Loan Proposal™ Terms of Use");
+                html = html.replace("[[PAGE_SUBTITLE]]", "Ground Rules and Guidelines");
+                document.getElementById("hero-placeholder").innerHTML = html;
+                
+            });
+    </script>
+
+   <!-- MAIN CONTENT -->
+
+<p>Last updated: September 2026</p>
+
+<p>These Terms of Use ("Terms") govern your access to and use of the DreamMeaningGuide™ website, services, materials, and deliverables (collectively, the "Service"). By accessing or using the Service, you agree to be bound by these Terms.</p>
+
+<p>1. Eligibility</p>
+
+<p>Anyone of any age may use the Service, but we recommend people nder 18 have the permission and oversight of parents. You must be at least 18 years old and legally capable of entering into contracts to use any Services provided at this site that require payment with a debit card or credit card for ongoing services. By using the Service, you represent and warrant that you meet these requirements.</p>
+
+<p>2. Nature of the Service</p>
+
+<p>DReamMeaningGuide.site™ provides personall dream interpretation services for purposes of entertainment. The Service does not provide legal, financial, accounting, or investment advice. All deliverables are informational and intended to provide entertainment.
+
+
+<p>3. User Responsibilities</p>
+
+<p>You agree to:
+
+<p>only pay for and subscribe to any paid services if you are over the age of 18.</p>
+
+<p>4. Payment and Refunds</p>
+
+<p>All fees for Services are due at the time of subscribing unless otherwise stated. All fees are non‑refundable once a sibscription has begin. Yearly subscriptions may be discontinued or not renewed once the yearly subscription is over. If you cancel before the annual siubscription is over, you may request a refund at the sole discretion of DreamMeaningGuide™.</p>
+
+<p>5. Intellectual Property</p>
+
+<p>All templates, structures, methodologies, graphics, and the preentation of The Seer are proprietary frameworks and are the intellectual property of DreamMeaningGuide.site™.</p>
+
+<p>You are granted a limited, non‑exclusive license to use the Services for your own personal purposes. You may not reproduce, distribute, resell, or use the materials for commercial consulting without written permission.</p>
+
+<p>6. Confidentiality</p>
+
+<p>DreamMeaningGuide.site™ will treat all client information as confidential and will not disclose it except:</p>
+
+<p>As required by law.</p>
+
+<p>To fulfill the Service using secure third‑party tools.</p>
+
+<p>With your explicit consent.</p>
+
+<p>You acknowledge that electronic communication carries inherent risks and agree to use the Service with this understanding.</p>
+
+<p>8. Limitation of Liability</p>
+
+<p>To the fullest extent permitted by law, 48‑Hour Loan Proposal™ is not liable for:</p>
+
+<p>Any financial losses or damages arising from the actions of its users.</p>
+
+<p>Indirect, incidental, or consequential damages.</p>
+
+<p>Your sole remedy for dissatisfaction with the Service is to discontinue use.</p>
+
+<p>10. Modifications to the Terms</p>
+
+<p>DeamMeaningGuide™ may update these Terms at any time. Continued use of the Service after changes are posted constitutes acceptance of the revised Terms.</p>
+
+<p>12. Governing Law</p>
+
+<p>These Terms are governed by the laws of the Commonwealth of Kentucky, without regard to conflict‑of‑law principles.</p>
+
+<p>13. Contact Information</p>
+
+<p>For questions about these Terms or the Service, contact:</p>
+
+<p>DreamMeaningGuide™ Email: support@DreamMeaningGuide.site</p>
+
+<p>By using the Service, you acknowledge that you have read, understood, and agree to these Terms of Use.</p>

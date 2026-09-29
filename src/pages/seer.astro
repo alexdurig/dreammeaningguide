@@ -3,8 +3,13 @@ import { onMount } from 'astro/client';
 ---
 
 <style>
+  /* PAGE WRAPPER */
+  .seer-page {
+    padding: 2rem;
+  }
+
   /* PAGE TITLE */
-  h1 {
+  .seer-page h1 {
     text-align: center;
     color: white;
     margin-top: 2rem;
@@ -58,29 +63,32 @@ import { onMount } from 'astro/client';
   }
 </style>
 
-<h1>The Seer</h1>
+<div class="seer-page">
 
-<div class="seer-grid">
+  <h1>The Seer</h1>
 
-  <!-- LEFT BOX -->
-  <div class="seer-box">
-    <div class="seer-title">OFFER A DREAM TO THE SEER</div>
-    <p>Describe an image, scene, or feeling from a dream and hit Enter.</p>
-    <p><em>For example: I was walking through a flooded library, and every book was humming softly.</em></p>
+  <div class="seer-grid">
 
-    <input id="seer-question" type="text" placeholder="Describe your dream..." />
-  </div>
+    <!-- LEFT BOX -->
+    <div class="seer-box">
+      <div class="seer-title">OFFER A DREAM TO THE SEER</div>
+      <p>Describe an image, scene, or feeling from a dream and hit Enter.</p>
+      <p><em>For example: I was walking through a flooded library, and every book was humming softly.</em></p>
 
-  <!-- RIGHT BOX -->
-  <div class="seer-box">
-    <div class="seer-title">THE SEER REPLIES</div>
-    <div id="seer-response">The Seer awaits your dream...</div>
+      <input id="seer-question" type="text" placeholder="Describe your dream..." />
+    </div>
+
+    <!-- RIGHT BOX -->
+    <div class="seer-box">
+      <div class="seer-title">THE SEER REPLIES</div>
+      <div id="seer-response">The Seer awaits your dream...</div>
+    </div>
+
   </div>
 
 </div>
 
 <script>
-  // Load your randomized responses from public/seer.js
   import('/public/seer.js').then(module => {
     const responses = module.default;
 
@@ -92,14 +100,13 @@ import { onMount } from 'astro/client';
         const dream = input.value.trim();
         if (!dream) return;
 
-        // Pick a random Seer response
         const reply = responses[Math.floor(Math.random() * responses.length)];
-
         output.textContent = reply;
       }
     });
   });
 </script>
+
 
 
 

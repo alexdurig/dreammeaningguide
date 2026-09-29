@@ -19,6 +19,37 @@ export default [
   "The shifting colors reflect emotions finding their balance.",
   "The quiet forest is the sanctuary of your inner life.",
   "The moonlit path shows the way through uncertainty."
+    "The drifting lantern shows a truth you are finally ready to carry.",
+  "The echo you heard is a memory returning with new meaning.",
+  "The shifting doorway marks a choice you have already made in spirit.",
+  "The trembling bridge reflects a transition that feels uncertain but is safe.",
+  "The rising mist is the veil between what you know and what you are learning.",
+  "The quiet figure in the distance is an aspect of yourself approaching.",
+  "The cracked mirror symbolizes an identity you are shedding with grace.",
+  "The glowing horizon reveals a future that has already begun forming.",
+  "The whispering wind carries messages from your deeper intuition.",
+  "The submerged staircase shows the path into your own depths.",
+  "The floating key represents access to something long locked away.",
+  "The silent bell marks the end of a cycle you no longer need to repeat.",
+  "The flickering candle is your awareness stabilizing after uncertainty.",
+  "The open window invites a perspective you have resisted but now welcome.",
+  "The falling leaves symbolize the release of outdated expectations.",
+  "The distant lighthouse is guidance you forgot you had.",
+  "The shifting shadows reveal truths that were once hidden from you.",
+  "The rising tide reflects emotions that are finally moving freely.",
+  "The quiet animal companion is your instinct offering protection.",
+  "The ancient symbol is a reminder of wisdom you already possess.",
+  "The broken chain marks liberation from something that once held you.",
+  "The soft glow beneath the water is clarity emerging from confusion.",
+  "The winding path shows that progress is not linear but always forward.",
+  "The silent figure watching you is your future self, patient and calm.",
+  "The trembling tree reflects a belief that is ready to transform.",
+  "The distant fire is passion returning after a long quiet period.",
+  "The shifting sky mirrors your internal realignment.",
+  "The open book reveals knowledge you are finally prepared to absorb.",
+  "The rising moon signals intuition strengthening within you.",
+  "The quiet garden is the part of your life now ready to flourish."
+
 ];
 
 

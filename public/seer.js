@@ -18,7 +18,7 @@ export default [
   "The falling feathers represent burdens you are releasing.",
   "The shifting colors reflect emotions finding their balance.",
   "The quiet forest is the sanctuary of your inner life.",
-  "The moonlit path shows the way through uncertainty."
+  "The moonlit path shows the way through uncertainty.",
     "The drifting lantern shows a truth you are finally ready to carry.",
   "The echo you heard is a memory returning with new meaning.",
   "The shifting doorway marks a choice you have already made in spirit.",

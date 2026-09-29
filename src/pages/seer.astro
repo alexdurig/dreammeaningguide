@@ -1,14 +1,14 @@
 ---
-import { onMount } from 'astro/client';
+import Layout from '../layouts/Layout.astro';
 ---
 
+<Layout title="The Seer">
+
 <style>
-  /* PAGE WRAPPER */
   .seer-page {
     padding: 2rem;
   }
 
-  /* PAGE TITLE */
   .seer-page h1 {
     text-align: center;
     color: white;
@@ -17,7 +17,6 @@ import { onMount } from 'astro/client';
     font-family: serif;
   }
 
-  /* GRID LAYOUT */
   .seer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -25,7 +24,6 @@ import { onMount } from 'astro/client';
     margin-top: 3rem;
   }
 
-  /* BOXES */
   .seer-box {
     background: linear-gradient(180deg, #2a1a3f, #1a0f2b);
     padding: 2rem;
@@ -34,14 +32,12 @@ import { onMount } from 'astro/client';
     font-family: serif;
   }
 
-  /* BOX TITLES */
   .seer-title {
     font-size: 2rem;
     margin-bottom: 1rem;
     text-align: center;
   }
 
-  /* INPUT FIELD */
   #seer-question {
     width: 100%;
     padding: 1rem;
@@ -51,7 +47,6 @@ import { onMount } from 'astro/client';
     margin-top: 1rem;
   }
 
-  /* RESPONSE BOX */
   #seer-response {
     margin-top: 1rem;
     padding: 1rem;
@@ -69,7 +64,6 @@ import { onMount } from 'astro/client';
 
   <div class="seer-grid">
 
-    <!-- LEFT BOX -->
     <div class="seer-box">
       <div class="seer-title">OFFER A DREAM TO THE SEER</div>
       <p>Describe an image, scene, or feeling from a dream and hit Enter.</p>
@@ -78,7 +72,6 @@ import { onMount } from 'astro/client';
       <input id="seer-question" type="text" placeholder="Describe your dream..." />
     </div>
 
-    <!-- RIGHT BOX -->
     <div class="seer-box">
       <div class="seer-title">THE SEER REPLIES</div>
       <div id="seer-response">The Seer awaits your dream...</div>
@@ -106,6 +99,9 @@ import { onMount } from 'astro/client';
     });
   });
 </script>
+
+</Layout>
+
 
 
 

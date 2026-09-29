@@ -5,9 +5,14 @@ import Layout from '../components/Layout.astro';
 <Layout title="The Seer">
 
 <style>
+  /* UNIVERSAL FONT FIX */
+  .seer-page, 
+  .seer-page * {
+    font-family: var(--font-sans);
+  }
+
   .seer-page {
     padding: 2rem;
-    font-family: var(--font-sans);
   }
 
   .seer-page h1 {
@@ -15,7 +20,6 @@ import Layout from '../components/Layout.astro';
     color: white;
     margin-top: 2rem;
     font-size: 2.5rem;
-    font-family: var(--font-sans);
   }
 
   .seer-grid {
@@ -23,7 +27,6 @@ import Layout from '../components/Layout.astro';
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-top: 3rem;
-    font-family: var(--font-sans);
   }
 
   .seer-box {
@@ -31,14 +34,12 @@ import Layout from '../components/Layout.astro';
     padding: 2rem;
     border-radius: 12px;
     color: white;
-    font-family: var(--font-sans);
   }
 
   .seer-title {
     font-size: 2rem;
     margin-bottom: 1rem;
     text-align: center;
-    font-family: var(--font-sans);
   }
 
   #seer-question {
@@ -48,7 +49,6 @@ import Layout from '../components/Layout.astro';
     border: none;
     font-size: 1.1rem;
     margin-top: 1rem;
-    font-family: var(--font-sans);
   }
 
   #seer-response {
@@ -59,9 +59,9 @@ import Layout from '../components/Layout.astro';
     min-height: 120px;
     font-size: 1.2rem;
     line-height: 1.5;
-    font-family: var(--font-sans);
   }
 </style>
+
 
 <div class="seer-page">
 

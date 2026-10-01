@@ -1,117 +1,166 @@
 ---
-import { onMount } from 'astro/client';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const pageTitle = "Dream Journal | DreamMeaningGuide";
+const pageDescription = "Record your dreams, save your entries, and revisit your personal dream archive anytime.";
 ---
 
-<html>
-  <head>
-    <title>Dream Journal</title>
-    <style>
-      .journal-container {
-        max-width: 700px;
-        margin: 2rem auto;
-        padding: 1rem;
-        background: #1a0f2e;
-        color: #e8d9ff;
-        border-radius: 12px;
-        box-shadow: 0 0 20px rgba(120, 80, 200, 0.3);
-      }
+<SiteNav />
 
-      textarea {
-        width: 100%;
-        height: 150px;
-        padding: 1rem;
-        border-radius: 8px;
-        border: none;
-        background: #2a1a45;
-        color: #f0e6ff;
-        font-size: 1rem;
-      }
+<main class="journal-container">
+  <h1>Dream Journal</h1>
+   <center> <img src="/og-yourdreamjournal.png" alt="Your Dream Journal" class="home-og" /> </center>
 
-      button {
-        margin-top: 1rem;
-        padding: 0.7rem 1.2rem;
-        background: #7b5bff;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1rem;
-      }
+<center><h2>Your Dream Journal Can Reveal More Than You Think ✍️🌙</h2></center> 
+<p>Dreams often speak through symbols, emotions, and repeating patterns. Recording your dreams soon after waking can help you notice connections that may feel invisible at first. 
+Use the DreamMeaningGuide journal to capture the setting, key symbols, emotional tone, and personal associations.</p>  
+<p>Then explore the symbol guides with your own identity and intuition in mind, because the meaning of a symbol can be deeply personal.</p>  
+<ol>
+<li>Write down details before they fade</li> 
+<li>Record the strongest emotion in the dream</li> 
+<li>Notice symbols and themes that return</li> 
+<li>Compare interpretations with your personal experiences</li> 
+<p>Begin your dream exploration with the DreamMeaningGuide journal and symbol guides.</p> 
+</ol>
+  <div class="info-box">
+    <strong>How Your Dream Journal Works</strong><br><br>
+    Your dream entries are saved privately on the device you are using right now — whether it is a PC, Mac, tablet, or phone.<br><br>
+    You do not need to register, create an account, pay us any money, or sign in. This assures you a service that is private, personal, and free of charge.  
+    Your entries are stored automatically and will be here whenever you return.<br><br>
+    Because your journal is saved on your device, your entries are only available on this same device.  
+    If you switch to another computer or phone, your journal will not appear there.<br><br>
+    You can read your past entries anytime and add new entries whenever you wish.
+    <div id="last-saved" class="last-saved"></div>
+  </div>
 
-      button:hover {
-        background: #9b7dff;
-      }
+  <h2>Write a New Dream</h2>
 
-      .entry {
-        background: #241538;
-        padding: 1rem;
-        border-radius: 8px;
-        margin-top: 1rem;
-        color: #e8d9ff;
-      }
+  <label>Title (optional)</label>
+  <input id="entry-title" type="text" placeholder="Dream title..." />
 
-      .timestamp {
-        font-size: 0.8rem;
-        color: #cbb3ff;
-        margin-bottom: 0.5rem;
-      }
-    </style>
-  </head>
+  <label>Tags (optional)</label>
+  <input id="entry-tags" type="text" placeholder="e.g., flying, ocean, shadow..." />
 
-  <body>
-    <div class="journal-container">
-      <h1>Dream Journal</h1>
+  <label>Your Dream</label>
+  <textarea id="entry-text" placeholder="Write your dream here..."></textarea>
 
-      <textarea id="dreamInput" placeholder="Write your dream here..."></textarea>
-      <button id="saveDream">Save Dream</button>
+  <button id="save-button">Save Dream Entry</button>
 
-      <h2 style="margin-top: 2rem;">Your Dream Entries</h2>
-      <div id="entries"></div>
-    </div>
+  <div id="save-confirmation" class="save-confirmation">Your dream has been saved.</div>
 
-    <script>
-      // Load existing entries
-      function loadEntries() {
-        const entries = JSON.parse(localStorage.getItem("dreamEntries")) || [];
-        const container = document.getElementById("entries");
-        container.innerHTML = "";
+  <h2>Your Dream Archive</h2>
+  <div id="archive-count" class="archive-count"></div>
 
-        entries.forEach(entry => {
-          const div = document.createElement("div");
-          div.className = "entry";
+  <div id="archive-list" class="archive-list"></div>
 
-          div.innerHTML = `
-            <div class="timestamp">${entry.timestamp}</div>
-            <div>${entry.text}</div>
-          `;
+  <div id="full-entry-view" class="full-entry-view">
+    <h2 id="full-entry-title"></h2>
+    <p><strong>Date:</strong> <span id="full-entry-date"></span></p>
+    <p><strong>Tags:</strong> <span id="full-entry-tags"></span></p>
+    <p id="full-entry-text"></p>
+    <button class="back-button" id="back-button">Back to Archive</button>
+  </div>
+</main>
 
-          container.appendChild(div);
-        });
-      }
+<SiteFooter />
 
-      // Save new entry
-      document.getElementById("saveDream").addEventListener("click", () => {
-        const text = document.getElementById("dreamInput").value.trim();
-        if (!text) return;
+<style>
+  body { background: radial-gradient(circle at top, #2b0f4a, #0f0a1a); color: #e8e0ff; font-family: Inter, sans-serif; }
+  main.journal-container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+  h1 { font-family: Inter, sans-serif; font-size: 2.6rem; text-align: center; color: #d8c8ff; }
+  h2 { font-family: Inter, sans-serif; font-size: 1.8rem; color: #cbb4ff; border-bottom: 1px solid #6a4bcf; padding-bottom: 0.3rem; margin-top: 2rem; }
+  .info-box { background: #1a1330; border: 1px solid #6a4bcf; padding: 1.2rem; border-radius: 10px; margin-bottom: 2rem; }
+  .last-saved { margin-top: 0.7rem; font-size: 0.9rem; opacity: 0.8; }
+  input, textarea { width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #6a4bcf; background: #1a1330; color: #e8e0ff; margin-top: 0.5rem; }
+  textarea { height: 200px; }
+  button { margin-top: 1rem; padding: 0.7rem 1.4rem; background: #7c3aed; border: none; border-radius: 6px; color: white; cursor: pointer; }
+  .save-confirmation { margin-top: 1rem; padding: 0.8rem; background: #2b1a55; border: 1px solid #6a4bcf; border-radius: 8px; text-align: center; display: none; }
+  .entry-card { background: #1a1330; border: 1px solid #6a4bcf; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; cursor: pointer; }
+  .archive-list { max-height: 300px; overflow-y: auto; margin-top: 1rem; }
+  .full-entry-view { display: none; background: #1a1330; border: 1px solid #6a4bcf; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; }
+</style>
 
-        const entry = {
-          text,
-          timestamp: new Date().toLocaleString()
-        };
+<script>
+  function loadArchive() {
+    const archive = JSON.parse(localStorage.getItem("dreamJournalArchive") || "[]");
 
-        const entries = JSON.parse(localStorage.getItem("dreamEntries")) || [];
-        entries.unshift(entry); // newest first
-        localStorage.setItem("dreamEntries", JSON.stringify(entries));
+    const list = document.getElementById("archive-list");
+    const count = document.getElementById("archive-count");
+    const lastSaved = document.getElementById("last-saved");
 
-        document.getElementById("dreamInput").value = "";
-        loadEntries();
-      });
+    list.innerHTML = "";
 
-      // Initialize
-      loadEntries();
-    </script>
-  </body>
-</html>
+    count.textContent = archive.length === 0
+      ? "You have no saved dreams yet."
+      : `You have ${archive.length} saved dream${archive.length > 1 ? "s" : ""}.`;
+
+    if (archive.length > 0) {
+      lastSaved.textContent = "Last saved: " + archive[0].date;
+    }
+
+    archive.forEach((entry, index) => {
+      const card = document.createElement("div");
+      card.className = "entry-card";
+      card.onclick = () => openFullEntry(index);
+      card.innerHTML = `
+        <strong>${entry.title || "Untitled Dream"}</strong><br>
+        <em>${entry.date}</em><br>
+        <span>${entry.text.substring(0, 80)}...</span>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  function saveEntry() {
+    const title = document.getElementById("entry-title").value.trim();
+    const tags = document.getElementById("entry-tags").value.trim();
+    const text = document.getElementById("entry-text").value.trim();
+    const confirmBox = document.getElementById("save-confirmation");
+
+    if (!text) return;
+
+    const dateString = new Date().toLocaleString();
+
+    const newEntry = { title, tags, text, date: dateString };
+
+    const archive = JSON.parse(localStorage.getItem("dreamJournalArchive") || "[]");
+    archive.unshift(newEntry);
+
+    localStorage.setItem("dreamJournalArchive", JSON.stringify(archive));
+
+    confirmBox.style.display = "block";
+    setTimeout(() => { confirmBox.style.display = "none"; }, 3000);
+
+    document.getElementById("entry-title").value = "";
+    document.getElementById("entry-tags").value = "";
+    document.getElementById("entry-text").value = "";
+
+    loadArchive();
+  }
+
+  function openFullEntry(index) {
+    const archive = JSON.parse(localStorage.getItem("dreamJournalArchive") || "[]");
+    const entry = archive[index];
+
+    document.getElementById("full-entry-title").textContent = entry.title || "Untitled Dream";
+    document.getElementById("full-entry-date").textContent = entry.date;
+    document.getElementById("full-entry-tags").textContent = entry.tags || "None";
+    document.getElementById("full-entry-text").textContent = entry.text;
+
+    document.getElementById("full-entry-view").style.display = "block";
+    document.getElementById("archive-list").style.display = "none";
+  }
+
+  document.getElementById("back-button").onclick = () => {
+    document.getElementById("full-entry-view").style.display = "none";
+    document.getElementById("archive-list").style.display = "block";
+  };
+
+  document.getElementById("save-button").onclick = saveEntry;
+
+  window.onload = loadArchive;
+</script>
 
 
 

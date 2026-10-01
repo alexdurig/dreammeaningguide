@@ -115,7 +115,20 @@ import Layout from '../components/Layout.astro';
     });
   });
 </script>
+<audio id="seerHum" src="/audio/seer-hum.mp3" loop></audio>
 
+<script>
+  const hum = document.getElementById('seerHum');
+
+  // Try to play immediately
+  hum.volume = 0.15; // faint hum
+  hum.play().catch(() => {
+    // If browser blocks autoplay, start on first click anywhere
+    document.addEventListener('click', () => {
+      hum.play();
+    }, { once: true });
+  });
+</script>
 </Layout>
 
 

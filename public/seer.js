@@ -1,3 +1,16 @@
+export const omens = [
+  "The lantern flickers…",
+  "A soft hum fills the chamber…",
+  "The shadows shift around you…",
+  "The veil stirs…",
+  "A cold wind moves through the chamber…",
+  "The glyphs begin to glow…",
+  "The Seer turns its gaze toward you…",
+  "The chamber grows quiet…",
+  "Something ancient awakens…",
+  "A distant echo answers your question…"
+];
+
 export default [ 
   "A flooded library reflects forgotten knowledge rising to the surface.",
   "The humming books are memories asking to be heard.",

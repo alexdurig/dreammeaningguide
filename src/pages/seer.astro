@@ -121,7 +121,7 @@ import Layout from '../components/Layout.astro';
 const low = document.getElementById('darkdrone');
 const air = document.getElementById('dragonwind');
 
-low.volume = 10;
+low.volume = 0;
 air.volume = 0;
 
 low.play();
@@ -130,7 +130,7 @@ air.play();
 let v = 0;
 const fade = setInterval(() => {
   v += 0.01;
-  low.volume = v * 0.14;  // deeper drone
+  low.volume = v * 0.15;  // deeper drone
   air.volume = v * 0.04;  // airy drone, much softer
 
   if (v >= 1) clearInterval(fade);

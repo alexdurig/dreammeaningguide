@@ -111,7 +111,7 @@ import Layout from '../components/Layout.astro';
   // Load Seer responses
   const module = await import('/public/seer.js');
   const responses = module.default;
-
+  const omens = module.omens;  
   // Elements
   const seerInput = document.getElementById('seer-question');
   const output = document.getElementById('seer-response');

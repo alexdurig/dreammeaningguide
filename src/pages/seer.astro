@@ -134,14 +134,14 @@ import Layout from '../components/Layout.astro';
   let v = 0;
   const fade = setInterval(() => {
     v += 0.01;
-    air.volume = v * 0.04;
+    air.volume = v * 0.025;
     if (v >= 1) clearInterval(fade);
   }, 300);
 
   // --- RANDOM AMBIENT SWELLS ---
   setInterval(() => {
-    low.volume = 0.12 + Math.random() * 0.06;
-    air.volume = 0.02 + Math.random() * 0.03;
+    low.volume = 0.12 + Math.random() * 0.04;
+    air.volume = 0.015 + Math.random() * 0.02;
   }, 30000);
 
   // --- ENTER HANDLER (Seer reply + pulse) ---
@@ -166,11 +166,11 @@ setTimeout(() => {
 
       // Chamber pulse
       low.volume = 0.20;
-      air.volume = 0.06;
+      air.volume = 0.04;
 
       setTimeout(() => {
         low.volume = 0.15;
-        air.volume = 0.04;
+        air.volume = 0.03;
       }, 1500);
     }
   });

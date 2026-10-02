@@ -1,4 +1,4 @@
-export default [
+export default [ 
   "A flooded library reflects forgotten knowledge rising to the surface.",
   "The humming books are memories asking to be heard.",
   "In dreams water is the unconscious, carrying truths you are ready to face.",

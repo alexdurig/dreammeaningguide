@@ -152,7 +152,17 @@ import Layout from '../components/Layout.astro';
 
       // Seer reply
       const reply = responses[Math.floor(Math.random() * responses.length)];
-      output.textContent = reply;
+  
+// Pick an omen
+const omen = omens[Math.floor(Math.random() * omens.length)];
+
+// Show omen immediately
+output.textContent = omen;
+
+// After a delay, show the real answer
+setTimeout(() => {
+  output.textContent = reply;
+}, 1500); // 1.5 seconds is perfect
 
       // Chamber pulse
       low.volume = 0.20;

@@ -115,8 +115,7 @@ import Layout from '../components/Layout.astro';
     });
   });
 </script>
-<audio id="darkdrone" src="/audio/darkdrone.mp3" loop></audio>
-<audio id="dragonwind" src="/audio/dragonwind.mp3" loop></audio>
+
 <script>
 <audio id="darkdrone" src="/audio/darkdrone.mp3" loop></audio>
 <audio id="dragonwind" src="/audio/dragonwind.mp3" loop></audio>
@@ -146,14 +145,10 @@ const fade = setInterval(() => {
 
 // --- RANDOM AMBIENT SWELLS (living chamber) ---
 setInterval(() => {
-  // darkdrone fluctuates gently between 0.12 and 0.18
-  low.volume = 0.12 + Math.random() * 0.06;
-
-  // dragonwind fluctuates between 0.02 and 0.05
-  air.volume = 0.02 + Math.random() * 0.03;
+  low.volume = 0.12 + Math.random() * 0.06;  // darkdrone fluctuation
+  air.volume = 0.02 + Math.random() * 0.03;  // dragonwind fluctuation
 }, 30000); // every 30 seconds
 </script>
-
 
 
 

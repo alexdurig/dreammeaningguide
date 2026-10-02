@@ -163,8 +163,17 @@ export default [
 "The silent horizon carries an action shaped by destiny.",
 "A drifting light reveals an action awakening your spirit.",
 "An ancient wind whispers an action calling you forward.",
-"An echo marks an action returning with new significance."
-
+"An echo marks an action returning with new significance.",
+"Reply hazy, try again.",
+"Ask again later.",
+"Better not tell you now.",
+"Cannot predict now.",
+"Concentrate and ask again.",
+"Don’t count on it.",
+"My reply is no.",
+"My sources say no.",
+"Outlook not so good.",
+"Very doubtful.",
 
 
 

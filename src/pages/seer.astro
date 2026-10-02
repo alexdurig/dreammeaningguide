@@ -101,7 +101,7 @@ import Layout from '../components/Layout.astro';
   </div>
 </div>
 
-<!-- AUDIO ELEMENTS (must be outside script) -->
+<!-- AUDIO ELEMENTS -->
 <audio id="darkdrone" src="/audio/darkdrone.mp3" loop></audio>
 <audio id="dragonwind" src="/audio/dragonwind.mp3" loop></audio>
 
@@ -110,12 +110,13 @@ import Layout from '../components/Layout.astro';
   import('/public/seer.js').then(module => {
     const responses = module.default;
 
+    // Make input global so the audio script can access it
     window.seerInput = document.getElementById('seer-question');
     const output = document.getElementById('seer-response');
 
-    seerInput.addEventListener('keydown', (e) => {
+    window.seerInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        const dream = seerInput.value.trim();
+        const dream = window.seerInput.value.trim();
         if (!dream) return;
 
         const reply = responses[Math.floor(Math.random() * responses.length)];
@@ -127,8 +128,8 @@ import Layout from '../components/Layout.astro';
 
 <!-- AUDIO ENGINE -->
 <script>
-const low = document.getElementById('darkdrone');     // main drone
-const air = document.getElementById('dragonwind');    // airy layer
+const low = document.getElementById('darkdrone');
+const air = document.getElementById('dragonwind');
 
 // --- INSTANT START FOR DARKDRONE ---
 low.volume = 0.15;
@@ -170,6 +171,7 @@ window.seerInput.addEventListener('keydown', (e) => {
 </script>
 
 </Layout>
+
 
 
 

@@ -131,7 +131,7 @@ let v = 0;
 const fade = setInterval(() => {
   v += 0.01;
   low.volume = v * 0.15;  // deeper drone
-  air.volume = v * 0.05;  // airy drone, much softer
+  air.volume = v * 0.03;  // airy drone, much softer
 
   if (v >= 1) clearInterval(fade);
 }, 300);

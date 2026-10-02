@@ -111,6 +111,14 @@ import Layout from '../components/Layout.astro';
 
         const reply = responses[Math.floor(Math.random() * responses.length)];
         output.textContent = reply;
+// --- ENTER PULSE: The chamber reacts to the dream ---
+low.volume = 0.20;   // swell the drone
+air.volume = 0.06;   // swell the wind
+
+setTimeout(() => {
+  low.volume = 0.15; // return to baseline
+  air.volume = 0.04;
+}, 1500); // 1.5 seconds
       }
     });
   });

@@ -105,72 +105,70 @@ import Layout from '../components/Layout.astro';
 <audio id="darkdrone" src="/audio/darkdrone.mp3" loop></audio>
 <audio id="dragonwind" src="/audio/dragonwind.mp3" loop></audio>
 
-<!-- SEER LOGIC -->
+<!-- MERGED SCRIPT: EVERYTHING IN ONE PLACE -->
 <script>
-  import('/public/seer.js').then(module => {
-    const responses = module.default;
+(async () => {
+  // Load Seer responses
+  const module = await import('/public/seer.js');
+  const responses = module.default;
 
-    // Make input global so the audio script can access it
-    window.seerInput = document.getElementById('seer-question');
-    const output = document.getElementById('seer-response');
+  // Elements
+  const seerInput = document.getElementById('seer-question');
+  const output = document.getElementById('seer-response');
 
-    window.seerInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const dream = window.seerInput.value.trim();
-        if (!dream) return;
+  const low = document.getElementById('darkdrone');
+  const air = document.getElementById('dragonwind');
 
-        const reply = responses[Math.floor(Math.random() * responses.length)];
-        output.textContent = reply;
-      }
-    });
+  // --- INSTANT START FOR DARKDRONE ---
+  low.volume = 0.15;
+  low.play().catch(() => {
+    document.addEventListener('click', () => low.play(), { once: true });
   });
-</script>
 
-<!-- AUDIO ENGINE -->
-<script>
-const low = document.getElementById('darkdrone');
-const air = document.getElementById('dragonwind');
+  // --- FADE-IN FOR DRAGONWIND ---
+  air.volume = 0;
+  air.play().catch(() => {
+    document.addEventListener('click', () => air.play(), { once: true });
+  });
 
-// --- INSTANT START FOR DARKDRONE ---
-low.volume = 0.15;
-low.play().catch(() => {
-  document.addEventListener('click', () => low.play(), { once: true });
-});
+  let v = 0;
+  const fade = setInterval(() => {
+    v += 0.01;
+    air.volume = v * 0.04;
+    if (v >= 1) clearInterval(fade);
+  }, 300);
 
-// --- FADE-IN FOR DRAGONWIND ---
-air.volume = 0;
-air.play().catch(() => {
-  document.addEventListener('click', () => air.play(), { once: true });
-});
+  // --- RANDOM AMBIENT SWELLS ---
+  setInterval(() => {
+    low.volume = 0.12 + Math.random() * 0.06;
+    air.volume = 0.02 + Math.random() * 0.03;
+  }, 30000);
 
-let v = 0;
-const fade = setInterval(() => {
-  v += 0.01;
-  air.volume = v * 0.04;
-  if (v >= 1) clearInterval(fade);
-}, 300);
+  // --- ENTER HANDLER (Seer reply + pulse) ---
+  seerInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const dream = seerInput.value.trim();
+      if (!dream) return;
 
-// --- RANDOM AMBIENT SWELLS ---
-setInterval(() => {
-  low.volume = 0.12 + Math.random() * 0.06;
-  air.volume = 0.02 + Math.random() * 0.03;
-}, 30000);
+      // Seer reply
+      const reply = responses[Math.floor(Math.random() * responses.length)];
+      output.textContent = reply;
 
-// --- ENTER PULSE ---
-window.seerInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    low.volume = 0.20;
-    air.volume = 0.06;
+      // Chamber pulse
+      low.volume = 0.20;
+      air.volume = 0.06;
 
-    setTimeout(() => {
-      low.volume = 0.15;
-      air.volume = 0.04;
-    }, 1500);
-  }
-});
+      setTimeout(() => {
+        low.volume = 0.15;
+        air.volume = 0.04;
+      }, 1500);
+    }
+  });
+})();
 </script>
 
 </Layout>
+
 
 
 

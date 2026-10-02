@@ -62,7 +62,7 @@ export default [
   "An open book reveals knowledge you are finally prepared to absorb.",
   "A rising moon signals intuition strengthening within you.",
   "In the quiet garden lies a part of your life now ready to flourish.",
-"Whatever you believe right now will shape your future, so choose carefully."
+"Whatever you believe right now will shape your future, so choose carefully.",
 "A drifting plan reveals an action you have delayed but are now ready to take.",
 "A trembling horizon hints at an action forming quietly in your future.",
 "A whispering wind carries the memory of an action you once feared.",

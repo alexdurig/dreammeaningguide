@@ -159,9 +159,9 @@ const omen = omens[Math.floor(Math.random() * omens.length)];
 // Show omen immediately
 output.textContent = omen;
 
-// After a delay, show the real answer
+// After a delay, show the real answer *under* the omen
 setTimeout(() => {
-  output.textContent = reply;
+  output.textContent = omen + "\n\n" + reply;
 }, 1500); // 1.5 seconds is perfect
 
       // Chamber pulse

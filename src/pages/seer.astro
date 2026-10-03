@@ -102,30 +102,34 @@ import Layout from '../components/Layout.astro';
 </div>
 
 <!-- AUDIO ELEMENTS -->
-<audio id="darkdrone" src="/audio/darkdrone.mp3" loop></audio>
+<audio id="darkdrone" src="/audio/darkdrone.mp3"></audio>
 <audio id="dragonwind" src="/audio/dragonwind.mp3" loop></audio>
 
-<!-- MERGED SCRIPT: EVERYTHING IN ONE PLACE -->
 <script>
 (async () => {
-  // Load Seer responses
   const module = await import('/public/seer.js');
   const responses = module.default;
-  const omens = module.omens;  
-  // Elements
+  const omens = module.omens;
+
   const seerInput = document.getElementById('seer-question');
   const output = document.getElementById('seer-response');
 
   const low = document.getElementById('darkdrone');
   const air = document.getElementById('dragonwind');
 
-  // --- INSTANT START FOR DARKDRONE ---
+  // --- DARKDRONE: delayed looping ---
   low.volume = 0.15;
   low.play().catch(() => {
     document.addEventListener('click', () => low.play(), { once: true });
   });
 
-  // --- FADE-IN FOR DRAGONWIND ---
+  low.addEventListener('ended', () => {
+    setTimeout(() => {
+      low.play();
+    }, low.duration * 1000); // half-frequency looping
+  });
+
+  // --- DRAGONWIND FADE-IN ---
   air.volume = 0;
   air.play().catch(() => {
     document.addEventListener('click', () => air.play(), { once: true });
@@ -144,27 +148,21 @@ import Layout from '../components/Layout.astro';
     air.volume = 0.015 + Math.random() * 0.02;
   }, 30000);
 
-  // --- ENTER HANDLER (Seer reply + pulse) ---
+  // --- ENTER HANDLER ---
   seerInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       const dream = seerInput.value.trim();
       if (!dream) return;
 
-      // Seer reply
       const reply = responses[Math.floor(Math.random() * responses.length)];
-  
-// Pick an omen
-const omen = omens[Math.floor(Math.random() * omens.length)];
+      const omen = omens[Math.floor(Math.random() * omens.length)];
 
-// Show omen immediately
-output.textContent = omen;
+      output.textContent = omen;
 
-// After a delay, show the real answer *under* the omen
-setTimeout(() => {
-  output.textContent = omen + "\n\n" + reply;
-}, 1500); // 1.5 seconds is perfect
+      setTimeout(() => {
+        output.textContent = omen + "\n\n" + reply;
+      }, 1500);
 
-      // Chamber pulse
       low.volume = 0.20;
       air.volume = 0.04;
 
@@ -178,6 +176,7 @@ setTimeout(() => {
 </script>
 
 </Layout>
+
 
 
 

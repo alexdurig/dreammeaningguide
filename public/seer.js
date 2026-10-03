@@ -1,14 +1,14 @@
 export const omens = [
-  "The lantern flickers…",
-  "A soft hum fills the chamber…",
-  "The shadows shift around you…",
-  "The veil stirs…",
-  "A cold wind moves through the chamber…",
-  "The glyphs begin to glow…",
-  "The Seer turns its gaze toward you…",
-  "The chamber grows quiet…",
-  "Something ancient awakens…",
-  "A distant echo answers your question…"
+  "The Seer knows all and sees all...",
+  "Be patient and be careful...",
+  "You already know what matters most...",
+  "Sometimes less is more...",
+  "Keep this to yourself...",
+  "Behind every truth lies a secret...",
+  "Lift the veil and face your future...",
+  "Follow your bliss...",
+  "Something ancient is awakening...",
+  "As one door closes, another door opens..."
 ];
 
 export default [ 
